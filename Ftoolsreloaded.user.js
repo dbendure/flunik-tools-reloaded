@@ -188,7 +188,7 @@
 							});
 							
 							cmdButton = new qx.ui.form.Button("command", null).set({
-								toolTipText: "Turn HQ, CC, fac, and rt buildings ",
+								toolTipText: "turn auto-update On or Off ",
 								width: 100,
 								height: 40,
 								maxWidth: 100,
