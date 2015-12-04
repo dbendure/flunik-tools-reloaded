@@ -6,7 +6,7 @@
 // @author      Flunik
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
-//C:\Users\dbend\AppData\Roaming\Mozilla\Firefox\Profiles\xe32e3zv.default\gm_scripts\Flunik_Tools
+
 (function() {
     var FlunikTools_main = function() {
         try {
