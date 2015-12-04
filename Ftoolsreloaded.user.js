@@ -6,7 +6,7 @@
 // @author      Flunik
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
-
+//C:\Users\dbend\AppData\Roaming\Mozilla\Firefox\Profiles\xe32e3zv.default\gm_scripts\Flunik_Tools
 (function() {
     var FlunikTools_main = function() {
         try {
@@ -473,14 +473,14 @@
                             return webfrontend.gui.UtilView.centerCoordinatesOnRegionViewWindow(parseInt(coordx.toString(), 10), parseInt(coordy.toString(), 10));
                         },
 
-                        buildingRows: function(arr, building, type, prodA, prodB, prodC) {
+                        buildingRows: function(arr, building, type, prodA, prodB) {
                             var _this = FlunikTools.Main.getInstance();
                             var buildingName = building.get_UnitGameData_Obj().dn;
                             var x = building.get_CoordX();
                             var y = building.get_CoordY();
 
 
-                            arr.push([buildingName, type, building.get_CurrentLevel(), prodA, prodB, prodC, x, y]);
+                            arr.push([buildingName, type, building.get_CurrentLevel(), prodA, prodB, x, y]);
 
                             tableModelA.setData(arr);
                             //rowData = [];
@@ -1429,8 +1429,8 @@
                                             }
                                         }
 
-                                        if ((city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[4, 26, 34]) && (_this.h1 == 1)) {
-                                            type = "Crystal"
+                                        if ((city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[4, 26, 34])) {
+                                            type = "Crystal";
                                             var harcryPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].TotalValue;
                                             //var LinkTypes1 =  city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].Value;
                                             var harcryPac = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalPackageSize].TotalValue;
