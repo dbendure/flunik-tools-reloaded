@@ -26,6 +26,8 @@
                         autoUpdateHandleAll: null,
                         composite: null,
                         tabView: null,
+                        tabViewA: null,
+                        tabViewB: null,
                         page1: null,
                         win: null,
                         //checkGB : null,
@@ -34,53 +36,103 @@
                         groupBoxC: null,
                         groupBoxD: null,
                         checkBoxA: null,
-                        checkBoxCy: null,
-                        checkBoxRe: null,
-                        checkBoxPp: null,
-                        checkBoxCc: null,
-                        checkBoxDh: null,
-                        checkBoxBa: null,
-                        checkBoxFa: null,
-                        checkBoxAi: null,
-                        checkBoxDf: null,
-                        //checkBoxA = new qx.ui.form.CheckBox(ClientLib.Base.ETechName.Research_BaseFound
-                        //checkBoxA = new qx.ui.form.CheckBox(ClientLib.Base.ETechName.Harvester_Crystal
-                        checkBoxHa: null,
-                        checkBoxSai: null,
-                        checkBoxSio: null,
-                        checkBoxSar: null,
-                        checkBoxSi: null,
-                        checkBoxAc: null,
+
                         checkBoxB: null,
                         checkBoxC: null,
                         cityPage: null,
                         cmdB: null,
                         textfield: null,
+                        tableModel: null,
+                        table: null,
+                        poiRows: null,
+                        createRandomRows: null,
 
 
                         initialize: function() {
 
 
                             console.log('FLUNIKTOLS initialize');
+
+
+
                             win = new qx.ui.window.Window("First Window");
                             win.setWidth(600);
-                            win.setHeight(600);
+                            win.setHeight(300);
                             win.setShowMinimize(false);
                             win.setLayout(new qx.ui.layout.VBox());
                             //////////////////////////////////////////////////////////
                             composite = new qx.ui.container.Composite();
                             composite.setLayout(new qx.ui.layout.Basic());
                             ////////////////////////////////////////////////////////////////
-                            page2 = new qx.ui.tabview.Page("Main");
+
+
+
+                            // table model
+                            tableModel = new qx.ui.table.model.Simple();
+                            //tableModel.setColumns([ "ID", "Type", "Level", "Score" ]);
+                            if (this.poiRows() != null) {
+                                this.poiRows();
+                            }
+                            tableModelA = new qx.ui.table.model.Simple();
+                            tableModelA.setColumns(["Name", "Type", "Level", "ProductionA", "ProductionB", "x", "y"]);
+                            // make second column editable
+                            //tableModel.setColumnEditable(1, true);
+
+                            // table
+                            var table = new qx.ui.table.Table(tableModel).set({
+                                decorator: null,
+                                Padding: 1,
+
+                            });
+                            var tableA = new qx.ui.table.Table(tableModelA).set({
+                                decorator: null,
+                                Padding: 1,
+                                height: 200,
+                                width: 600
+
+                            });
+                            ////////////////////////////////////////////////////////////////
+                            page2 = new qx.ui.tabview.Page("Base Upgrade");
                             page2.setLayout(new qx.ui.layout.VBox());
+                            ////////////////////////////////////////////////////////////////
+                            page3 = new qx.ui.tabview.Page("Poi Info");
+                            page3.setLayout(new qx.ui.layout.VBox());
+                            page3.add(table);
                             ////////////////////////////////////////////////////////////////
                             tabView = new qx.ui.tabview.TabView();
                             tabView.setBarPosition('left');
                             //page2.add(tabView);
                             //////////////////////////////////////////////////////////////////
+                            tabViewB = new qx.ui.tabview.TabView();
+                            tabViewB.setBarPosition('left');
+                            tibPage = new qx.ui.tabview.Page("Tib", "https://eaassets-a.akamaihd.net/cncalliancesgame/cdn/data/98abd73f92a4fb8f5f3a28a1b2a82344.png");
+                            tibPage.setLayout(new qx.ui.layout.VBox());
+                            cryPage = new qx.ui.tabview.Page("Cry", "https://eaassets-a.akamaihd.net/cncalliancesgame/cdn/data/61f096dde442bd3be1843a0929900194.png");
+                            cryPage.setLayout(new qx.ui.layout.VBox());
+                            powPage = new qx.ui.tabview.Page("Pow", "https://eaassets-a.akamaihd.net/cncalliancesgame/cdn/data/fa6798783e2c662ce81e861990aef03a.png");
+                            powPage.setLayout(new qx.ui.layout.VBox());
+                            defPage = new qx.ui.tabview.Page("Def", "https://eaassets-a.akamaihd.net/cncalliancesgame/cdn/data/58f5d05df06e0f7a168de22ecd3baaf8.png");
+                            defPage.setLayout(new qx.ui.layout.VBox());
+                            infPage = new qx.ui.tabview.Page("Inf", "https://eaassets-a.akamaihd.net/cncalliancesgame/cdn/data/2a86e68b80393142036e6b9121852555.png");
+                            infPage.setLayout(new qx.ui.layout.VBox());
+                            vehPage = new qx.ui.tabview.Page("Veh", "https://eaassets-a.akamaihd.net/cncalliancesgame/cdn/data/fdb2ebef642e14b91439d4b152c6c401.png");
+                            vehPage.setLayout(new qx.ui.layout.VBox());
+                            airPage = new qx.ui.tabview.Page("Air", "https://eaassets-a.akamaihd.net/cncalliancesgame/cdn/data/b8735956fb36d35b16faf087bbcbd293.png");
+                            airPage.setLayout(new qx.ui.layout.VBox());
+                            tabViewB.add(tibPage);
+                            tabViewB.add(cryPage);
+                            tabViewB.add(powPage);
+                            tabViewB.add(defPage);
+                            tabViewB.add(infPage);
+                            tabViewB.add(vehPage);
+                            tabViewB.add(airPage);
+                            page3.add(tabViewB);
+
+                            //////////////////////////////////////////////////////////////////
                             tabViewA = new qx.ui.tabview.TabView();
                             tabViewA.setBarPosition('top');
                             tabViewA.add(page2);
+                            tabViewA.add(page3);
                             //////////////////////////////////////////////////////////////////
                             page1 = new qx.ui.tabview.Page("BaseName");
                             page1.setLayout(new qx.ui.layout.VBox());
@@ -100,10 +152,14 @@
                             groupBoxD.setLayout(new qx.ui.layout.VBox());
                             groupBoxE = new qx.ui.groupbox.GroupBox();
                             groupBoxE.setLayout(new qx.ui.layout.VBox());
-                            groupBoxF = new qx.ui.groupbox.GroupBox();
+                            groupBoxF = new qx.ui.groupbox.GroupBox().set({
+                                height: 300,
+                                width: 600
+                            });
                             groupBoxF.setLayout(new qx.ui.layout.VBox());
                             //////////////////////////////////////////////////////////////////
-                            /*checkBoxA = new qx.ui.form.CheckBox("stuffA");
+                            /*
+							checkBoxA = new qx.ui.form.CheckBox("stuffA");
                             checkBoxCy = new qx.ui.form.CheckBox("Construction_Yard");
                             checkBoxRe = new qx.ui.form.CheckBox("Refinery");
                             checkBoxPp = new qx.ui.form.CheckBox("PowerPlant");
@@ -149,6 +205,7 @@
                             //groupBoxA.add(checkBoxAc, {row : 2, column : 3});
                             //groupBoxB.add(checkBoxB, {row : 3, column : 3});
                             //groupBoxC.add(checkBoxC, {row : 4, column : 0});
+                            groupBoxF.add(tableA);
 
                             groupBoxD.add(groupBoxA);
                             groupBoxD.add(groupBoxB);
@@ -187,8 +244,33 @@
                                 center: true
                             });
 
-                            cmdButton = new qx.ui.form.Button("command", null).set({
-                                toolTipText: "turn auto-update On or Off ",
+                            cmdButton = new qx.ui.form.RepeatButton("command", null).set({
+                                    toolTipText: "Autoupdate",
+                                    width: 100,
+                                    height: 40,
+                                    maxWidth: 100,
+                                    maxHeight: 40,
+                                    appearance: ("button-playarea-mode-frame"), //"button-standard-"+factionText), button-playarea-mode-red-frame
+                                    center: true,
+                                    firstInterval: 10000,
+                                    interval: 10000,
+                                    minTimer: 0,
+                                    timerDecrease: 1000
+
+                                }),
+
+                                tibButton = new qx.ui.form.Button("Tib", null).set({
+                                    toolTipText: "press to refresh table",
+                                    width: 100,
+                                    height: 40,
+                                    maxWidth: 100,
+                                    maxHeight: 40,
+                                    appearance: ("button-playarea-mode-frame"), //"button-standard-"+factionText), button-playarea-mode-red-frame
+                                    center: true
+                                });
+
+                            cryButton = new qx.ui.form.Button("command", null).set({
+                                toolTipText: "press to refresh table",
                                 width: 100,
                                 height: 40,
                                 maxWidth: 100,
@@ -197,7 +279,123 @@
                                 center: true
                             });
 
-                            cmdButton.addListener("click", function(e) {
+                            powButton = new qx.ui.form.Button("command", null).set({
+                                toolTipText: "press to refresh table",
+                                width: 100,
+                                height: 40,
+                                maxWidth: 100,
+                                maxHeight: 40,
+                                appearance: ("button-playarea-mode-frame"), //"button-standard-"+factionText), button-playarea-mode-red-frame
+                                center: true
+                            });
+
+                            defButton = new qx.ui.form.Button("command", null).set({
+                                toolTipText: "press to refresh table",
+                                width: 100,
+                                height: 40,
+                                maxWidth: 100,
+                                maxHeight: 40,
+                                appearance: ("button-playarea-mode-frame"), //"button-standard-"+factionText), button-playarea-mode-red-frame
+                                center: true
+                            });
+
+                            infButton = new qx.ui.form.Button("command", null).set({
+                                toolTipText: "press to refresh table",
+                                width: 100,
+                                height: 40,
+                                maxWidth: 100,
+                                maxHeight: 40,
+                                appearance: ("button-playarea-mode-frame"), //"button-standard-"+factionText), button-playarea-mode-red-frame
+                                center: true
+                            });
+
+                            vehButton = new qx.ui.form.Button("command", null).set({
+                                toolTipText: "press to refresh table",
+                                width: 100,
+                                height: 40,
+                                maxWidth: 100,
+                                maxHeight: 40,
+                                appearance: ("button-playarea-mode-frame"), //"button-standard-"+factionText), button-playarea-mode-red-frame
+                                center: true
+                            });
+
+                            airButton = new qx.ui.form.Button("command", null).set({
+                                toolTipText: "press to refresh table",
+                                width: 100,
+                                height: 40,
+                                maxWidth: 100,
+                                maxHeight: 40,
+                                appearance: ("button-playarea-mode-frame"), //"button-standard-"+factionText), button-playarea-mode-red-frame
+                                center: true
+                            });
+
+                            table.addListener("cellTap", function(e) {
+                                if (table.getFocusedRow() != null) {
+                                    var x = table.getTableModel().getData()[table.getFocusedRow()][3];
+                                    var y = table.getTableModel().getData()[table.getFocusedRow()][4];
+                                    FlunikTools.Main.getInstance().viewPOI(x, y);
+                                }
+                                //webfrontend.gui.UtilView.centerCoordinatesOnRegionViewWindow(parseInt('554', 10), parseInt('194', 10));
+                            }, this);
+
+                            tibButton.addListener("click", function(e) {
+                                if (tabViewB.getSelection()[0].getLabel() == "Tib") {
+                                    FlunikTools.Main.getInstance().poiRows();
+                                }
+
+                            }, this);
+                            tibPage.add(tibButton);
+
+                            cryButton.addListener("click", function(e) {
+                                if (tabViewB.getSelection()[0].getLabel() == "Cry") {
+                                    FlunikTools.Main.getInstance().poiRows();
+                                }
+
+                            }, this);
+                            cryPage.add(cryButton);
+
+                            powButton.addListener("click", function(e) {
+                                if (tabViewB.getSelection()[0].getLabel() == "Pow") {
+                                    FlunikTools.Main.getInstance().poiRows();
+                                }
+
+                            }, this);
+                            powPage.add(powButton);
+
+                            defButton.addListener("click", function(e) {
+                                if (tabViewB.getSelection()[0].getLabel() == "Def") {
+                                    FlunikTools.Main.getInstance().poiRows();
+                                }
+
+                            }, this);
+                            defPage.add(defButton);
+
+                            infButton.addListener("click", function(e) {
+                                if (tabViewB.getSelection()[0].getLabel() == "Inf") {
+                                    FlunikTools.Main.getInstance().poiRows();
+                                }
+
+                            }, this);
+                            infPage.add(infButton);
+
+                            vehButton.addListener("click", function(e) {
+                                if (tabViewB.getSelection()[0].getLabel() == "Veh") {
+                                    FlunikTools.Main.getInstance().poiRows();
+                                }
+
+                            }, this);
+                            vehPage.add(vehButton);
+
+                            airButton.addListener("click", function(e) {
+                                if (tabViewB.getSelection()[0].getLabel() == "Air") {
+                                    FlunikTools.Main.getInstance().poiRows();
+                                }
+
+                            }, this);
+                            airPage.add(airButton);
+
+
+                            cmdButton.addListener("execute", function(e) {
                                 //numb = 0;
                                 if (FlunikTools.Main.getInstance().autoUpdateHandleAll != null) {
                                     //numb = 0;
@@ -220,6 +418,8 @@
                                 //page.add(new qx.ui.form.CheckBox("Reading"));
                             }, this);
 
+
+
                             AutoUpdateButton.addListener("click", function(e) {
                                 //numb = 0;
                                 if (FlunikTools.Main.getInstance().cmdB != null) {
@@ -240,6 +440,9 @@
                                 }
                                 if (AutoUpdateButton.getLabel() == "B.ON") {
                                     win.open();
+                                    if (FlunikTools.Main.getInstance().poiRows() != null) {
+                                        FlunikTools.Main.getInstance().poiRows();
+                                    }
                                 } else {
                                     win.close();
                                 }
@@ -256,7 +459,172 @@
                                 bottom: 100
                             });
 
+                            /*if(win.isActive()){
+                            	FlunikTools.Main.getInstance().startAutoUpdate();
+                            } else {
+                            	FlunikTools.Main.getInstance().stopAutoUpdate();
+                            }*/
 
+
+                        },
+
+                        viewPOI: function(coordx, coordy) {
+
+                            return webfrontend.gui.UtilView.centerCoordinatesOnRegionViewWindow(parseInt(coordx.toString(), 10), parseInt(coordy.toString(), 10));
+                        },
+
+                        buildingRows: function(arr, building, type, prodA, prodB, prodC) {
+                            var _this = FlunikTools.Main.getInstance();
+                            var buildingName = building.get_UnitGameData_Obj().dn;
+                            var x = building.get_CoordX();
+                            var y = building.get_CoordY();
+
+
+                            arr.push([buildingName, type, building.get_CurrentLevel(), prodA, prodB, prodC, x, y]);
+
+                            tableModelA.setData(arr);
+                            //rowData = [];
+
+                        },
+
+                        poiRows: function() {
+                            //var inputField = document.querySelector('input:focus, textarea:focus');
+                            //if (inputField != null) {
+                            var num = -1;
+                            var tibArr = [];
+                            var rowData = [];
+                            var poiSorceHolder = [];
+                            poiRank_Score = ClientLib.Data.MainData.GetInstance().get_Alliance().get_POIRankScore();
+                            tableModel.setColumns(["ifLost", "Level", "Score", "XCoord", "YCoord"]);
+
+                            for (var key in ClientLib.Data.MainData.GetInstance().get_Alliance().get_OwnedPOIs()) {
+
+                                var obj = ClientLib.Data.MainData.GetInstance().get_Alliance().get_OwnedPOIs()[key];
+
+                                tibArr[num] = obj;
+
+                                //var objCoords = obj.x, obj.y;//document.write(webfrontend.gui.util.BBCode.createCoordsLinkText(obj.x, obj.y));
+                                if (tabViewB.getSelection()[0].getLabel() == "Tib" && obj.t == ClientLib.Base.EPOIType.TiberiumBonus) {
+                                    num++;
+                                    poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
+                                    if (num >= 0) {
+                                        if (num == 0) {
+                                            rowData.push([poiRank_Score[0].s, "", "", "", ""]);
+                                            val = poiRank_Score[0].s - poiSorceHolder[num];
+                                        } else if (num >= 1) {
+                                            val = poiRank_Score[0].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
+                                                return (previousValue + currentValue);
+                                            });
+                                        }
+
+                                    }
+                                    rowData.push([val, obj.l, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l), obj.x, obj.y]);
+                                }
+                                if (tabViewB.getSelection()[0].getLabel() == "Cry" && obj.t == ClientLib.Base.EPOIType.CrystalBonus) {
+                                    num++;
+                                    poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
+                                    if (num >= 0) {
+                                        if (num == 0) {
+                                            rowData.push([poiRank_Score[1].s, "", "", "", ""]);
+                                            val = poiRank_Score[1].s - poiSorceHolder[num];
+                                        } else if (num >= 1) {
+                                            val = poiRank_Score[1].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
+                                                return (previousValue + currentValue);
+                                            });
+                                        }
+
+                                    }
+                                    rowData.push([val, obj.l, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l), obj.x, obj.y]);
+                                }
+                                if (tabViewB.getSelection()[0].getLabel() == "Pow" && obj.t == ClientLib.Base.EPOIType.PowerBonus) {
+                                    num++;
+                                    poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
+                                    if (num >= 0) {
+                                        if (num == 0) {
+                                            rowData.push([poiRank_Score[2].s, "", "", "", ""]);
+                                            val = poiRank_Score[2].s - poiSorceHolder[num];
+                                        } else if (num >= 1) {
+                                            val = poiRank_Score[2].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
+                                                return (previousValue + currentValue);
+                                            });
+                                        }
+
+                                    }
+                                    rowData.push([val, obj.l, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l), obj.x, obj.y]);
+                                }
+                                if (tabViewB.getSelection()[0].getLabel() == "Inf" && obj.t == ClientLib.Base.EPOIType.InfanteryBonus) {
+                                    num++;
+                                    poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
+                                    if (num >= 0) {
+                                        if (num == 0) {
+                                            rowData.push([poiRank_Score[3].s, "", "", "", ""]);
+                                            val = poiRank_Score[3].s - poiSorceHolder[num];
+                                        } else if (num >= 1) {
+                                            val = poiRank_Score[3].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
+                                                return (previousValue + currentValue);
+                                            });
+                                        }
+
+                                    }
+                                    rowData.push([val, obj.l, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l), obj.x, obj.y]);
+                                }
+                                if (tabViewB.getSelection()[0].getLabel() == "Veh" && obj.t == ClientLib.Base.EPOIType.VehicleBonus) {
+                                    num++;
+                                    poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
+                                    if (num >= 0) {
+                                        if (num == 0) {
+                                            rowData.push([poiRank_Score[4].s, "", "", "", ""]);
+                                            val = poiRank_Score[4].s - poiSorceHolder[num];
+                                        } else if (num >= 1) {
+                                            val = poiRank_Score[4].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
+                                                return (previousValue + currentValue);
+                                            });
+                                        }
+
+                                    }
+                                    rowData.push([val, obj.l, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l), obj.x, obj.y]);
+                                }
+                                if (tabViewB.getSelection()[0].getLabel() == "Air" && obj.t == ClientLib.Base.EPOIType.AirBonus) {
+                                    num++;
+                                    poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
+                                    if (num >= 0) {
+                                        if (num == 0) {
+                                            rowData.push([poiRank_Score[5].s, "", "", "", ""]);
+                                            val = poiRank_Score[5].s - poiSorceHolder[num];
+                                        } else if (num >= 1) {
+                                            val = poiRank_Score[5].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
+                                                return (previousValue + currentValue);
+                                            });
+                                        }
+
+                                    }
+                                    rowData.push([val, obj.l, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l), obj.x, obj.y]);
+                                }
+                                if (tabViewB.getSelection()[0].getLabel() == "Def" && obj.t == ClientLib.Base.EPOIType.DefenseBonus) {
+                                    num++;
+                                    poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
+                                    if (num >= 0) {
+                                        if (num == 0) {
+                                            rowData.push([poiRank_Score[6].s, "", "", "", ""]);
+                                            val = poiRank_Score[6].s - poiSorceHolder[num];
+                                        } else if (num >= 1) {
+                                            val = poiRank_Score[6].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
+                                                return (previousValue + currentValue);
+                                            });
+                                        }
+
+                                    }
+                                    rowData.push([val, obj.l, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l), obj.x, obj.y]);
+                                }
+                                //num++;
+                            }
+
+
+                            tableModel.setData(rowData);
+                            rowData = [];
+                            //tableModel.setData(FlunikTools.Main.getInstance().createRandomRows(tibArr.length));
+                            //return tibArr.length
+                            //}
                         },
 
                         cityPage: function(city, num) {
@@ -871,6 +1239,7 @@
                             //_this.autoUpgrade();
                             this.autoUpdateHandleAll = window.setInterval(this.autoUpgrade(), 30000);
 
+
                             //return setInterval(upgrade, _this.autoUpdateHandleAll);
                         },
                         stopAutoUpdate: function() {
@@ -895,6 +1264,7 @@
                             var _this = FlunikTools.Main.getInstance();
                             var num = -1;
                             var checkBoxes = null;
+                            var buildArr = [];
                             //_this.cityPageTab(_this.cityName(), _this.buildingName());
                             //page2.getChildren()[1].getChildren()[num] == 0;
                             for (var nCity in ClientLib.Data.MainData.GetInstance().get_Cities().get_AllCities().d) {
@@ -922,6 +1292,8 @@
                                 var x = -1;
                                 var y = -1;
                                 var nameArr = new Array();
+                                var gNum = -1;
+
 
                                 var typeArr5 = [];
                                 //typeArr5[num] = new Array();
@@ -932,6 +1304,8 @@
                                     var cNum = -1;
                                     var dNum = -1;
                                     var eNum = -1;
+
+                                    var type = "";
                                     var building = buildings.d[nBuildings];
 
                                     var tech = building.get_TechName();
@@ -945,13 +1319,69 @@
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
                                     } //ClientLib.Base.ETechName.Construction_Yard
                                     if (tech == ClientLib.Base.ETechName.Refinery) {
-                                        aNum = 0;
-                                        //typeArr0[aNum] = buildingName;
+                                        gNum++;
+                                        type = "Credits";
+                                        var refPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].TotalValue;
+                                        var refPac = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsPackageSize].TotalValue;
+                                        var refPacperH = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsBonusTimeToComplete].TotalValue;
+                                        //var refCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj(buildinglvlup1, building.get_UnitGameData_Obj())[0 || 1].Count;
+                                        var LinkTypes0 = 0;
+                                        var LinkTypes1 = 0;
+
+                                        if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[36] != undefined) {
+                                            LinkTypes0 = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerplantCreditBonus].Value);
+                                            //var refTotalPro = refPro + (refPac/(refPacperH/3600)) +  LinkTypes0 ;
+                                        } else {
+                                            LinkTypes0 = 0;
+                                        }
+
+                                        if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[37] != undefined) {
+                                            LinkTypes1 = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.TiberiumCreditProduction].Value);
+                                            //var refTotalPro = refPro + (refPac/(refPacperH/3600)) +  LinkTypes0 +  LinkTypes1  ;
+                                        } else {
+                                            LinkTypes1 = 0;
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                            _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1);
+                                        }
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
 
                                     }
                                     if (tech == ClientLib.Base.ETechName.PowerPlant) {
-                                        bNum = 0;
+                                        gNum++;
+                                        type = "Power";
+                                        var powPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].TotalValue;
+                                        var powPac = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerPackageSize].TotalValue;
+                                        var powPacperH = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerBonusTimeToComplete].TotalValue;
+                                        //var powCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj(buildinglvlup1, building.get_UnitGameData_Obj())[0 || 1].Count;
+                                        var LinkTypes0 = 0;
+                                        var LinkTypes1 = 0;
+                                        var LinkTypes2 = 0;
+                                        var powTotalProOfLevel12 = 605 + (7260 / 6) + 570 + 456 + 484;
+
+
+                                        if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[29] != undefined) {
+                                            LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.AccumulatorPowerBonus].Value;
+                                            //LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.CrystalCreditProduction].Value ;
+                                        } else {
+                                            LinkTypes0 = 0;
+                                        }
+
+                                        if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[38] != undefined) {
+                                            LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.CrystalCreditProduction].Value;
+                                        } else {
+                                            LinkTypes1 = 0;
+                                        }
+
+                                        if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[42] != undefined) {
+                                            LinkTypes2 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.RefineryPowerBonus].Value;
+                                        } else {
+                                            LinkTypes2 = 0;
+                                        }
+
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                            _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1);
+                                        }
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
                                     }
                                     if (tech == ClientLib.Base.ETechName.Command_Center) {
@@ -974,7 +1404,50 @@
                                     }
 
                                     if (tech == ClientLib.Base.ETechName.Harvester) {
-                                        cNum = 0;
+                                        gNum++;
+                                        var LinkTypes0 = 0;
+                                        var LinkTypes1 = 0;
+                                        //OwnProdModifiers.d[1].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].Value - 
+
+                                        if ((city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[1, 25, 33])) {
+                                            type = "Tiberium";
+
+                                            var hartibPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].TotalValue;
+                                            //var LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].Value;
+                                            var hartibPac = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumPackageSize].TotalValue;
+                                            var hartibPacperH = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumBonusTimeToComplete].TotalValue;
+
+                                            if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction] != undefined) {
+                                                LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].Value;
+
+                                            } else {
+                                                LinkTypes0 = 0;
+                                            }
+
+                                            if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                                _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1);
+                                            }
+                                        }
+
+                                        if ((city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[4, 26, 34]) && (_this.h1 == 1)) {
+                                            type = "Crystal"
+                                            var harcryPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].TotalValue;
+                                            //var LinkTypes1 =  city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].Value;
+                                            var harcryPac = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalPackageSize].TotalValue;
+                                            var harcryPacperH = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalBonusTimeToComplete].TotalValue;
+
+                                            //var harCryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj(buildinglvlup1, building.get_UnitGameData_Obj())[0 || 1].Count;
+
+                                            if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction] != undefined) {
+                                                LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].Value;
+                                                //var harCryTotalPro = harcryPro + (harcryPac/(harcryPacperH/3600)) + LinkTypes1;
+                                            } else {
+                                                var LinkTypes1 = 0;
+                                            }
+                                            if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                                _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1);
+                                            }
+                                        }
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
                                     }
                                     if (tech == ClientLib.Base.ETechName.Support_Air) {
@@ -987,19 +1460,69 @@
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
                                     }
                                     if (tech == ClientLib.Base.ETechName.Silo) {
-                                        dNum++;
+                                        gNum++;
+                                        type = "Tib + Cry";
+                                        var LinkTypes1 = 0;
+                                        var LinkTypes0 = 0;
+                                        var silTotalPro = 0;
+                                        var silCryPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].TotalValue;
+                                        //var LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterCrystalProduction].Value;
+                                        var silTibPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].TotalValue;
+                                        //var LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterTiberiumProduction].Value;
+                                        var silCrySto = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalStorage].TotalValue;
+                                        var silTibSto = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumStorage].TotalValue;
+                                        //var silCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj(buildinglvlup1, building.get_UnitGameData_Obj())[0 || 1].Count;
+
+                                        if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterCrystalProduction] == undefined) {
+
+                                            LinkTypes1 = 0;
+                                        } else {
+                                            LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterCrystalProduction].Value;
+                                            //silTotalPro = LinkTypes1 + LinkTypes0;
+                                        }
+
+                                        if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterTiberiumProduction] == undefined) {
+
+                                            LinkTypes0 = 0;
+                                        } else {
+                                            LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterTiberiumProduction].Value;
+                                            //silTotalPro = LinkTypes1 + LinkTypes0;
+                                        }
+                                        console.log(building);
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                            _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1);
+                                        }
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
                                     }
                                     if (tech == ClientLib.Base.ETechName.Accumulator) {
-                                        eNum = 0;
+                                        var LinkTypes0 = 0;
+                                        //OwnProdModifiers.d[6].ConnectedLinkTypes.d[41].Value
+                                        gNum++;
+                                        type = "Power";
+                                        var accPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].TotalValue;
+                                        //var LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerPlantAccumulatorBonus].Value;
+                                        var accSto = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerStorage].TotalValue;
+                                        //var accCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj(buildinglvlup1, building.get_UnitGameData_Obj())[0 || 1].Count;
+                                        //var accTotalPro = accPro ;
+
+                                        if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerPlantAccumulatorBonus] != undefined) {
+                                            var LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerPlantAccumulatorBonus].Value;
+                                            //var accTotalPro = LinkTypes0;
+                                        } else {
+                                            LinkTypes0 = 0;
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                            _this.buildingRows(buildArr, building, type, LinkTypes0);
+                                        }
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
                                     }
                                     //_this.buildingBox(building, num);
                                     //}
-                                    console.log(_this.isCheckBoxChecked(num, buildingName, aNum), buildingName, aNum, city.m_SupportDedicatedBaseName, num);
+                                    //console.log(_this.isCheckBoxChecked(num, buildingName, aNum), buildingName, aNum, city.m_SupportDedicatedBaseName );
                                     //if(!_this.canUpgradeBuilding(building, city))continue;
-                                    if (_this.isCheckBoxChecked(num, buildingName, aNum) && !_this.canUpgradeBuilding(building, city)) {
-                                        //console.log(_this.isCheckBoxChecked(num, buildingName, aNum), buildingName, aNum, city.m_SupportDedicatedBaseName );
+                                    if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        console.log(_this.isCheckBoxChecked(num, buildingName, aNum), buildingName, aNum, city.m_SupportDedicatedBaseName);
+                                        //_this.buildingRows(gNum, building, type, LinkTypes0, LinkTypes1, LinkTypes2);
 
                                         B_obj = {
                                                 cityid: city.get_Id(),
@@ -1055,7 +1578,7 @@
                                     }
                                     if (!_this.canUpgradeUnit(unit, city)) continue;
                                     if (_this.isCheckBoxChecked(num, unitName, offNum)) {
-                                        //console.log(_this.isCheckBoxChecked(num, unitName, offNum), unitName, offNum, city.m_SupportDedicatedBaseName );
+                                        console.log(_this.isCheckBoxChecked(num, unitName, offNum), unitName, offNum, city.m_SupportDedicatedBaseName);
 
 
                                         //console.log(ClientLib.Base.EUnitType.Structure);
@@ -1105,7 +1628,7 @@
                                     if (!_this.canUpgradeUnit(unit, city)) continue;
                                     if (_this.isCheckBoxChecked(num, unitName, defNum)) {
 
-
+                                        console.log(_this.isCheckBoxChecked(num, unitName, aNum), unitName, aNum, city.m_SupportDedicatedBaseName, num);
                                         //if(!_this.canUpgradeUnit(unit, city))continue;
 
                                         D_obj = {
@@ -1150,9 +1673,10 @@
 
                                 //continue;	
                             } //city loop
+                            console.log("End of Main Function");
 
 
-                            //textfield.add(_this.isCheckBoxChecked(num, buildingName, aNum), buildingName, aNum, B_obj );
+
                         }
                     }
                 });
@@ -1165,7 +1689,17 @@
             try {
                 if (typeof qx != 'undefined' && qx.core.Init.getApplication() && qx.core.Init.getApplication().getUIItem(ClientLib.Data.Missions.PATH.BAR_NAVIGATION) && qx.core.Init.getApplication().getUIItem(ClientLib.Data.Missions.PATH.BAR_NAVIGATION).isVisible()) {
                     createFlunikTools();
+                    // var interval = window.setInterval
                     FlunikTools.Main.getInstance().initialize();
+                    if (FlunikTools.Main.getInstance().cmdButton.getLabel != null) {
+                        console.log(FlunikTools.Main.getInstance().cmdButton.getLabel);
+                    }
+                    /*if (FlunikTools.Main.getInstance().cmdButton.getLabel == "cmd.OFF") {
+                                    //numb = 0;
+                                    FlunikTools.Main.getInstance().stopAutoUpdate();
+                                } else {
+                                    FlunikTools.Main.getInstance()..startAutoUpdate();
+                                }*/
 
 
 
