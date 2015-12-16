@@ -5,6 +5,7 @@
 // @version     4.3.6
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
+//@grant none
 // ==/UserScript==
 
 //change meaning the increase, the difference between pre and post upgarde
