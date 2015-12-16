@@ -2,8 +2,8 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.2.0
-// @author      dbendure
+// @version     4.3.4.1
+// @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
 
@@ -803,10 +803,13 @@
 						
 						unitRows: function (arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow){
 							var _this = FlunikTools.Main.getInstance();
+							var date = new Date();
+							if(type != "object"){
                             var unitName = unit.get_UnitGameData_Obj().dn;
 							var unitTech = unit.get_UnitGameData_Obj().at;
                             var x = unit.get_CoordX();
                             var y = unit.get_CoordY();
+							
 							if (unitTech == ClientLib.Base.EUnitType.Infantry) {
 								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "typeLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", "", ""]);
 								arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
@@ -827,13 +830,21 @@
 								arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
 								//console.log(cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, costA, waitTib, costB, waitPow, x, y);
 							}
+							} else {
+								//                     arr,  unit,     type,          costA,          costB,    cityName,    typeLvl,    waitTib, waitPow
+								 //_this.unitRows(buildArr, D_obj, "object", D_obj.basename, D_obj.unitname, D_obj.level, D_obj.posX, D_obj.posY, "");
+		   //tableModelA.setColumns(["baseName", "Name", "toLevel", "x", "y", "Upgraded", "Ratio", "", "", "", "", "", "", "", "", ""]);
+		   //console.log(unit);
+								arr.push([costA, unit.uName, "Upgraded to "+parseInt(cityName), typeLvl, waitTib, "Ratio: "+(Math.round(waitPow*1000)/1000), date.getHours()+" : "+date.getMinutes()+" : "+date.getSeconds(), "", "", "", "", "", "", "", "", ""]);
+							
+							}
 							tableModelA.setData(arr);
 							
 						},
 
                         buildingRows: function(arr, building, type, prodA, prodB, prodC, costA, costB, deltaA, deltaB, deltaC, cityName, waitTib, waitPow) {
                             var _this = FlunikTools.Main.getInstance();
-                            
+                            var date = new Date();
 							//_this.formatNumbersCompact();
 							if(type != "object"){
 								var buildingName = building.get_UnitGameData_Obj().dn;
@@ -908,7 +919,7 @@
 								}
 							} else {
 								//tableModelA.setColumns(["baseName", "Name", "toLevel", "x", "y", "Upgraded", "Ratio", "", "", "", "", "", "", "", "", ""]);
-								arr.push([prodA, prodB, "Upgrade", prodC, costA, costB, "Ratio: "+(Math.round(deltaA*1000)/1000), "", "", "", "", "", "", "", "", "", ""]);
+								arr.push([prodA, prodB, "Upgraded to "+parseInt(prodC), costA, costB, "Ratio: "+(Math.round(deltaA*1000)/1000), date.getHours()+" : "+date.getMinutes()+" : "+date.getSeconds(), "", "", "", "", "", "", "", "", ""]);
 							}
 							
 							
@@ -2046,7 +2057,8 @@
 
                                     var type = "";
                                     var building = buildings.d[nBuildings];
-									if (!_this.canUpgradeBuilding(building, city)) continue;
+									//console.log(!_this.canUpgradeBuilding(building, city), _this.canUpgradeBuilding(building, city));
+									//if (!_this.canUpgradeBuilding(building, city)) continue;
 
                                     var tech = building.get_TechName();
                                     var buildingName = building.get_UnitGameData_Obj().dn;
@@ -2056,7 +2068,9 @@
                                     aNum = 0;
                                     //console.log(aNum, bNum, cNum, dNum, eNum);
                                     if (tech == ClientLib.Base.ETechName.Construction_Yard && building.get_CurrentLevel() < MaxLevel && city.get_CityBuildingsData().GetFullRepairTime(false) > 43200) {
-                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+                                       
+									   _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
                                         if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
@@ -2103,6 +2117,8 @@
                                         }
                                     } //ClientLib.Base.ETechName.Construction_Yard
                                     if (tech == ClientLib.Base.ETechName.Refinery && building.get_CurrentLevel() < MaxLevel) {
+										_this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
                                         gNum++;
 										refNum++;
 										proNum = 0;
@@ -2195,11 +2211,14 @@
 											}
 											//_this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, tibCost, powCost, change, time);
                                         }
-                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+                                        
 
                                     }
                                     if (tech == ClientLib.Base.ETechName.PowerPlant && building.get_CurrentLevel() < MaxLevel) {
-                                        gNum++;
+                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
+										gNum++;
+										
 										powNum++;
 										proNum = 1;
                                         type = "Power";
@@ -2301,10 +2320,11 @@
 										}
 											}
                                         }
-                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+                                        
                                     }
                                     if (tech == ClientLib.Base.ETechName.Command_Center && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										if (ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel()) != null) {
 										offcryCost = ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[0].Count;
 										offpowCostA = ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[1].Count;
@@ -2352,6 +2372,7 @@
                                     }
                                     if (tech == ClientLib.Base.ETechName.Defense_HQ && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										
 										if (ClientLib.API.Defense.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel()) != null ) {
 										defcryCost = ClientLib.API.Defense.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[0].Count;
@@ -2396,8 +2417,9 @@
 											}
                                         }
                                     }
-                                    if (tech == ClientLib.Base.ETechName.Barracks && building.get_CurrentLevel() < MaxLevel && _this.totalRepairTime( airRT, vehRT, infRT) == infRT) {
+                                    if (tech == ClientLib.Base.ETechName.Barracks && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										
 										
 										var deltaInfRT = infRT - nextInfRT;
@@ -2439,8 +2461,9 @@
 											}
                                         }
                                     }
-                                    if (tech == ClientLib.Base.ETechName.Factory && building.get_CurrentLevel() < MaxLevel && _this.totalRepairTime( airRT, vehRT, infRT) == vehRT) {
+                                    if (tech == ClientLib.Base.ETechName.Factory && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										
 										var deltaVehRT = vehRT - nextVehRT;
 										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
@@ -2481,8 +2504,9 @@
 											}
                                         }
                                     }
-                                    if (tech == ClientLib.Base.ETechName.Airport && building.get_CurrentLevel() < MaxLevel && _this.totalRepairTime( airRT, vehRT, infRT) == airRT) {
+                                    if (tech == ClientLib.Base.ETechName.Airport && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										
 										
 										var deltaAirRT = airRT - nextAirRT;
@@ -2526,6 +2550,7 @@
                                     }
                                     if (tech == ClientLib.Base.ETechName.Defense_Facility && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										if(building.get_CurrentLevel() >= defLvl){
 											var okLvl = true;
 										} else {
@@ -2572,7 +2597,9 @@
                                     }
 
                                     if (tech == ClientLib.Base.ETechName.Harvester && building.get_CurrentLevel() < MaxLevel) {
-                                        gNum++;
+                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
+										gNum++;
 										
 										
                                         var LinkTypes0 = 0;
@@ -2755,10 +2782,11 @@
 											}
                                             }
                                         }
-                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+                                       
                                     }
                                     if (tech == ClientLib.Base.ETechName.Support_Air && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										if(building.get_CurrentLevel() >= defLvl){
 											var okLvl = true;
 										} else {
@@ -2805,6 +2833,7 @@
                                     }
                                     if (tech == ClientLib.Base.ETechName.Support_Ion && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										if(building.get_CurrentLevel() >= defLvl){
 											var okLvl = true;
 										} else {
@@ -2851,6 +2880,7 @@
                                     }
                                     if (tech == ClientLib.Base.ETechName.Support_Art && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
 										if(building.get_CurrentLevel() >= defLvl){
 											var okLvl = true;
 										} else {
@@ -2897,6 +2927,7 @@
                                     }
                                     if (tech == ClientLib.Base.ETechName.Silo && building.get_CurrentLevel() < MaxLevel) {
 										 _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
                                         gNum++;
 										silNum++;
 										proNum = 4;
@@ -3005,6 +3036,7 @@
                                     }
                                     if (tech == ClientLib.Base.ETechName.Accumulator && building.get_CurrentLevel() < MaxLevel) {
 										 _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+										if (!_this.canUpgradeBuilding(building, city)) continue;
                                         var LinkTypes0 = 0;
 										accNum++;
 										proNum = 5;
@@ -3152,48 +3184,48 @@
 								if(Acc_obj != 0 && Acc_obj.Ratio == proArr[0]){
 								//console.log(Acc_obj);
 								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Acc_obj, null, null, true);
-								_this.buildingRows(buildArr, Acc_obj, "object", Acc_obj.basename, Acc_obj.bName, Acc_obj.buildinglevel, Acc_obj.posX, Acc_obj.posY, Acc_obj.Ratio);
+								_this.buildingRows(buildArr, Acc_obj, "object", Acc_obj.basename, Acc_obj.bName, (Acc_obj.buildinglevel + 1), Acc_obj.posX, Acc_obj.posY, Acc_obj.Ratio);
 								}
 								if(Sil_obj != 0 && Sil_obj.Ratio == proArr[0]){
 								//console.log(Sil_obj);
 								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Sil_obj, null, null, true);
-								_this.buildingRows(buildArr, Sil_obj, "object", Sil_obj.basename, Sil_obj.bName, Sil_obj.buildinglevel, Sil_obj.posX, Sil_obj.posY, Sil_obj.Ratio);
+								_this.buildingRows(buildArr, Sil_obj, "object", Sil_obj.basename, Sil_obj.bName, (Sil_obj.buildinglevel + 1), Sil_obj.posX, Sil_obj.posY, Sil_obj.Ratio);
 								}
 								if(TibHar_obj != 0 && TibHar_obj.Ratio == proArr[0]){
 								//console.log(TibHar_obj);
 								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", TibHar_obj, null, null, true);
-								_this.buildingRows(buildArr, TibHar_obj, "object", TibHar_obj.basename, TibHar_obj.bName, TibHar_obj.buildinglevel, TibHar_obj.posX, TibHar_obj.posY, TibHar_obj.Ratio);
+								_this.buildingRows(buildArr, TibHar_obj, "object", TibHar_obj.basename, TibHar_obj.bName, (TibHar_obj.buildinglevel + 1), TibHar_obj.posX, TibHar_obj.posY, TibHar_obj.Ratio);
 								}
 								if(CryHar_obj != 0 && CryHar_obj.Ratio == proArr[0]){
 								//console.log(CryHar_obj);
 								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", CryHar_obj, null, null, true);
-								_this.buildingRows(buildArr, CryHar_obj, "object", CryHar_obj.basename, CryHar_obj.bName, CryHar_obj.buildinglevel, CryHar_obj.posX, CryHar_obj.posY, CryHar_obj.Ratio);
+								_this.buildingRows(buildArr, CryHar_obj, "object", CryHar_obj.basename, CryHar_obj.bName, (CryHar_obj.buildinglevel + 1), CryHar_obj.posX, CryHar_obj.posY, CryHar_obj.Ratio);
 								}
 								if(Pow_obj != 0 && Pow_obj.Ratio == proArr[0]){
 								//console.log(Pow_obj);
 								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Pow_obj, null, null, true);
-								_this.buildingRows(buildArr, Pow_obj, "object", Pow_obj.basename, Pow_obj.bName, Pow_obj.buildinglevel, Pow_obj.posX, Pow_obj.posY, Pow_obj.Ratio);
+								_this.buildingRows(buildArr, Pow_obj, "object", Pow_obj.basename, Pow_obj.bName, (Pow_obj.buildinglevel + 1), Pow_obj.posX, Pow_obj.posY, Pow_obj.Ratio);
 								}
 								if(Ref_obj != 0 && Ref_obj.Ratio == proArr[0]){
 								//console.log(Ref_obj);
 								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Ref_obj, null, null, true);
-								_this.buildingRows(buildArr, Ref_obj, "object", Ref_obj.basename, Ref_obj.bName, Ref_obj.buildinglevel, Ref_obj.posX, Ref_obj.posY, Ref_obj.Ratio);
+								_this.buildingRows(buildArr, Ref_obj, "object", Ref_obj.basename, Ref_obj.bName, (Ref_obj.buildinglevel + 1), Ref_obj.posX, Ref_obj.posY, Ref_obj.Ratio);
 								}
 								}
 								if(Cmd_obj != 0){
 								//console.log(Cmd_obj);
 								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Cmd_obj, null, null, true);
-								_this.buildingRows(buildArr, Cmd_obj, "object", Cmd_obj.basename, Cmd_obj.bName, Cmd_obj.buildinglevel, Cmd_obj.posX, Cmd_obj.posY, "");
+								_this.buildingRows(buildArr, Cmd_obj, "object", Cmd_obj.basename, Cmd_obj.bName, (Cmd_obj.buildinglevel + 1), Cmd_obj.posX, Cmd_obj.posY, "");
 								}
 								if(Sup_obj != 0){
 								//console.log(Sup_obj);
 								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Sup_obj, null, null, true);
-								_this.buildingRows(buildArr, Sup_obj, "object", Sup_obj.basename, Sup_obj.bName, Sup_obj.buildinglevel, Sup_obj.posX, Sup_obj.posY, "");
+								_this.buildingRows(buildArr, Sup_obj, "object", Sup_obj.basename, Sup_obj.bName, (Sup_obj.buildinglevel + 1), Sup_obj.posX, Sup_obj.posY, "");
 								}
 								if(Rt_obj != 0){
 								//console.log(Rt_obj);
 								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Rt_obj, null, null, true);
-								_this.buildingRows(buildArr, Rt_obj, "object", Rt_obj.basename, Rt_obj.bName, Rt_obj.buildinglevel, Rt_obj.posX, Rt_obj.posY, "");
+								_this.buildingRows(buildArr, Rt_obj, "object", Rt_obj.basename, Rt_obj.bName, (Rt_obj.buildinglevel + 1), Rt_obj.posX, Rt_obj.posY, "");
 								}
 								
 										
@@ -3211,7 +3243,7 @@
 									offnumA++;
                                     var unit = offenceUnits.d[nUnit];
                                     //console.log(_this.canUpgradeUnit(unit, city));
-									if (!_this.canUpgradeUnit(unit, city)) continue;
+									//if (!_this.canUpgradeUnit(unit, city)) continue;
 
                                     var unitTech = unit.get_UnitGameData_Obj().at;
                                     var unitName = unit.get_UnitGameData_Obj().dn;
@@ -3224,6 +3256,7 @@
                                         //fNum = 0;
 										//offarr[offnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, offNum, 0, fNum++);
+										if (!_this.canUpgradeUnit(unit, city)) continue;
                                         //_this.unitRows(offUnitArr, unit, "off", costA, costB, cityName, offLvl,waitTib, waitPow);
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
@@ -3257,6 +3290,7 @@
                                         //gNum = 0;
 										//offarr[offnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, offNum, 1, gNum++);
+										if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3290,6 +3324,7 @@
                                         //hNum = 0;
 										//offarr[offnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, offNum, 2, hNum++);
+										if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3321,7 +3356,7 @@
                                     }
 									offarr.sort(function(a,b){return b-a});
                                     
-                                    if (_this.isCheckBoxChecked(num, unitName, offNum) != undefined && _this.isCheckBoxChecked(num, unitName, offNum) && offarr[0] == (cryCost/powCost)) {
+                                    if (_this.isCheckBoxChecked(num, unitName, offNum) != undefined && _this.isCheckBoxChecked(num, unitName, offNum)) {
                                         //console.log(_this.isCheckBoxChecked(num, unitName, offNum), unitName, offNum, city.m_SupportDedicatedBaseName);
 										if(upChBxOff.getValue()){
 
@@ -3332,7 +3367,7 @@
                                                 cityid: city.get_Id(),
                                                 basename: city.m_SupportDedicatedBaseName,
                                                 Ratio: cryCost/(powCost),
-                                                unitname: unit.get_UnitGameData_Obj().dn,
+                                                uName: unitName,
                                                 level: unit.get_CurrentLevel(),
                                                 type: "Offence",
                                                 posX: unit.get_CoordX(),
@@ -3348,7 +3383,7 @@
 								if(O_obj != 0 && O_obj.Ratio == offarr[0]){
 									//console.log(O_obj, offarr);
 									ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UnitUpgrade", O_obj, null, null, true);
-									
+									_this.unitRows(buildArr, O_obj, "object", O_obj.basename, O_obj.uName, (O_obj.level + 1), O_obj.posX, O_obj.posY, O_obj.Ratio);
 									}
 								
                                 var xNum = 0;
@@ -3358,7 +3393,8 @@
                                 var defenceUnits = units.get_DefenseUnits();
                                 for (var nUnit in defenceUnits.d) {
                                     var unit = defenceUnits.d[nUnit];
-                                    if (!_this.canUpgradeUnit(unit, city)) continue;
+									//console.log(!_this.canUpgradeUnit(unit, city), _this.canUpgradeUnit(unit, city));
+                                    //if (!_this.canUpgradeUnit(unit, city)) continue;
                                     var unitTech = unit.get_UnitGameData_Obj().at;
                                     var unitName = unit.get_UnitGameData_Obj().dn;
                                     var defNum = 1;
@@ -3367,6 +3403,7 @@
 										//defarr[defnumA] = unit.get_CurrentLevel();
 
                                         _this.unitBox(unitName, num, defNum, 0, xNum++);
+										if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3397,6 +3434,7 @@
                                     if (unitTech == ClientLib.Base.EUnitType.Tank) {
                                         //defarr[defnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, defNum, 1, yNum++);
+										if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3427,6 +3465,7 @@
                                     if (unitTech == ClientLib.Base.EUnitType.Structure) {
                                        // defarr[defnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, defNum, 2, zNum++);
+										if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3455,7 +3494,7 @@
 
                                     }
                                     defarr.sort(function(a,b){return b-a});
-                                    if (_this.isCheckBoxChecked(num, unitName, defNum) != undefined && _this.isCheckBoxChecked(num, unitName, defNum) && defarr[0] == cryCost / powCost) {
+                                    if (_this.isCheckBoxChecked(num, unitName, defNum) != undefined && _this.isCheckBoxChecked(num, unitName, defNum)) {
 
                                         //console.log(_this.isCheckBoxChecked(num, unitName, defNum), unitName, aNum, city.m_SupportDedicatedBaseName, num);
                                         //if(!_this.canUpgradeUnit(unit, city))continue;
@@ -3465,7 +3504,7 @@
                                                 cityid: city.get_Id(),
                                                 basename: city.m_SupportDedicatedBaseName,
                                                 Ratio: cryCost / powCost,
-                                                unitname: unit.get_UnitGameData_Obj().dn,
+                                                uName: unitName.toString(),
                                                 level: unit.get_CurrentLevel(),
                                                 type: "Defense",
                                                 posX: unit.get_CoordX(),
@@ -3478,10 +3517,10 @@
                                     }
                                 } //def loop
 								
-								if(D_obj != 0 && defarr[0] == D_obj.Ratio){
+								if(D_obj != 0){
 									//console.log(D_obj, defarr);
 									ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UnitUpgrade", D_obj, null, null, true);
-									
+									_this.unitRows(buildArr, D_obj, "object", D_obj.basename, D_obj.uName, (D_obj.level + 1), D_obj.posX, D_obj.posY, D_obj.Ratio);
 									}
 
                                 /*
