@@ -6,9 +6,8 @@
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
-
 //change meaning the increase, the difference between pre and post upgarde
- //cost, change and time until.
+//cost, change and time until.
 (function() {
     var FlunikTools_main = function() {
         try {
@@ -38,18 +37,18 @@
                         groupBoxC: null,
                         groupBoxD: null,
                         checkBoxA: null,
-						upChBx: null,
-						upChBxRef: null,
-						upChBxPow: null,
-						upChBxHarTib: null,
-						upChBxHarCry: null,
-						upChBxSil: null,
-						upChBxPow: null,
-						upChBxSup: null,
-						upChBxCmd: null,
-						upChBxRt: null,
-						upChBxOff: null,
-						upChBxDef: null,
+                        upChBx: null,
+                        upChBxRef: null,
+                        upChBxPow: null,
+                        upChBxHarTib: null,
+                        upChBxHarCry: null,
+                        upChBxSil: null,
+                        upChBxPow: null,
+                        upChBxSup: null,
+                        upChBxCmd: null,
+                        upChBxRt: null,
+                        upChBxOff: null,
+                        upChBxDef: null,
 
                         checkBoxB: null,
                         checkBoxC: null,
@@ -60,16 +59,13 @@
                         table: null,
                         poiRows: null,
                         createRandomRows: null,
-						arrA: [],
-						arrB: [],
-						arrC: [],
-						arrD: [],
-						arrE: [],
-						arrF: [],
-						arrG: [],
-
-
-
+                        arrA: [],
+                        arrB: [],
+                        arrC: [],
+                        arrD: [],
+                        arrE: [],
+                        arrF: [],
+                        arrG: [],
 
 
 
@@ -82,7 +78,7 @@
 
 
                             win = new qx.ui.window.Window("First Window");
-							win.setResizable(false, false, false, false);
+                            win.setResizable(false, false, false, false);
                             win.setWidth(400);
                             win.setHeight(300);
                             win.setShowMinimize(false);
@@ -104,26 +100,26 @@
                             tableModelA.setColumns(["baseName", "Name", "Type", "Level", "ProductionA", "NewLvlDeltaA", "ProductionB", "NewLvlDeltaB", "ProductonC", "NewLvlDeltaC", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y"]);
                             // make second column editable
                             //tableModel.setColumnEditable(1, true);
-							tableModelB = new qx.ui.table.model.Simple();
-                            tableModelB.setColumns(["nextScore()","Score", "poiScore", "Level", "x", "y"]);
-							
-							tableModelC = new qx.ui.table.model.Simple();
-                            tableModelC.setColumns(["nextScore()","Score", "poiScore", "Level", "x", "y"]);
-							
-							tableModelD = new qx.ui.table.model.Simple();
-                            tableModelD.setColumns(["nextScore()","Score", "poiScore", "Level", "x", "y"]);
-							
-							tableModelE = new qx.ui.table.model.Simple();
-                            tableModelE.setColumns(["nextScore()","Score", "poiScore", "Level", "x", "y"]);
-							
-							tableModelF = new qx.ui.table.model.Simple();
-                            tableModelF.setColumns(["nextScore()","Score", "poiScore", "Level", "x", "y"]);
-							
-							tableModelG = new qx.ui.table.model.Simple();
-                            tableModelG.setColumns(["nextScore()","Score", "poiScore", "Level", "x", "y"]);
-							
-							tableModelH = new qx.ui.table.model.Simple();
-                            tableModelH.setColumns(["nextScore()","Score", "poiScore", "Level", "x", "y"]);
+                            tableModelB = new qx.ui.table.model.Simple();
+                            tableModelB.setColumns(["nextScore()", "Score", "poiScore", "Level", "x", "y"]);
+
+                            tableModelC = new qx.ui.table.model.Simple();
+                            tableModelC.setColumns(["nextScore()", "Score", "poiScore", "Level", "x", "y"]);
+
+                            tableModelD = new qx.ui.table.model.Simple();
+                            tableModelD.setColumns(["nextScore()", "Score", "poiScore", "Level", "x", "y"]);
+
+                            tableModelE = new qx.ui.table.model.Simple();
+                            tableModelE.setColumns(["nextScore()", "Score", "poiScore", "Level", "x", "y"]);
+
+                            tableModelF = new qx.ui.table.model.Simple();
+                            tableModelF.setColumns(["nextScore()", "Score", "poiScore", "Level", "x", "y"]);
+
+                            tableModelG = new qx.ui.table.model.Simple();
+                            tableModelG.setColumns(["nextScore()", "Score", "poiScore", "Level", "x", "y"]);
+
+                            tableModelH = new qx.ui.table.model.Simple();
+                            tableModelH.setColumns(["nextScore()", "Score", "poiScore", "Level", "x", "y"]);
 
                             // table
                             var table = new qx.ui.table.Table(tableModel).set({
@@ -138,55 +134,55 @@
                                 width: 600
 
                             });
-							
-							var tableB = new qx.ui.table.Table(tableModelB).set({
+
+                            var tableB = new qx.ui.table.Table(tableModelB).set({
                                 decorator: null,
                                 Padding: 1,
                                 height: 200,
                                 width: 300
 
                             });
-							
-							var tableC = new qx.ui.table.Table(tableModelC).set({
+
+                            var tableC = new qx.ui.table.Table(tableModelC).set({
                                 decorator: null,
                                 Padding: 1,
                                 height: 200,
                                 width: 300
 
                             });
-							
-							var tableD = new qx.ui.table.Table(tableModelD).set({
+
+                            var tableD = new qx.ui.table.Table(tableModelD).set({
                                 decorator: null,
                                 Padding: 1,
                                 height: 200,
                                 width: 300
 
                             });
-							var tableE = new qx.ui.table.Table(tableModelE).set({
+                            var tableE = new qx.ui.table.Table(tableModelE).set({
                                 decorator: null,
                                 Padding: 1,
                                 height: 200,
                                 width: 300
 
                             });
-							
-							var tableF = new qx.ui.table.Table(tableModelF).set({
+
+                            var tableF = new qx.ui.table.Table(tableModelF).set({
                                 decorator: null,
                                 Padding: 1,
                                 height: 200,
                                 width: 300
 
                             });
-							
-							var tableG = new qx.ui.table.Table(tableModelG).set({
+
+                            var tableG = new qx.ui.table.Table(tableModelG).set({
                                 decorator: null,
                                 Padding: 1,
                                 height: 200,
                                 width: 300
 
                             });
-							
-							var tableH = new qx.ui.table.Table(tableModelH).set({
+
+                            var tableH = new qx.ui.table.Table(tableModelH).set({
                                 decorator: null,
                                 Padding: 1,
                                 height: 200,
@@ -259,11 +255,11 @@
                                 width: 600
                             });
                             groupBoxF.setLayout(new qx.ui.layout.VBox());
-							groupBoxG = new qx.ui.groupbox.GroupBox();
+                            groupBoxG = new qx.ui.groupbox.GroupBox();
                             groupBoxG.setLayout(new qx.ui.layout.Grid());
                             //////////////////////////////////////////////////////////////////
-                            
-							
+
+
                             /*checkBoxCy = new qx.ui.form.CheckBox("Construction_Yard");
                             checkBoxRe = new qx.ui.form.CheckBox("Refinery");
                             checkBoxPp = new qx.ui.form.CheckBox("PowerPlant");
@@ -287,76 +283,202 @@
                             checkBoxC = new qx.ui.form.CheckBox("stuffC");
                             */
                             //////////////////////////////////////////////////////////////////
-							checkBoxA = new qx.ui.form.CheckBox("clearAddTable");
-							tibPage.add(checkBoxA, {top:0, left:"60%"});
-							textfieldTibx = new qx.ui.form.TextField("Change me...");
-							textfieldTiby = new qx.ui.form.TextField("Change me...");
-							tibPage.add(new qx.ui.basic.Label("Xcoord"), {top:0, left:"10%"});
-							tibPage.add(textfieldTibx, {top:15, left:"10%"});
-							tibPage.add(new qx.ui.basic.Label("Ycoord"), {top:0, left:"30%"});
-							tibPage.add(textfieldTiby, {top:15, left:"30%"});
-							tibPage.add(tableB, {top:50, left: 20});
-							
-							checkBoxB = new qx.ui.form.CheckBox("clearAddTable");
-							cryPage.add(checkBoxB, {top:0, left:"60%"});
-							textfieldCryx = new qx.ui.form.TextField("Change me...");
-							textfieldCryy = new qx.ui.form.TextField("Change me...");
-							cryPage.add(new qx.ui.basic.Label("Xcoord"), {top:0, left:"10%"});
-							cryPage.add(textfieldCryx, {top:15, left:"10%"});
-							cryPage.add(new qx.ui.basic.Label("Ycoord"), {top:0, left:"30%"});
-							cryPage.add(textfieldCryy, {top:15, left:"30%"});
-							cryPage.add(tableC, {top:50, left: 20});
-					
-							checkBoxC = new qx.ui.form.CheckBox("clearAddTable");
-							powPage.add(checkBoxC, {top:0, left:"60%"});
-							textfieldPowx = new qx.ui.form.TextField("Change me...");
-							textfieldPowy = new qx.ui.form.TextField("Change me...");
-							powPage.add(new qx.ui.basic.Label("Xcoord"), {top:0, left:"10%"});
-							powPage.add(textfieldPowx, {top:15, left:"10%"});
-							powPage.add(new qx.ui.basic.Label("Ycoord"), {top:0, left:"30%"});
-							powPage.add(textfieldPowy, {top:15, left:"30%"});
-							powPage.add(tableD, {top:50, left: 20});
-							
-							checkBoxD = new qx.ui.form.CheckBox("clearAddTable");
-							defPage.add(checkBoxD, {top:0, left:"60%"});
-							textfieldDefx = new qx.ui.form.TextField("Change me...");
-							textfieldDefy = new qx.ui.form.TextField("Change me...");
-							defPage.add(new qx.ui.basic.Label("Xcoord"), {top:0, left:"10%"});
-							defPage.add(textfieldDefx, {top:15, left:"10%"});
-							defPage.add(new qx.ui.basic.Label("Ycoord"), {top:0, left:"30%"});
-							defPage.add(textfieldDefy, {top:15, left:"30%"});
-							defPage.add(tableE, {top:50, left: 20});
-							
-							checkBoxE = new qx.ui.form.CheckBox("clearAddTable");
-							infPage.add(checkBoxE, {top:0, left:"60%"});
-							textfieldInfx = new qx.ui.form.TextField("Change me...");
-							textfieldInfy = new qx.ui.form.TextField("Change me...");
-							infPage.add(new qx.ui.basic.Label("Xcoord"), {top:0, left:"10%"});
-							infPage.add(textfieldInfx, {top:15, left:"10%"});
-							infPage.add(new qx.ui.basic.Label("Ycoord"), {top:0, left:"30%"});
-							infPage.add(textfieldInfy, {top:15, left:"30%"});
-							infPage.add(tableF, {top:50, left: 20});
-							
-							checkBoxF = new qx.ui.form.CheckBox("clearAddTable");
-							vehPage.add(checkBoxF, {top:0, left:"60%"});
-							textfieldVehx = new qx.ui.form.TextField("Change me...");
-							textfieldVehy = new qx.ui.form.TextField("Change me...");
-							vehPage.add(new qx.ui.basic.Label("Xcoord"), {top:0, left:"10%"});
-							vehPage.add(textfieldVehx, {top:15, left:"10%"});
-							vehPage.add(new qx.ui.basic.Label("Ycoord"), {top:0, left:"30%"});
-							vehPage.add(textfieldVehy, {top:15, left:"30%"});
-							vehPage.add(tableG, {top:50, left: 20});
-									
-							checkBoxG = new qx.ui.form.CheckBox("clearAddTable");
-							airPage.add(checkBoxG, {top:0, left:"60%"});
-							textfieldAirx = new qx.ui.form.TextField("Change me...");
-							textfieldAiry = new qx.ui.form.TextField("Change me...");
-							airPage.add(new qx.ui.basic.Label("Xcoord"), {top:0, left:"10%"});
-							airPage.add(textfieldAirx, {top:15, left:"10%"});
-							airPage.add(new qx.ui.basic.Label("Ycoord"), {top:0, left:"30%"});
-							airPage.add(textfieldAiry, {top:15, left:"30%"});
-							airPage.add(tableH, {top:50, left: 20});
-							///////////////////////////////////////////////////////////////////
+                            checkBoxA = new qx.ui.form.CheckBox("clearAddTable");
+                            tibPage.add(checkBoxA, {
+                                top: 0,
+                                left: "60%"
+                            });
+                            textfieldTibx = new qx.ui.form.TextField("Change me...");
+                            textfieldTiby = new qx.ui.form.TextField("Change me...");
+                            tibPage.add(new qx.ui.basic.Label("Xcoord"), {
+                                top: 0,
+                                left: "10%"
+                            });
+                            tibPage.add(textfieldTibx, {
+                                top: 15,
+                                left: "10%"
+                            });
+                            tibPage.add(new qx.ui.basic.Label("Ycoord"), {
+                                top: 0,
+                                left: "30%"
+                            });
+                            tibPage.add(textfieldTiby, {
+                                top: 15,
+                                left: "30%"
+                            });
+                            tibPage.add(tableB, {
+                                top: 50,
+                                left: 20
+                            });
+
+                            checkBoxB = new qx.ui.form.CheckBox("clearAddTable");
+                            cryPage.add(checkBoxB, {
+                                top: 0,
+                                left: "60%"
+                            });
+                            textfieldCryx = new qx.ui.form.TextField("Change me...");
+                            textfieldCryy = new qx.ui.form.TextField("Change me...");
+                            cryPage.add(new qx.ui.basic.Label("Xcoord"), {
+                                top: 0,
+                                left: "10%"
+                            });
+                            cryPage.add(textfieldCryx, {
+                                top: 15,
+                                left: "10%"
+                            });
+                            cryPage.add(new qx.ui.basic.Label("Ycoord"), {
+                                top: 0,
+                                left: "30%"
+                            });
+                            cryPage.add(textfieldCryy, {
+                                top: 15,
+                                left: "30%"
+                            });
+                            cryPage.add(tableC, {
+                                top: 50,
+                                left: 20
+                            });
+
+                            checkBoxC = new qx.ui.form.CheckBox("clearAddTable");
+                            powPage.add(checkBoxC, {
+                                top: 0,
+                                left: "60%"
+                            });
+                            textfieldPowx = new qx.ui.form.TextField("Change me...");
+                            textfieldPowy = new qx.ui.form.TextField("Change me...");
+                            powPage.add(new qx.ui.basic.Label("Xcoord"), {
+                                top: 0,
+                                left: "10%"
+                            });
+                            powPage.add(textfieldPowx, {
+                                top: 15,
+                                left: "10%"
+                            });
+                            powPage.add(new qx.ui.basic.Label("Ycoord"), {
+                                top: 0,
+                                left: "30%"
+                            });
+                            powPage.add(textfieldPowy, {
+                                top: 15,
+                                left: "30%"
+                            });
+                            powPage.add(tableD, {
+                                top: 50,
+                                left: 20
+                            });
+
+                            checkBoxD = new qx.ui.form.CheckBox("clearAddTable");
+                            defPage.add(checkBoxD, {
+                                top: 0,
+                                left: "60%"
+                            });
+                            textfieldDefx = new qx.ui.form.TextField("Change me...");
+                            textfieldDefy = new qx.ui.form.TextField("Change me...");
+                            defPage.add(new qx.ui.basic.Label("Xcoord"), {
+                                top: 0,
+                                left: "10%"
+                            });
+                            defPage.add(textfieldDefx, {
+                                top: 15,
+                                left: "10%"
+                            });
+                            defPage.add(new qx.ui.basic.Label("Ycoord"), {
+                                top: 0,
+                                left: "30%"
+                            });
+                            defPage.add(textfieldDefy, {
+                                top: 15,
+                                left: "30%"
+                            });
+                            defPage.add(tableE, {
+                                top: 50,
+                                left: 20
+                            });
+
+                            checkBoxE = new qx.ui.form.CheckBox("clearAddTable");
+                            infPage.add(checkBoxE, {
+                                top: 0,
+                                left: "60%"
+                            });
+                            textfieldInfx = new qx.ui.form.TextField("Change me...");
+                            textfieldInfy = new qx.ui.form.TextField("Change me...");
+                            infPage.add(new qx.ui.basic.Label("Xcoord"), {
+                                top: 0,
+                                left: "10%"
+                            });
+                            infPage.add(textfieldInfx, {
+                                top: 15,
+                                left: "10%"
+                            });
+                            infPage.add(new qx.ui.basic.Label("Ycoord"), {
+                                top: 0,
+                                left: "30%"
+                            });
+                            infPage.add(textfieldInfy, {
+                                top: 15,
+                                left: "30%"
+                            });
+                            infPage.add(tableF, {
+                                top: 50,
+                                left: 20
+                            });
+
+                            checkBoxF = new qx.ui.form.CheckBox("clearAddTable");
+                            vehPage.add(checkBoxF, {
+                                top: 0,
+                                left: "60%"
+                            });
+                            textfieldVehx = new qx.ui.form.TextField("Change me...");
+                            textfieldVehy = new qx.ui.form.TextField("Change me...");
+                            vehPage.add(new qx.ui.basic.Label("Xcoord"), {
+                                top: 0,
+                                left: "10%"
+                            });
+                            vehPage.add(textfieldVehx, {
+                                top: 15,
+                                left: "10%"
+                            });
+                            vehPage.add(new qx.ui.basic.Label("Ycoord"), {
+                                top: 0,
+                                left: "30%"
+                            });
+                            vehPage.add(textfieldVehy, {
+                                top: 15,
+                                left: "30%"
+                            });
+                            vehPage.add(tableG, {
+                                top: 50,
+                                left: 20
+                            });
+
+                            checkBoxG = new qx.ui.form.CheckBox("clearAddTable");
+                            airPage.add(checkBoxG, {
+                                top: 0,
+                                left: "60%"
+                            });
+                            textfieldAirx = new qx.ui.form.TextField("Change me...");
+                            textfieldAiry = new qx.ui.form.TextField("Change me...");
+                            airPage.add(new qx.ui.basic.Label("Xcoord"), {
+                                top: 0,
+                                left: "10%"
+                            });
+                            airPage.add(textfieldAirx, {
+                                top: 15,
+                                left: "10%"
+                            });
+                            airPage.add(new qx.ui.basic.Label("Ycoord"), {
+                                top: 0,
+                                left: "30%"
+                            });
+                            airPage.add(textfieldAiry, {
+                                top: 15,
+                                left: "30%"
+                            });
+                            airPage.add(tableH, {
+                                top: 50,
+                                left: 20
+                            });
+                            ///////////////////////////////////////////////////////////////////
                             //textfield.setLiveUpdate(true);
                             //var label = new qx.ui.basic.Label("Change me...");
                             //textfield.bind("value", label, "value");
@@ -513,138 +635,159 @@
 
                             tibButton.addListener("click", function(e) {
                                 if (tabViewB.getSelection()[0].getLabel() == "Tib") {
-									if(checkBoxA.getValue()){
-										FlunikTools.Main.getInstance().arrA = [];
-										tableModelB.removeRows(0, tableModelB.getRowCount(), true);
-									} else {
-                                    FlunikTools.Main.getInstance().poiRows();
-									//if(textfieldTibx.getValue() != "Change me..." && textfieldTiby.getValue() != "Change me..."){
-									FlunikTools.Main.getInstance().addNewTableOnCoords(0, FlunikTools.Main.getInstance().arrA, tableModelB, textfieldTibx, textfieldTiby);
-									//console.log(tableModelB);
-									}
-									//tableModelB.setData(FlunikTools.Main.getInstance().arrA);
-									//}
-									//console.log(checkBoxA.getValue());
-									
+                                    if (checkBoxA.getValue()) {
+                                        FlunikTools.Main.getInstance().arrA = [];
+                                        tableModelB.removeRows(0, tableModelB.getRowCount(), true);
+                                    } else {
+                                        FlunikTools.Main.getInstance().poiRows();
+                                        //if(textfieldTibx.getValue() != "Change me..." && textfieldTiby.getValue() != "Change me..."){
+                                        FlunikTools.Main.getInstance().addNewTableOnCoords(0, FlunikTools.Main.getInstance().arrA, tableModelB, textfieldTibx, textfieldTiby);
+                                        //console.log(tableModelB);
+                                    }
+                                    //tableModelB.setData(FlunikTools.Main.getInstance().arrA);
+                                    //}
+                                    //console.log(checkBoxA.getValue());
+
                                 }
-								
+
 
                             }, this);
-                            tibPage.add(tibButton, {bottom:0 ,left: "41.67%"});
+                            tibPage.add(tibButton, {
+                                bottom: 0,
+                                left: "41.67%"
+                            });
 
                             cryButton.addListener("click", function(e) {
                                 if (tabViewB.getSelection()[0].getLabel() == "Cry") {
-                                    if(checkBoxB.getValue()){
-										FlunikTools.Main.getInstance().arrB = [];
-										tableModelC.removeRows(0, tableModelC.getRowCount(), true);
-									} else {
-                                    FlunikTools.Main.getInstance().poiRows();
-									//if(textfieldCryx.getValue() != "Change me..." && textfieldCryy.getValue() != "Change me..."){
-									FlunikTools.Main.getInstance().addNewTableOnCoords(1, FlunikTools.Main.getInstance().arrB, tableModelC, textfieldCryx, textfieldCryy);
-									}
-									//tableModelC.setData(FlunikTools.Main.getInstance().arrB);
-									//}
-									//console.log(checkBoxA.getValue());
-									
+                                    if (checkBoxB.getValue()) {
+                                        FlunikTools.Main.getInstance().arrB = [];
+                                        tableModelC.removeRows(0, tableModelC.getRowCount(), true);
+                                    } else {
+                                        FlunikTools.Main.getInstance().poiRows();
+                                        //if(textfieldCryx.getValue() != "Change me..." && textfieldCryy.getValue() != "Change me..."){
+                                        FlunikTools.Main.getInstance().addNewTableOnCoords(1, FlunikTools.Main.getInstance().arrB, tableModelC, textfieldCryx, textfieldCryy);
+                                    }
+                                    //tableModelC.setData(FlunikTools.Main.getInstance().arrB);
+                                    //}
+                                    //console.log(checkBoxA.getValue());
+
                                 }
 
                             }, this);
-                            cryPage.add(cryButton, {bottom:0 ,left: "41.67%"});
+                            cryPage.add(cryButton, {
+                                bottom: 0,
+                                left: "41.67%"
+                            });
 
                             powButton.addListener("click", function(e) {
                                 if (tabViewB.getSelection()[0].getLabel() == "Pow") {
-                                    if(checkBoxC.getValue()){
-										FlunikTools.Main.getInstance().arrC = [];
-										tableModelD.removeRows(0, tableModelD.getRowCount(), true);
-									} else {
-                                    FlunikTools.Main.getInstance().poiRows();
-									//if(textfieldPowx.getValue() != "Change me..." && textfieldPowy.getValue() != "Change me..."){
-									FlunikTools.Main.getInstance().addNewTableOnCoords(2, FlunikTools.Main.getInstance().arrC, tableModelD, textfieldPowx, textfieldPowy);
-									}
-									//tableModelD.setData(FlunikTools.Main.getInstance().arrC);
-									//}
-									//console.log(checkBoxA.getValue());
-									
+                                    if (checkBoxC.getValue()) {
+                                        FlunikTools.Main.getInstance().arrC = [];
+                                        tableModelD.removeRows(0, tableModelD.getRowCount(), true);
+                                    } else {
+                                        FlunikTools.Main.getInstance().poiRows();
+                                        //if(textfieldPowx.getValue() != "Change me..." && textfieldPowy.getValue() != "Change me..."){
+                                        FlunikTools.Main.getInstance().addNewTableOnCoords(2, FlunikTools.Main.getInstance().arrC, tableModelD, textfieldPowx, textfieldPowy);
+                                    }
+                                    //tableModelD.setData(FlunikTools.Main.getInstance().arrC);
+                                    //}
+                                    //console.log(checkBoxA.getValue());
+
                                 }
 
                             }, this);
-                            powPage.add(powButton, {bottom:0 ,left: "41.67%"});
+                            powPage.add(powButton, {
+                                bottom: 0,
+                                left: "41.67%"
+                            });
 
                             defButton.addListener("click", function(e) {
                                 if (tabViewB.getSelection()[0].getLabel() == "Def") {
-                                    if(checkBoxD.getValue()){
-										FlunikTools.Main.getInstance().arrD = [];
-										tableModelE.removeRows(0, tableModelE.getRowCount(), true);
-									} else {
-                                    FlunikTools.Main.getInstance().poiRows();
-									//if(textfieldDefx.getValue() != "Change me..." && textfieldDefy.getValue() != "Change me..."){
-									FlunikTools.Main.getInstance().addNewTableOnCoords(6, FlunikTools.Main.getInstance().arrD, tableModelE, textfieldDefx, textfieldDefy);
-									}
-									//tableModelE.setData(FlunikTools.Main.getInstance().arrD);
-									//}
-									//console.log(checkBoxA.getValue());
-									
+                                    if (checkBoxD.getValue()) {
+                                        FlunikTools.Main.getInstance().arrD = [];
+                                        tableModelE.removeRows(0, tableModelE.getRowCount(), true);
+                                    } else {
+                                        FlunikTools.Main.getInstance().poiRows();
+                                        //if(textfieldDefx.getValue() != "Change me..." && textfieldDefy.getValue() != "Change me..."){
+                                        FlunikTools.Main.getInstance().addNewTableOnCoords(6, FlunikTools.Main.getInstance().arrD, tableModelE, textfieldDefx, textfieldDefy);
+                                    }
+                                    //tableModelE.setData(FlunikTools.Main.getInstance().arrD);
+                                    //}
+                                    //console.log(checkBoxA.getValue());
+
                                 }
 
                             }, this);
-                            defPage.add(defButton, {bottom:0 ,left: "41.67%"});
+                            defPage.add(defButton, {
+                                bottom: 0,
+                                left: "41.67%"
+                            });
 
                             infButton.addListener("click", function(e) {
                                 if (tabViewB.getSelection()[0].getLabel() == "Inf") {
-                                    if(checkBoxE.getValue()){
-										FlunikTools.Main.getInstance().arrE = [];
-										tableModelF.removeRows(0, tableModelF.getRowCount(), true);
-									} else {
-                                    FlunikTools.Main.getInstance().poiRows();
-									//if(textfieldInfx.getValue() != "Change me..." && textfieldInfy.getValue() != "Change me..."){
-									FlunikTools.Main.getInstance().addNewTableOnCoords(3, FlunikTools.Main.getInstance().arrE, tableModelF, textfieldInfx, textfieldInfy);
-									}
-									//tableModelF.setData(FlunikTools.Main.getInstance().arrE);
-									//}
-									//console.log(checkBoxA.getValue());
-									
+                                    if (checkBoxE.getValue()) {
+                                        FlunikTools.Main.getInstance().arrE = [];
+                                        tableModelF.removeRows(0, tableModelF.getRowCount(), true);
+                                    } else {
+                                        FlunikTools.Main.getInstance().poiRows();
+                                        //if(textfieldInfx.getValue() != "Change me..." && textfieldInfy.getValue() != "Change me..."){
+                                        FlunikTools.Main.getInstance().addNewTableOnCoords(3, FlunikTools.Main.getInstance().arrE, tableModelF, textfieldInfx, textfieldInfy);
+                                    }
+                                    //tableModelF.setData(FlunikTools.Main.getInstance().arrE);
+                                    //}
+                                    //console.log(checkBoxA.getValue());
+
                                 }
 
                             }, this);
-                            infPage.add(infButton, {bottom:0 ,left: "41.67%"});
+                            infPage.add(infButton, {
+                                bottom: 0,
+                                left: "41.67%"
+                            });
 
                             vehButton.addListener("click", function(e) {
                                 if (tabViewB.getSelection()[0].getLabel() == "Veh") {
-                                     if(checkBoxF.getValue()){
-										FlunikTools.Main.getInstance().arrF = [];
-										tableModelG.removeRows(0, tableModelG.getRowCount(), true);
-									} else {
-                                    FlunikTools.Main.getInstance().poiRows();
-									//if(textfieldVehx.getValue() != "Change me..." && textfieldVehy.getValue() != "Change me..."){
-									FlunikTools.Main.getInstance().addNewTableOnCoords(4, FlunikTools.Main.getInstance().arrF, tableModelG, textfieldVehx, textfieldVehy);
-									}
-									//tableModelG.setData(FlunikTools.Main.getInstance().arrF);
-									//}
-									//console.log(checkBoxA.getValue());
-									
+                                    if (checkBoxF.getValue()) {
+                                        FlunikTools.Main.getInstance().arrF = [];
+                                        tableModelG.removeRows(0, tableModelG.getRowCount(), true);
+                                    } else {
+                                        FlunikTools.Main.getInstance().poiRows();
+                                        //if(textfieldVehx.getValue() != "Change me..." && textfieldVehy.getValue() != "Change me..."){
+                                        FlunikTools.Main.getInstance().addNewTableOnCoords(4, FlunikTools.Main.getInstance().arrF, tableModelG, textfieldVehx, textfieldVehy);
+                                    }
+                                    //tableModelG.setData(FlunikTools.Main.getInstance().arrF);
+                                    //}
+                                    //console.log(checkBoxA.getValue());
+
                                 }
 
                             }, this);
-                            vehPage.add(vehButton, {bottom:0 ,left: "41.67%"});
+                            vehPage.add(vehButton, {
+                                bottom: 0,
+                                left: "41.67%"
+                            });
 
                             airButton.addListener("click", function(e) {
                                 if (tabViewB.getSelection()[0].getLabel() == "Air") {
-                                    if(checkBoxG.getValue()){
-										FlunikTools.Main.getInstance().arrG = [];
-										tableModelH.removeRows(0, tableModelH.getRowCount(), true);
-									} else {
-                                    FlunikTools.Main.getInstance().poiRows();
-									//if(textfieldAirx.getValue() != "Change me..." && textfieldAiry.getValue() != "Change me..."){
-									FlunikTools.Main.getInstance().addNewTableOnCoords(5, FlunikTools.Main.getInstance().arrG, tableModelH, textfieldAirx, textfieldAiry);
-									}
-									//tableModelH.setData(FlunikTools.Main.getInstance().arrG);
-									//}
-									//console.log(checkBoxA.getValue());
-									
+                                    if (checkBoxG.getValue()) {
+                                        FlunikTools.Main.getInstance().arrG = [];
+                                        tableModelH.removeRows(0, tableModelH.getRowCount(), true);
+                                    } else {
+                                        FlunikTools.Main.getInstance().poiRows();
+                                        //if(textfieldAirx.getValue() != "Change me..." && textfieldAiry.getValue() != "Change me..."){
+                                        FlunikTools.Main.getInstance().addNewTableOnCoords(5, FlunikTools.Main.getInstance().arrG, tableModelH, textfieldAirx, textfieldAiry);
+                                    }
+                                    //tableModelH.setData(FlunikTools.Main.getInstance().arrG);
+                                    //}
+                                    //console.log(checkBoxA.getValue());
+
                                 }
 
                             }, this);
-                            airPage.add(airButton, {bottom:0 ,left: "41.67%"});
+                            airPage.add(airButton, {
+                                bottom: 0,
+                                left: "41.67%"
+                            });
 
 
                             cmdButton.addListener("execute", function(e) {
@@ -652,7 +795,7 @@
                                 if (FlunikTools.Main.getInstance().autoUpdateHandleAll != null) {
                                     //numb = 0;
                                     FlunikTools.Main.getInstance().stopAutoUpdate();
-									tableModelA.removeRows(0, tableModelA.getRowCount(), true);
+                                    tableModelA.removeRows(0, tableModelA.getRowCount(), true);
 
                                     cmdButton.setLabel("cmd.OFF");
                                     //FlunikTools.Main.getInstance().clearCheckBox();
@@ -693,7 +836,7 @@
                                 }
                                 if (AutoUpdateButton.getLabel() == "B.ON") {
                                     win.open();
-									FlunikTools.Main.getInstance().autoUpgradeInfo();
+                                    FlunikTools.Main.getInstance().autoUpgradeInfo();
                                     if (FlunikTools.Main.getInstance().poiRows() != null) {
                                         FlunikTools.Main.getInstance().poiRows();
                                     }
@@ -703,33 +846,66 @@
                                 //page.add(new qx.ui.form.CheckBox("Reading"));
                             }, this);
                             groupBoxE.add(new qx.ui.basic.Label("Options"));
-							upChBx = new qx.ui.form.CheckBox("Upgrade");
-							upChBxRef = new qx.ui.form.CheckBox("allowUpgrade Refineries");
-							upChBxPow = new qx.ui.form.CheckBox("allowUpgrade Power Plants");
-							upChBxHarTib = new qx.ui.form.CheckBox("allowUpgrade Tib Harvs");
-							upChBxHarCry = new qx.ui.form.CheckBox("allowUpgrade Cry Harvs");
-							upChBxSil = new qx.ui.form.CheckBox("allowUpgrade Silos");
-							upChBxAcc = new qx.ui.form.CheckBox("allowUpgrade Accumulators");
-							upChBxSup = new qx.ui.form.CheckBox("allowUpgrade Supports");
-							upChBxCmd = new qx.ui.form.CheckBox("allowUpgrade Cy, Cc, Def_Hq, Def_Fac");
-							upChBxRt = new qx.ui.form.CheckBox("allowUpgrade Air, Veh, Inf");
-							upChBxOff = new qx.ui.form.CheckBox("allowUpgrade Offense");
-							upChBxDef = new qx.ui.form.CheckBox("allowUpgrade Defense");
+                            upChBx = new qx.ui.form.CheckBox("Upgrade");
+                            upChBxRef = new qx.ui.form.CheckBox("allowUpgrade Refineries");
+                            upChBxPow = new qx.ui.form.CheckBox("allowUpgrade Power Plants");
+                            upChBxHarTib = new qx.ui.form.CheckBox("allowUpgrade Tib Harvs");
+                            upChBxHarCry = new qx.ui.form.CheckBox("allowUpgrade Cry Harvs");
+                            upChBxSil = new qx.ui.form.CheckBox("allowUpgrade Silos");
+                            upChBxAcc = new qx.ui.form.CheckBox("allowUpgrade Accumulators");
+                            upChBxSup = new qx.ui.form.CheckBox("allowUpgrade Supports");
+                            upChBxCmd = new qx.ui.form.CheckBox("allowUpgrade Cy, Cc, Def_Hq, Def_Fac");
+                            upChBxRt = new qx.ui.form.CheckBox("allowUpgrade Air, Veh, Inf");
+                            upChBxOff = new qx.ui.form.CheckBox("allowUpgrade Offense");
+                            upChBxDef = new qx.ui.form.CheckBox("allowUpgrade Defense");
 
                             groupBoxE.add(cmdButton);
-							//groupBoxE.add(upChBx);
-							groupBoxG.add(upChBxOff, {row: 0, column: 0});
-							groupBoxG.add(upChBxDef, {row: 0, column: 1});
-							groupBoxG.add(upChBxRef, {row: 1, column: 0});
-							groupBoxG.add(upChBxPow, {row: 1, column: 1});
-							groupBoxG.add(upChBxHarTib, {row: 1, column: 2});
-							groupBoxG.add(upChBxHarCry, {row: 2, column: 0});
-							groupBoxG.add(upChBxSil, {row: 2, column: 1});
-							groupBoxG.add(upChBxAcc, {row: 2, column: 2});
-							groupBoxG.add(upChBxSup, {row: 3, column: 0});
-							groupBoxG.add(upChBxCmd, {row: 3, column: 1});
-							groupBoxG.add(upChBxRt, {row: 3, column: 2});
-							groupBoxE.add(groupBoxG);
+                            //groupBoxE.add(upChBx);
+                            groupBoxG.add(upChBxOff, {
+                                row: 0,
+                                column: 0
+                            });
+                            groupBoxG.add(upChBxDef, {
+                                row: 0,
+                                column: 1
+                            });
+                            groupBoxG.add(upChBxRef, {
+                                row: 1,
+                                column: 0
+                            });
+                            groupBoxG.add(upChBxPow, {
+                                row: 1,
+                                column: 1
+                            });
+                            groupBoxG.add(upChBxHarTib, {
+                                row: 1,
+                                column: 2
+                            });
+                            groupBoxG.add(upChBxHarCry, {
+                                row: 2,
+                                column: 0
+                            });
+                            groupBoxG.add(upChBxSil, {
+                                row: 2,
+                                column: 1
+                            });
+                            groupBoxG.add(upChBxAcc, {
+                                row: 2,
+                                column: 2
+                            });
+                            groupBoxG.add(upChBxSup, {
+                                row: 3,
+                                column: 0
+                            });
+                            groupBoxG.add(upChBxCmd, {
+                                row: 3,
+                                column: 1
+                            });
+                            groupBoxG.add(upChBxRt, {
+                                row: 3,
+                                column: 2
+                            });
+                            groupBoxE.add(groupBoxG);
                             var app = qx.core.Init.getApplication();
 
                             app.getDesktop().add(AutoUpdateButton, {
@@ -745,206 +921,208 @@
 
 
                         },
-						
-						poiScoreLevel : function (nextScore, score, scoreByLevel){
-							var poiDiff = nextScore - score;
-							for(var x = 0; x < 99; x++){
-								var scoreFromX = scoreByLevel(x);
-								if(scoreFromX >= poiDiff){
-									break;
-								}
-							}
-							return x;
-							
-						},
-						
-						addNewTableOnCoords : function(numA, Arr0, aTable, x, y){
-							var arr = [];
-							//var arrA = [];
-							var num = 0;
-							var Level = 0;
-							var nextscore = ClientLib.Base.PointOfInterestTypes.GetNextScore;
-							var poiRank_Score = ClientLib.Data.MainData.GetInstance().get_Alliance().get_POIRankScore();
-							if(x.getValue != "Change me..." && y.getValue() != "Change me..."){
-							var x = x.getValue();
-							var y = y.getValue();
-							if(ClientLib.Data.MainData.GetInstance().get_World().GetObjectFromPosition(x,y) != undefined){
-								var obj = ClientLib.Data.MainData.GetInstance().get_World().GetObjectFromPosition(x,y);
-								if(obj.Type == ClientLib.Data.WorldSector.ObjectType.PointOfInterest){
-									for(var key in obj){
-									arr[num] = obj[key];
-									if(num == 2){
-									Level = arr[num];	
-									}
-									num++;
-									}
-									var poSc = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(Level);
-									var poX = x;
-									var poY = y;
-									
-									var nxSc = poiRank_Score[numA].s + ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(Level);
-									var nxTi = nextscore(nxSc);
-									if(Arr0[0] != undefined){
-										nxSc +=  Arr0[0][2];
-										nxTi = nextscore(nxSc);
-									Arr0.push([nxTi, nxSc, poSc, Level, poX, poY]);
-									} else { Arr0.push([nxTi, nxSc, poSc, Level, poX, poY]);}
-								}
-							aTable.setData(Arr0);
-							}
-							}
-							
-						},
+
+                        poiScoreLevel: function(nextScore, score, scoreByLevel) {
+                            var poiDiff = nextScore - score;
+                            for (var x = 0; x < 99; x++) {
+                                var scoreFromX = scoreByLevel(x);
+                                if (scoreFromX >= poiDiff) {
+                                    break;
+                                }
+                            }
+                            return x;
+
+                        },
+
+                        addNewTableOnCoords: function(numA, Arr0, aTable, x, y) {
+                            var arr = [];
+                            //var arrA = [];
+                            var num = 0;
+                            var Level = 0;
+                            var nextscore = ClientLib.Base.PointOfInterestTypes.GetNextScore;
+                            var poiRank_Score = ClientLib.Data.MainData.GetInstance().get_Alliance().get_POIRankScore();
+                            if (x.getValue != "Change me..." && y.getValue() != "Change me...") {
+                                var x = x.getValue();
+                                var y = y.getValue();
+                                if (ClientLib.Data.MainData.GetInstance().get_World().GetObjectFromPosition(x, y) != undefined) {
+                                    var obj = ClientLib.Data.MainData.GetInstance().get_World().GetObjectFromPosition(x, y);
+                                    if (obj.Type == ClientLib.Data.WorldSector.ObjectType.PointOfInterest) {
+                                        for (var key in obj) {
+                                            arr[num] = obj[key];
+                                            if (num == 2) {
+                                                Level = arr[num];
+                                            }
+                                            num++;
+                                        }
+                                        var poSc = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(Level);
+                                        var poX = x;
+                                        var poY = y;
+
+                                        var nxSc = poiRank_Score[numA].s + ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(Level);
+                                        var nxTi = nextscore(nxSc);
+                                        if (Arr0[0] != undefined) {
+                                            nxSc += Arr0[0][2];
+                                            nxTi = nextscore(nxSc);
+                                            Arr0.push([nxTi, nxSc, poSc, Level, poX, poY]);
+                                        } else {
+                                            Arr0.push([nxTi, nxSc, poSc, Level, poX, poY]);
+                                        }
+                                    }
+                                    aTable.setData(Arr0);
+                                }
+                            }
+
+                        },
 
                         viewPOI: function(coordx, coordy) {
 
                             return webfrontend.gui.UtilView.centerCoordinatesOnRegionViewWindow(parseInt(coordx.toString(), 10), parseInt(coordy.toString(), 10));
                         },
-						
-						unitRows: function (arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow){
-							var _this = FlunikTools.Main.getInstance();
-							var date = new Date();
-							if(type != "object"){
-                            var unitName = unit.get_UnitGameData_Obj().dn;
-							var unitTech = unit.get_UnitGameData_Obj().at;
-                            var x = unit.get_CoordX();
-                            var y = unit.get_CoordY();
-							
-							if (unitTech == ClientLib.Base.EUnitType.Infantry) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "typeLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", "", ""]);
-								arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
-								//console.log(cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, costA, waitTib, costB, waitPow, x, y);								
-							}
-							if (unitTech == ClientLib.Base.EUnitType.Tank) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "typeLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", "", ""]);
-								arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
-								//console.log(cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, costA, waitTib, costB, waitPow, x, y);								
-							}
-							if (unitTech == ClientLib.Base.EUnitType.Air) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "typeLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", "", ""]);
-								arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
-								//console.log(cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, costA, waitTib, costB, waitPow, x, y);
-							}
-							if (unitTech == ClientLib.Base.EUnitType.Structure) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "typeLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", "", ""]);
-								arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
-								//console.log(cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, costA, waitTib, costB, waitPow, x, y);
-							}
-							} else {
-								//                     arr,  unit,     type,          costA,          costB,    cityName,    typeLvl,    waitTib, waitPow
-								 //_this.unitRows(buildArr, D_obj, "object", D_obj.basename, D_obj.unitname, D_obj.level, D_obj.posX, D_obj.posY, "");
-		   //tableModelA.setColumns(["baseName", "Name", "toLevel", "x", "y", "Upgraded", "Ratio", "", "", "", "", "", "", "", "", ""]);
-		   //console.log(unit);
-								arr.push([costA, unit.uName, "Upgraded to "+parseInt(cityName), typeLvl, waitTib, "Ratio: "+(Math.round(waitPow*1000)/1000), date.getHours()+" : "+date.getMinutes()+" : "+date.getSeconds(), "", "", "", "", "", "", "", "", ""]);
-							
-							}
-							tableModelA.setData(arr);
-							
-						},
+
+                        unitRows: function(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow) {
+                            var _this = FlunikTools.Main.getInstance();
+                            var date = new Date();
+                            if (type != "object") {
+                                var unitName = unit.get_UnitGameData_Obj().dn;
+                                var unitTech = unit.get_UnitGameData_Obj().at;
+                                var x = unit.get_CoordX();
+                                var y = unit.get_CoordY();
+
+                                if (unitTech == ClientLib.Base.EUnitType.Infantry) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "typeLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", "", ""]);
+                                    arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
+                                    //console.log(cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, costA, waitTib, costB, waitPow, x, y);								
+                                }
+                                if (unitTech == ClientLib.Base.EUnitType.Tank) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "typeLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", "", ""]);
+                                    arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
+                                    //console.log(cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, costA, waitTib, costB, waitPow, x, y);								
+                                }
+                                if (unitTech == ClientLib.Base.EUnitType.Air) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "typeLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", "", ""]);
+                                    arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
+                                    //console.log(cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, costA, waitTib, costB, waitPow, x, y);
+                                }
+                                if (unitTech == ClientLib.Base.EUnitType.Structure) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "typeLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", "", ""]);
+                                    arr.push([cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y, "", "", "", "", ""]);
+                                    //console.log(cityName, unitName, type, unit.get_CurrentLevel(), typeLvl, costA, waitTib, costB, waitPow, x, y);
+                                }
+                            } else {
+                                //                     arr,  unit,     type,          costA,          costB,    cityName,    typeLvl,    waitTib, waitPow
+                                //_this.unitRows(buildArr, D_obj, "object", D_obj.basename, D_obj.unitname, D_obj.level, D_obj.posX, D_obj.posY, "");
+                                //tableModelA.setColumns(["baseName", "Name", "toLevel", "x", "y", "Upgraded", "Ratio", "", "", "", "", "", "", "", "", ""]);
+                                //console.log(unit);
+                                arr.push([costA, unit.uName, "Upgraded to " + parseInt(cityName), typeLvl, waitTib, "Ratio: " + (Math.round(waitPow * 1000) / 1000), date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds(), "", "", "", "", "", "", "", "", ""]);
+
+                            }
+                            tableModelA.setData(arr);
+
+                        },
 
                         buildingRows: function(arr, building, type, prodA, prodB, prodC, costA, costB, deltaA, deltaB, deltaC, cityName, waitTib, waitPow) {
                             var _this = FlunikTools.Main.getInstance();
                             var date = new Date();
-							//_this.formatNumbersCompact();
-							if(type != "object"){
-								var buildingName = building.get_UnitGameData_Obj().dn;
-                            var x = building.get_CoordX();
-                            var y = building.get_CoordY();
-							
-							tableModelA.setColumns(["baseName", "Name", "Type", "Level", "ProductionA", "NewLvlDeltaA", "ProductionB", "NewLvlDeltaB", "ProductonC", "NewLvlDeltaC", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y"]);
-							if (building.get_TechName() == ClientLib.Base.ETechName.Support_Art) {
-								//tableModelA.setColumns(["baseName",         "Name", "Type",                       "Level", "ProductionA", "NewLvlDeltaA", "ProductionB", "NewLvlDeltaB", "ProductonC", "NewLvlDeltaC",                          "TibCost", "waitTimeA",                         "PowCost", "waitTimeB", "x", "y"]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), deltaA, prodA, "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							if (building.get_TechName() == ClientLib.Base.ETechName.Support_Ion) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "defLevel", "isOkLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), deltaA, prodA, "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							if (building.get_TechName() == ClientLib.Base.ETechName.Support_Air) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "defLevel", "isOkLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), deltaA, prodA, "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							if (building.get_TechName() == ClientLib.Base.ETechName.Defense_Facility) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "defLevel", "isOkLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), deltaA, prodA, "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							
-							if (building.get_TechName() == ClientLib.Base.ETechName.Airport) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "currentRT", "deltaRT", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.FormatTimespan(prodA), _this.FormatTimespan(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							if (building.get_TechName() == ClientLib.Base.ETechName.Factory) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "currentRT", "deltaRT", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.FormatTimespan(prodA), _this.FormatTimespan(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							if (building.get_TechName() == ClientLib.Base.ETechName.Barracks) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "currentRT", "deltaRT", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.FormatTimespan(prodA), _this.FormatTimespan(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							if (building.get_TechName() == ClientLib.Base.ETechName.Defense_HQ) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "allUnitNxtLvlCryCost", "allUnitNxtLvlPowCost", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							if (building.get_TechName() == ClientLib.Base.ETechName.Command_Center) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "allUnitNxtLvlCryCost", "allUnitNxtLvlPowCost", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							if (building.get_TechName() == ClientLib.Base.ETechName.Construction_Yard) {
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "baseRT", "newDelta", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.FormatTimespan(prodA), _this.FormatTimespan(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							if(building.get_TechName() == ClientLib.Base.ETechName.PowerPlant){
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "PowerProduction", "NewLvlDeltaA", "CrystalProduction", "NewLvlDeltaB", "CreditProducton", "NewLvlDeltaC", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y"]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), _this.formatNumbersCompact(prodB), _this.formatNumbersCompact(deltaB), _this.formatNumbersCompact(prodC), _this.formatNumbersCompact(deltaC), _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							
-							if(building.get_TechName() == ClientLib.Base.ETechName.Refinery){
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "PowerCreditProduction", "NewLvlDeltaA", "TibCreditProduction", "NewLvlDeltaB", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), _this.formatNumbersCompact(prodB), _this.formatNumbersCompact(deltaB), "",  "",_this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							
-							if(building.get_TechName() == ClientLib.Base.ETechName.Harvester){
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "TibProduction", "NewLvlDeltaA", "CryProduction", "NewLvlDeltaB", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), _this.formatNumbersCompact(prodB), _this.formatNumbersCompact(deltaB), "",  "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							
-							if(building.get_TechName() == ClientLib.Base.ETechName.Silo){
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "TibProduction", "NewLvlDeltaA", "CryProduction", "NewLvlDeltaB", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), _this.formatNumbersCompact(prodB), _this.formatNumbersCompact(deltaB), "",  "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							
-							if(building.get_TechName() == ClientLib.Base.ETechName.Accumulator){
-								//tableModelA.setColumns(["baseName", "Name", "Type", "Level", "PowerProduction", "NewLvlDelta", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y",  "", "",  "", ""]);
-								arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), "",  "", "",  "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
-								}
-							} else {
-								//tableModelA.setColumns(["baseName", "Name", "toLevel", "x", "y", "Upgraded", "Ratio", "", "", "", "", "", "", "", "", ""]);
-								arr.push([prodA, prodB, "Upgraded to "+parseInt(prodC), costA, costB, "Ratio: "+(Math.round(deltaA*1000)/1000), date.getHours()+" : "+date.getMinutes()+" : "+date.getSeconds(), "", "", "", "", "", "", "", "", ""]);
-							}
-							
-							
-							
-							tableModelA.setData(arr);
-							
+                            //_this.formatNumbersCompact();
+                            if (type != "object") {
+                                var buildingName = building.get_UnitGameData_Obj().dn;
+                                var x = building.get_CoordX();
+                                var y = building.get_CoordY();
+
+                                tableModelA.setColumns(["baseName", "Name", "Type", "Level", "ProductionA", "NewLvlDeltaA", "ProductionB", "NewLvlDeltaB", "ProductonC", "NewLvlDeltaC", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y"]);
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Support_Art) {
+                                    //tableModelA.setColumns(["baseName",         "Name", "Type",                       "Level", "ProductionA", "NewLvlDeltaA", "ProductionB", "NewLvlDeltaB", "ProductonC", "NewLvlDeltaC",                          "TibCost", "waitTimeA",                         "PowCost", "waitTimeB", "x", "y"]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), deltaA, prodA, "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Support_Ion) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "defLevel", "isOkLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), deltaA, prodA, "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Support_Air) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "defLevel", "isOkLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), deltaA, prodA, "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Defense_Facility) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "defLevel", "isOkLevel", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), deltaA, prodA, "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Airport) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "currentRT", "deltaRT", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.FormatTimespan(prodA), _this.FormatTimespan(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Factory) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "currentRT", "deltaRT", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.FormatTimespan(prodA), _this.FormatTimespan(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Barracks) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "currentRT", "deltaRT", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.FormatTimespan(prodA), _this.FormatTimespan(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Defense_HQ) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "allUnitNxtLvlCryCost", "allUnitNxtLvlPowCost", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Command_Center) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "allUnitNxtLvlCryCost", "allUnitNxtLvlPowCost", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Construction_Yard) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "baseRT", "newDelta", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", "", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.FormatTimespan(prodA), _this.FormatTimespan(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                                if (building.get_TechName() == ClientLib.Base.ETechName.PowerPlant) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "PowerProduction", "NewLvlDeltaA", "CrystalProduction", "NewLvlDeltaB", "CreditProducton", "NewLvlDeltaC", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y"]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), _this.formatNumbersCompact(prodB), _this.formatNumbersCompact(deltaB), _this.formatNumbersCompact(prodC), _this.formatNumbersCompact(deltaC), _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Refinery) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "PowerCreditProduction", "NewLvlDeltaA", "TibCreditProduction", "NewLvlDeltaB", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), _this.formatNumbersCompact(prodB), _this.formatNumbersCompact(deltaB), "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Harvester) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "TibProduction", "NewLvlDeltaA", "CryProduction", "NewLvlDeltaB", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), _this.formatNumbersCompact(prodB), _this.formatNumbersCompact(deltaB), "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Silo) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "TibProduction", "NewLvlDeltaA", "CryProduction", "NewLvlDeltaB", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y", "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), _this.formatNumbersCompact(prodB), _this.formatNumbersCompact(deltaB), "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+
+                                if (building.get_TechName() == ClientLib.Base.ETechName.Accumulator) {
+                                    //tableModelA.setColumns(["baseName", "Name", "Type", "Level", "PowerProduction", "NewLvlDelta", "TibCost", "waitTimeA", "PowCost", "waitTimeB", "x", "y",  "", "",  "", ""]);
+                                    arr.push([cityName, buildingName, type, building.get_CurrentLevel(), _this.formatNumbersCompact(prodA), _this.formatNumbersCompact(deltaA), "", "", "", "", _this.formatNumbersCompact(costA), waitTib, _this.formatNumbersCompact(costB), waitPow, x, y]);
+                                }
+                            } else {
+                                //tableModelA.setColumns(["baseName", "Name", "toLevel", "x", "y", "Upgraded", "Ratio", "", "", "", "", "", "", "", "", ""]);
+                                arr.push([prodA, prodB, "Upgraded to " + parseInt(prodC), costA, costB, "Ratio: " + (Math.round(deltaA * 1000) / 1000), date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds(), "", "", "", "", "", "", "", "", ""]);
+                            }
+
+
+
+                            tableModelA.setData(arr);
+
                             //rowData = [];
 
                         },
 
                         poiRows: function() {
-							var _this = FlunikTools.Main.getInstance();
+                            var _this = FlunikTools.Main.getInstance();
                             //var inputField = document.querySelector('input:focus, textarea:focus');
                             //if (inputField != null) {
                             var num = -1;
-							//var alliance = ClientLib.Data.MainData.GetInstance().get_Alliance();
-							var nextscore = ClientLib.Base.PointOfInterestTypes.GetNextScore;
-							var boostByScore = ClientLib.Base.PointOfInterestTypes.GetBoostsByScore;
-							var poiRank_Score = ClientLib.Data.MainData.GetInstance().get_Alliance().get_POIRankScore();
+                            //var alliance = ClientLib.Data.MainData.GetInstance().get_Alliance();
+                            var nextscore = ClientLib.Base.PointOfInterestTypes.GetNextScore;
+                            var boostByScore = ClientLib.Base.PointOfInterestTypes.GetBoostsByScore;
+                            var poiRank_Score = ClientLib.Data.MainData.GetInstance().get_Alliance().get_POIRankScore();
                             var tibArr = [];
                             var rowData = [];
-							var rowDataA = [];
+                            var rowDataA = [];
                             var poiSorceHolder = [];
-                            
-                            tableModel.setColumns(["","", "", "", "", "", ""]);
+
+                            tableModel.setColumns(["", "", "", "", "", "", ""]);
 
                             for (var key in ClientLib.Data.MainData.GetInstance().get_Alliance().get_OwnedPOIs()) {
 
@@ -955,22 +1133,22 @@
                                 //var objCoords = obj.x, obj.y;//document.write(webfrontend.gui.util.BBCode.createCoordsLinkText(obj.x, obj.y));
                                 if (tabViewB.getSelection()[0].getLabel() == "Tib" && obj.t == ClientLib.Base.EPOIType.TiberiumBonus) {
                                     num++;
-									//_this.poiScoreLevel(poiRank_Score[0].ns, poiRank_Score[0].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                    //_this.poiScoreLevel(poiRank_Score[0].ns, poiRank_Score[0].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
                                     poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
                                     if (num >= 0) {
                                         if (num == 0) {
-											var nextGetLvl = _this.poiScoreLevel(poiRank_Score[0].ns, poiRank_Score[0].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[0].s), poiRank_Score[0].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[0].ns), "", "", "", "", ""]);
-											rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[0].s), "", "", "", "", ""]);
-											rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[0].ps), "", "", "", "", ""]);
-											rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
-											rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
-											rowData.push(["Our Rank", poiRank_Score[0].r, "", "", "", "", ""]);
-											rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[0].s,ClientLib.Data.Ranking.ERankingType.BonusTiberium)), "", "", "", "", ""]);
-											rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[0].r)+"%", "", "", "", "", ""]);
-											rowData.push(["nextTier(ifLost)","ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
-                                            rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[0].s)), _this.formatNumbersCompact(poiRank_Score[0].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[0].s,ClientLib.Data.Ranking.ERankingType.BonusTiberium)), "", "", "", ""]);
+                                            var nextGetLvl = _this.poiScoreLevel(poiRank_Score[0].ns, poiRank_Score[0].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[0].s), poiRank_Score[0].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[0].ns), "", "", "", "", ""]);
+                                            rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[0].s), "", "", "", "", ""]);
+                                            rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[0].ps), "", "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
+                                            rowData.push(["Our Rank", poiRank_Score[0].r, "", "", "", "", ""]);
+                                            rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[0].s, ClientLib.Data.Ranking.ERankingType.BonusTiberium)), "", "", "", "", ""]);
+                                            rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[0].r) + "%", "", "", "", "", ""]);
+                                            rowData.push(["nextTier(ifLost)", "ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
+                                            rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[0].s)), _this.formatNumbersCompact(poiRank_Score[0].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[0].s, ClientLib.Data.Ranking.ERankingType.BonusTiberium)), "", "", "", ""]);
                                             val = poiRank_Score[0].s - poiSorceHolder[num];
                                         } else if (num >= 1) {
                                             val = poiRank_Score[0].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
@@ -979,11 +1157,11 @@
                                         }
 
                                     }
-									/*tibPage.add(new qx.ui.basic.Label("Rank : "+poiRank_Score[0].r), {top:50 ,left: "20%"});
-									tibPage.add(new qx.ui.basic.Label("Next Score : "+poiRank_Score[0].ns), {top:62 ,left: "20%"});
-									tibPage.add(new qx.ui.basic.Label("Our Score : "+poiRank_Score[0].s), {top:74 ,left: "20%"});
-									tibPage.add(new qx.ui.basic.Label("Past Score : "+poiRank_Score[0].ps), {top:86 ,left: "20%"});
-									tibPage.add(new qx.ui.basic.Label("Next Tier Score : "+nextscore(poiRank_Score[0].s)), {top:98 ,left: "20%"});*/
+                                    /*tibPage.add(new qx.ui.basic.Label("Rank : "+poiRank_Score[0].r), {top:50 ,left: "20%"});
+                                    tibPage.add(new qx.ui.basic.Label("Next Score : "+poiRank_Score[0].ns), {top:62 ,left: "20%"});
+                                    tibPage.add(new qx.ui.basic.Label("Our Score : "+poiRank_Score[0].s), {top:74 ,left: "20%"});
+                                    tibPage.add(new qx.ui.basic.Label("Past Score : "+poiRank_Score[0].ps), {top:86 ,left: "20%"});
+                                    tibPage.add(new qx.ui.basic.Label("Next Tier Score : "+nextscore(poiRank_Score[0].s)), {top:98 ,left: "20%"});*/
                                     rowData.push([_this.formatNumbersCompact(nextscore(val)), _this.formatNumbersCompact(val), _this.formatNumbersCompact(boostByScore(val, ClientLib.Data.Ranking.ERankingType.BonusTiberium)), obj.l, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l)), obj.x, obj.y]);
                                 }
                                 if (tabViewB.getSelection()[0].getLabel() == "Cry" && obj.t == ClientLib.Base.EPOIType.CrystalBonus) {
@@ -991,18 +1169,18 @@
                                     poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
                                     if (num >= 0) {
                                         if (num == 0) {
-											var nextGetLvl = _this.poiScoreLevel(poiRank_Score[1].ns, poiRank_Score[1].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[1].s), poiRank_Score[1].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[1].ns), "", "", "", "", ""]);
-											rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[1].s), "", "", "", "", ""]);
-											rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[1].ps), "", "", "", "", ""]);
-											rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
-											rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
-											rowData.push(["Our Rank", poiRank_Score[1].r, "", "", "", "", ""]);
-											rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[1].s,ClientLib.Data.Ranking.ERankingType.BonusCrystal)), "", "", "", "", ""]);
-											rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[1].r)+"%", "", "", "", "", ""]);
-											rowData.push(["nextTier(ifLost)","ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
-                                            rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[1].s)),_this.formatNumbersCompact(poiRank_Score[1].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[1].s,ClientLib.Data.Ranking.ERankingType.BonusCrystal)), "", "", "", ""]);
+                                            var nextGetLvl = _this.poiScoreLevel(poiRank_Score[1].ns, poiRank_Score[1].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[1].s), poiRank_Score[1].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[1].ns), "", "", "", "", ""]);
+                                            rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[1].s), "", "", "", "", ""]);
+                                            rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[1].ps), "", "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
+                                            rowData.push(["Our Rank", poiRank_Score[1].r, "", "", "", "", ""]);
+                                            rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[1].s, ClientLib.Data.Ranking.ERankingType.BonusCrystal)), "", "", "", "", ""]);
+                                            rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[1].r) + "%", "", "", "", "", ""]);
+                                            rowData.push(["nextTier(ifLost)", "ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
+                                            rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[1].s)), _this.formatNumbersCompact(poiRank_Score[1].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[1].s, ClientLib.Data.Ranking.ERankingType.BonusCrystal)), "", "", "", ""]);
                                             val = poiRank_Score[1].s - poiSorceHolder[num];
                                         } else if (num >= 1) {
                                             val = poiRank_Score[1].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
@@ -1011,25 +1189,25 @@
                                         }
 
                                     }
-                                    rowData.push([_this.formatNumbersCompact(nextscore(val)), _this.formatNumbersCompact(val), _this.formatNumbersCompact(boostByScore(val,ClientLib.Data.Ranking.ERankingType.BonusCrystal)), obj.l, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l)), obj.x, obj.y]);
+                                    rowData.push([_this.formatNumbersCompact(nextscore(val)), _this.formatNumbersCompact(val), _this.formatNumbersCompact(boostByScore(val, ClientLib.Data.Ranking.ERankingType.BonusCrystal)), obj.l, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l)), obj.x, obj.y]);
                                 }
                                 if (tabViewB.getSelection()[0].getLabel() == "Pow" && obj.t == ClientLib.Base.EPOIType.PowerBonus) {
                                     num++;
                                     poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
                                     if (num >= 0) {
                                         if (num == 0) {
-											var nextGetLvl = _this.poiScoreLevel(poiRank_Score[2].ns, poiRank_Score[2].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[2].s), poiRank_Score[2].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[2].ns), "", "", "", "", ""]);
-											rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[2].s), "", "", "", "", ""]);
-											rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[2].ps), "", "", "", "", ""]);
-											rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
-											rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
-											rowData.push(["Our Rank", poiRank_Score[2].r, "", "", "", "", ""]);
-											rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[2].s,ClientLib.Data.Ranking.ERankingType.BonusPower)), "", "", "", "", ""]);
-											rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[2].r)+"%", "", "", "", "", ""]);
-											rowData.push(["nextTier(ifLost)","ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
-                                            rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[2].s)),_this.formatNumbersCompact(poiRank_Score[2].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[2].s,ClientLib.Data.Ranking.ERankingType.BonusPower)), "", "", "", ""]);
+                                            var nextGetLvl = _this.poiScoreLevel(poiRank_Score[2].ns, poiRank_Score[2].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[2].s), poiRank_Score[2].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[2].ns), "", "", "", "", ""]);
+                                            rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[2].s), "", "", "", "", ""]);
+                                            rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[2].ps), "", "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
+                                            rowData.push(["Our Rank", poiRank_Score[2].r, "", "", "", "", ""]);
+                                            rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[2].s, ClientLib.Data.Ranking.ERankingType.BonusPower)), "", "", "", "", ""]);
+                                            rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[2].r) + "%", "", "", "", "", ""]);
+                                            rowData.push(["nextTier(ifLost)", "ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
+                                            rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[2].s)), _this.formatNumbersCompact(poiRank_Score[2].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[2].s, ClientLib.Data.Ranking.ERankingType.BonusPower)), "", "", "", ""]);
                                             val = poiRank_Score[2].s - poiSorceHolder[num];
                                         } else if (num >= 1) {
                                             val = poiRank_Score[2].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
@@ -1038,25 +1216,25 @@
                                         }
 
                                     }
-                                    rowData.push([_this.formatNumbersCompact(nextscore(val)), _this.formatNumbersCompact(val),_this.formatNumbersCompact(boostByScore(val,ClientLib.Data.Ranking.ERankingType.BonusPower)), obj.l, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l)), obj.x, obj.y]);
+                                    rowData.push([_this.formatNumbersCompact(nextscore(val)), _this.formatNumbersCompact(val), _this.formatNumbersCompact(boostByScore(val, ClientLib.Data.Ranking.ERankingType.BonusPower)), obj.l, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l)), obj.x, obj.y]);
                                 }
                                 if (tabViewB.getSelection()[0].getLabel() == "Inf" && obj.t == ClientLib.Base.EPOIType.InfanteryBonus) {
                                     num++;
                                     poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
                                     if (num >= 0) {
                                         if (num == 0) {
-											var nextGetLvl = _this.poiScoreLevel(poiRank_Score[3].ns, poiRank_Score[3].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[3].s), poiRank_Score[3].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[3].ns), "", "", "", "", ""]);
-											rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[3].s), "", "", "", ""]);
-											rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[3].ps), "", "", "", "", ""]);
-											rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
-											rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
-											rowData.push(["Our Rank", _this.formatNumbersCompact(poiRank_Score[3].r), "", "", "", "", ""]);
-											rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[3].s,ClientLib.Data.Ranking.ERankingType.BonusInfantry)), "", "", "", "", ""]);
-											rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[3].r)+"%", "", "", "", "", ""]);
-											rowData.push(["nextTier(ifLost)","ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
-                                            rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[3].s)), _this.formatNumbersCompact(poiRank_Score[3].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[3].s,ClientLib.Data.Ranking.ERankingType.BonusInfantry)), "", "", "", ""]);
+                                            var nextGetLvl = _this.poiScoreLevel(poiRank_Score[3].ns, poiRank_Score[3].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[3].s), poiRank_Score[3].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[3].ns), "", "", "", "", ""]);
+                                            rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[3].s), "", "", "", ""]);
+                                            rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[3].ps), "", "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
+                                            rowData.push(["Our Rank", _this.formatNumbersCompact(poiRank_Score[3].r), "", "", "", "", ""]);
+                                            rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[3].s, ClientLib.Data.Ranking.ERankingType.BonusInfantry)), "", "", "", "", ""]);
+                                            rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[3].r) + "%", "", "", "", "", ""]);
+                                            rowData.push(["nextTier(ifLost)", "ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
+                                            rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[3].s)), _this.formatNumbersCompact(poiRank_Score[3].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[3].s, ClientLib.Data.Ranking.ERankingType.BonusInfantry)), "", "", "", ""]);
                                             val = poiRank_Score[3].s - poiSorceHolder[num];
                                         } else if (num >= 1) {
                                             val = poiRank_Score[3].s - poiSorceHolder.reduce(function(previousValue, currentValue, index, array) {
@@ -1072,17 +1250,17 @@
                                     poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
                                     if (num >= 0) {
                                         if (num == 0) {
-											var nextGetLvl = _this.poiScoreLevel(poiRank_Score[4].ns, poiRank_Score[4].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[4].s), poiRank_Score[4].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[4].ns), "", "", "", "", ""]);
-											rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[4].s), "", "", "", "", ""]);
-											rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[4].ps), "", "", "", "", ""]);
-											rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
-											rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
-											rowData.push(["Our Rank", poiRank_Score[4].r, "", "", "", "", ""]);
-											rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[4].s,ClientLib.Data.Ranking.ERankingType.BonusVehicles)), "", "", "", "", ""]);
-											rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[4].r)+"%", "", "", "", "", ""]);
-											rowData.push(["nextTier(ifLost)","ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
+                                            var nextGetLvl = _this.poiScoreLevel(poiRank_Score[4].ns, poiRank_Score[4].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[4].s), poiRank_Score[4].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[4].ns), "", "", "", "", ""]);
+                                            rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[4].s), "", "", "", "", ""]);
+                                            rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[4].ps), "", "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
+                                            rowData.push(["Our Rank", poiRank_Score[4].r, "", "", "", "", ""]);
+                                            rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[4].s, ClientLib.Data.Ranking.ERankingType.BonusVehicles)), "", "", "", "", ""]);
+                                            rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[4].r) + "%", "", "", "", "", ""]);
+                                            rowData.push(["nextTier(ifLost)", "ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
                                             rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[4].s)), _this.formatNumbersCompact(poiRank_Score[4].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[4].s, ClientLib.Data.Ranking.ERankingType.BonusVehicles)), "", "", "", ""]);
                                             val = poiRank_Score[4].s - poiSorceHolder[num];
                                         } else if (num >= 1) {
@@ -1092,24 +1270,24 @@
                                         }
 
                                     }
-                                    rowData.push([_this.formatNumbersCompact(nextscore(val)),_this.formatNumbersCompact(val),_this.formatNumbersCompact(boostByScore(val, ClientLib.Data.Ranking.ERankingType.BonusVehicles)), obj.l, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l)), obj.x, obj.y]);
+                                    rowData.push([_this.formatNumbersCompact(nextscore(val)), _this.formatNumbersCompact(val), _this.formatNumbersCompact(boostByScore(val, ClientLib.Data.Ranking.ERankingType.BonusVehicles)), obj.l, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l)), obj.x, obj.y]);
                                 }
                                 if (tabViewB.getSelection()[0].getLabel() == "Air" && obj.t == ClientLib.Base.EPOIType.AirBonus) {
                                     num++;
                                     poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
                                     if (num >= 0) {
                                         if (num == 0) {
-											var nextGetLvl = _this.poiScoreLevel(poiRank_Score[5].ns, poiRank_Score[5].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[5].s), poiRank_Score[5].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[5].ns), "", "", "", "", ""]);
-											rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[5].s), "", "", "", "", ""]);
-											rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[5].ps), "", "", "", "", ""]);
-											rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
-											rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
-											rowData.push(["Our Rank", poiRank_Score[5].r, "", "", "", "", ""]);
-											rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[5].s,ClientLib.Data.Ranking.ERankingType.BonusAircraft)), "", "", "", "", ""]);
-											rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[5].r)+"%", "", "", "", "", ""]);
-											rowData.push(["nextTier(ifLost)","ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
+                                            var nextGetLvl = _this.poiScoreLevel(poiRank_Score[5].ns, poiRank_Score[5].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[5].s), poiRank_Score[5].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[5].ns), "", "", "", "", ""]);
+                                            rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[5].s), "", "", "", "", ""]);
+                                            rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[5].ps), "", "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
+                                            rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
+                                            rowData.push(["Our Rank", poiRank_Score[5].r, "", "", "", "", ""]);
+                                            rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[5].s, ClientLib.Data.Ranking.ERankingType.BonusAircraft)), "", "", "", "", ""]);
+                                            rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[5].r) + "%", "", "", "", "", ""]);
+                                            rowData.push(["nextTier(ifLost)", "ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
                                             rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[5].s)), _this.formatNumbersCompact(poiRank_Score[5].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[5].s, ClientLib.Data.Ranking.ERankingType.BonusAircraft)), "", "", "", ""]);
                                             val = poiRank_Score[5].s - poiSorceHolder[num];
                                         } else if (num >= 1) {
@@ -1126,17 +1304,17 @@
                                     poiSorceHolder[num] = ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(obj.l);
                                     if (num >= 0) {
                                         if (num == 0) {
-											var nextGetLvl = _this.poiScoreLevel(poiRank_Score[6].ns, poiRank_Score[6].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[6].s), poiRank_Score[6].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
-											rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[6].ns), "", "", "", "", ""]);
-											rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[6].s), "", "", "", "", ""]);
-											rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[6].ps), "", "", "", "", ""]);
-											rowData.push(["POI lvl needed", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
-											rowData.push(["POI lvl needed", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
-											rowData.push(["Our Rank", poiRank_Score[6].r, "", "", "", "", ""]);
-											rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[6].s,ClientLib.Data.Ranking.ERankingType.BonusDefense)), "", "", "", "", ""]);
-											rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[6].r)+"%", "", "", "", "", ""]);
-											rowData.push(["nextTier(ifLost)","ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
+                                            var nextGetLvl = _this.poiScoreLevel(poiRank_Score[6].ns, poiRank_Score[6].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            var nextGetLvlA = _this.poiScoreLevel(nextscore(poiRank_Score[6].s), poiRank_Score[6].s, ClientLib.Base.PointOfInterestTypes.GetScoreByLevel);
+                                            rowData.push(["Next Score", _this.formatNumbersCompact(poiRank_Score[6].ns), "", "", "", "", ""]);
+                                            rowData.push(["Our Score", _this.formatNumbersCompact(poiRank_Score[6].s), "", "", "", "", ""]);
+                                            rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[6].ps), "", "", "", "", ""]);
+                                            rowData.push(["POI lvl needed", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
+                                            rowData.push(["POI lvl needed", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
+                                            rowData.push(["Our Rank", poiRank_Score[6].r, "", "", "", "", ""]);
+                                            rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[6].s, ClientLib.Data.Ranking.ERankingType.BonusDefense)), "", "", "", "", ""]);
+                                            rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[6].r) + "%", "", "", "", "", ""]);
+                                            rowData.push(["nextTier(ifLost)", "ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
                                             rowData.push([_this.formatNumbersCompact(nextscore(poiRank_Score[6].s)), _this.formatNumbersCompact(poiRank_Score[6].s), _this.formatNumbersCompact(boostByScore(poiRank_Score[6].s, ClientLib.Data.Ranking.ERankingType.BonusDefense)), "", "", "", ""]);
                                             val = poiRank_Score[6].s - poiSorceHolder[num];
                                         } else if (num >= 1) {
@@ -1231,7 +1409,7 @@
                             var checkBox;
                             //console.log(building, tech, num, arr);
                             if (num == 0) {
-								//if(tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum] != undefined){
+                                //if(tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum] != undefined){
 
                                 if (tech == ClientLib.Base.ETechName.Research_BaseFound) {
                                     checkBox;
@@ -1408,8 +1586,7 @@
 
 
 
-                            
-							}
+                            }
                             if (num > 0) {
                                 //console.log(tabView.getSelectables()[num]);
                                 if (tech == ClientLib.Base.ETechName.Research_BaseFound) {
@@ -1619,88 +1796,88 @@
                             }
                             //return bool;
                         },
-						
-						formatNumbersCompact: function (value, decimals) {
-						  if (decimals == undefined) decimals = 2;
-						  var valueStr;
-						  var unit = '';
-						  if (value < 1000) valueStr = value.toString();
-						   else if (value < 1000 * 1000) {
-							valueStr = (value / 1000).toString();
-							unit = 'K';
-						  } else if (value < 1000 * 1000 * 1000) {
-							valueStr = (value / (1000 * 1000)).toString();
-							unit = 'M';
-						  } else if (value < 1000 * 1000 * 1000 * 1000){
-							valueStr = (value / (1000*1000*1000)).toString();
-							unit = 'G';
-						  } else if(value < 1000 * 1000 * 1000 * 1000 * 1000){
-							valueStr = (value / (1000*1000*1000*1000)).toString();
-							unit = 'P';
-						  } else if(value < 1000 * 1000 * 1000 * 1000 * 1000 * 1000){
-						  valueStr = (value / (1000*1000*1000*1000*1000)).toString();
-						  unit = 'E';
-						  } else if(value < 1000 * 1000 * 1000 * 1000 * 1000 * 1000 * 1000){
-						  valueStr = (value / (1000*1000*1000*1000*1000*1000)).toString();
-						  unit = 'Z';
-						  } else {
-						  valueStr = (value / (1000*1000*1000*1000*1000*1000*1000)).toString();
-						  unit = 'Y';
-						  }
-						  if (valueStr.indexOf('.') >= 0) {
-							var whole = valueStr.substring(0, valueStr.indexOf('.'));
-							if (decimals === 0) {
-							  valueStr = whole;
-							} else {
-							  var fraction = valueStr.substring(valueStr.indexOf('.') + 1);
-							  if (fraction.length > decimals) fraction = fraction.substring(0, decimals);
-							  valueStr = whole + '.' + fraction;
-							}
-						  }
-						  valueStr = valueStr + unit;
-						  return valueStr;
-						},
-						
-						FormatTimespan: function (value) {
-						  var i;
-						  var t = ClientLib.Vis.VisMain.FormatTimespan(value);
-						  var colonCount = 0;
-						  for (i = 0; i < t.length; i++) {
-							if (t.charAt(i) == ':') colonCount++;
-						  }
-						  var r = '';
-						  for (i = 0; i < t.length; i++) {
-							if (t.charAt(i) == ':') {
-							  if (colonCount > 2) {
-								r += 'd ';
-							  } else {
-								r += t.charAt(i);
-							  }
-							  colonCount--;
-							} else {
-							  r += t.charAt(i);
-							}
-						  }
-						  return r;
-						},
 
-                        isCheckBoxChecked: function(num, building, typeNum) {
-                            try{
-							var bool = false;
-                            for (var key in tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum].getChildren()) {
-
-                                var obj = tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum].getChildren()[key];
-
-                                //if(obj.getLabel() == building || obj.toString() == "undefined"){
-                                if (obj.getValue() && obj.getLabel() == building) {
-                                    bool = true;
-
+                        formatNumbersCompact: function(value, decimals) {
+                            if (decimals == undefined) decimals = 2;
+                            var valueStr;
+                            var unit = '';
+                            if (value < 1000) valueStr = value.toString();
+                            else if (value < 1000 * 1000) {
+                                valueStr = (value / 1000).toString();
+                                unit = 'K';
+                            } else if (value < 1000 * 1000 * 1000) {
+                                valueStr = (value / (1000 * 1000)).toString();
+                                unit = 'M';
+                            } else if (value < 1000 * 1000 * 1000 * 1000) {
+                                valueStr = (value / (1000 * 1000 * 1000)).toString();
+                                unit = 'G';
+                            } else if (value < 1000 * 1000 * 1000 * 1000 * 1000) {
+                                valueStr = (value / (1000 * 1000 * 1000 * 1000)).toString();
+                                unit = 'P';
+                            } else if (value < 1000 * 1000 * 1000 * 1000 * 1000 * 1000) {
+                                valueStr = (value / (1000 * 1000 * 1000 * 1000 * 1000)).toString();
+                                unit = 'E';
+                            } else if (value < 1000 * 1000 * 1000 * 1000 * 1000 * 1000 * 1000) {
+                                valueStr = (value / (1000 * 1000 * 1000 * 1000 * 1000 * 1000)).toString();
+                                unit = 'Z';
+                            } else {
+                                valueStr = (value / (1000 * 1000 * 1000 * 1000 * 1000 * 1000 * 1000)).toString();
+                                unit = 'Y';
+                            }
+                            if (valueStr.indexOf('.') >= 0) {
+                                var whole = valueStr.substring(0, valueStr.indexOf('.'));
+                                if (decimals === 0) {
+                                    valueStr = whole;
+                                } else {
+                                    var fraction = valueStr.substring(valueStr.indexOf('.') + 1);
+                                    if (fraction.length > decimals) fraction = fraction.substring(0, decimals);
+                                    valueStr = whole + '.' + fraction;
                                 }
                             }
-                            return bool;
-							}catch(e){
-								console.log("createFlunikTools: ", e);
-							}
+                            valueStr = valueStr + unit;
+                            return valueStr;
+                        },
+
+                        FormatTimespan: function(value) {
+                            var i;
+                            var t = ClientLib.Vis.VisMain.FormatTimespan(value);
+                            var colonCount = 0;
+                            for (i = 0; i < t.length; i++) {
+                                if (t.charAt(i) == ':') colonCount++;
+                            }
+                            var r = '';
+                            for (i = 0; i < t.length; i++) {
+                                if (t.charAt(i) == ':') {
+                                    if (colonCount > 2) {
+                                        r += 'd ';
+                                    } else {
+                                        r += t.charAt(i);
+                                    }
+                                    colonCount--;
+                                } else {
+                                    r += t.charAt(i);
+                                }
+                            }
+                            return r;
+                        },
+
+                        isCheckBoxChecked: function(num, building, typeNum) {
+                            try {
+                                var bool = false;
+                                for (var key in tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum].getChildren()) {
+
+                                    var obj = tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum].getChildren()[key];
+
+                                    //if(obj.getLabel() == building || obj.toString() == "undefined"){
+                                    if (obj.getValue() && obj.getLabel() == building) {
+                                        bool = true;
+
+                                    }
+                                }
+                                return bool;
+                            } catch (e) {
+                                console.log("createFlunikTools: ", e);
+                            }
                         },
                         isCheckBoxPlaced: function(num, building, typeNum) {
                             var bool = false;
@@ -1734,29 +1911,29 @@
                             return bool;
                         },
                         unitBox: function(unitName, num, typeNum, xNum, yNum) {
-							try{
-                            if (typeNum == 2) {
-                                //console.log(unitName, num, typeNum, xNum, yNum);
-                                if (FlunikTools.Main.getInstance().isCheckBoxPlaced(num, unitName, typeNum) == false) {
-                                    tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum].add(new qx.ui.form.CheckBox(unitName), {
-                                        row: xNum,
-                                        column: yNum
-                                    });
+                            try {
+                                if (typeNum == 2) {
                                     //console.log(unitName, num, typeNum, xNum, yNum);
-                                }
-                            } else if (typeNum == 1) {
-                                //console.log(unitName, num, typeNum, xNum, yNum);
-                                if (FlunikTools.Main.getInstance().isCheckBoxPlaced(num, unitName, typeNum) == false) {
-                                    tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum].add(new qx.ui.form.CheckBox(unitName), {
-                                        row: xNum,
-                                        column: yNum
-                                    });
+                                    if (FlunikTools.Main.getInstance().isCheckBoxPlaced(num, unitName, typeNum) == false) {
+                                        tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum].add(new qx.ui.form.CheckBox(unitName), {
+                                            row: xNum,
+                                            column: yNum
+                                        });
+                                        //console.log(unitName, num, typeNum, xNum, yNum);
+                                    }
+                                } else if (typeNum == 1) {
                                     //console.log(unitName, num, typeNum, xNum, yNum);
+                                    if (FlunikTools.Main.getInstance().isCheckBoxPlaced(num, unitName, typeNum) == false) {
+                                        tabView.getSelectables()[num].getChildren()[0].getChildren()[typeNum].add(new qx.ui.form.CheckBox(unitName), {
+                                            row: xNum,
+                                            column: yNum
+                                        });
+                                        //console.log(unitName, num, typeNum, xNum, yNum);
+                                    }
                                 }
+                            } catch (e) {
+                                console.log("createFlunikTools: ", e);
                             }
-							}catch(e){
-								console.log("createFlunikTools: ", e);
-							}
 
                         },
 
@@ -1843,7 +2020,9 @@
                             var _this = FlunikTools.Main.getInstance();
                             //_this.win.open();
                             //_this.autoUpgrade();
-                            _this.autoUpdateHandleAll = setInterval(function () {_this.autoUpgradeInfo();}, 20000);
+                            _this.autoUpdateHandleAll = setInterval(function() {
+                                _this.autoUpgradeInfo();
+                            }, 20000);
 
 
                             //return setInterval(upgrade, _this.autoUpdateHandleAll);
@@ -1864,104 +2043,102 @@
 
                             _this.cmdB = null;
                         },
-						
-						totalRepairTime: function ( airRT, vehRT, infRT) {
-						
-						
-							if ((airRT > 0) && (vehRT > 0) && (infRT > 0)){
-								if((airRT > vehRT) && (airRT > infRT) ){
-									var maxRT = airRT;
-									
-									return (maxRT);
-									}
-								if((vehRT > airRT) && (vehRT > infRT) ){
-									var maxRT = vehRT;
-									
-									return (maxRT);
-									}
-								if((infRT > vehRT) && (infRT > airRT) ){
-									var maxRT = infRT;
-									
-									return (maxRT);
-									}
-							
-							
-							}
-							
-							if ((airRT < 1 )&& (vehRT > 0) && (infRT > 0)){
-							
-								if((vehRT > infRT) ){
-									var maxRT = vehRT;
-									
-									return (maxRT);
-									}
-								if((infRT > vehRT)){
-									var maxRT = infRT;
-									
-									return (maxRT);
-									}
-							}
-							
-							if ((airRT > 0) && (vehRT < 1 )&& (infRT > 0)){
-								if((airRT > infRT) ){
-									var maxRT = airRT;
-									
-									return (maxRT);
-									}
-								
-								if((infRT > airRT) ){
-									var maxRT = infRT;
-									
-									return (maxRT);
-									}
-							}
-							
-							if ((airRT > 0) && (vehRT > 0 )&& (infRT < 1)){
-								if((airRT > vehRT)){
-										var maxRT = airRT;
-										
-										return (maxRT);
-										}
-									if((vehRT > airRT)){
-										var maxRT = vehRT;
-										
-										return (maxRT);
-										}
-								
-							}
-							
-						
-							if (((airRT < 1) && (vehRT < 1 ))&& (infRT > 0)){
-								var oneWithRT = infRT;
-								return (oneWithRT);
-							}
-							
-							if ((vehRT > 0 )&& ((airRT < 1) && (infRT < 1))){
-								var oneWithRT = vehRT;
-								return (oneWithRT);
-							}
-							
-							if ((airRT >0) && ((vehRT < 1 )&& (infRT < 1))){
-								var oneWithRT = airRT;
-								return (oneWithRT);
-							}
-							
-							else{
-								var totalNoRT = 0;
-								return (totalNoRT);
-							}
-						
-						},
+
+                        totalRepairTime: function(airRT, vehRT, infRT) {
+
+
+                            if ((airRT > 0) && (vehRT > 0) && (infRT > 0)) {
+                                if ((airRT > vehRT) && (airRT > infRT)) {
+                                    var maxRT = airRT;
+
+                                    return (maxRT);
+                                }
+                                if ((vehRT > airRT) && (vehRT > infRT)) {
+                                    var maxRT = vehRT;
+
+                                    return (maxRT);
+                                }
+                                if ((infRT > vehRT) && (infRT > airRT)) {
+                                    var maxRT = infRT;
+
+                                    return (maxRT);
+                                }
+
+
+                            }
+
+                            if ((airRT < 1) && (vehRT > 0) && (infRT > 0)) {
+
+                                if ((vehRT > infRT)) {
+                                    var maxRT = vehRT;
+
+                                    return (maxRT);
+                                }
+                                if ((infRT > vehRT)) {
+                                    var maxRT = infRT;
+
+                                    return (maxRT);
+                                }
+                            }
+
+                            if ((airRT > 0) && (vehRT < 1) && (infRT > 0)) {
+                                if ((airRT > infRT)) {
+                                    var maxRT = airRT;
+
+                                    return (maxRT);
+                                }
+
+                                if ((infRT > airRT)) {
+                                    var maxRT = infRT;
+
+                                    return (maxRT);
+                                }
+                            }
+
+                            if ((airRT > 0) && (vehRT > 0) && (infRT < 1)) {
+                                if ((airRT > vehRT)) {
+                                    var maxRT = airRT;
+
+                                    return (maxRT);
+                                }
+                                if ((vehRT > airRT)) {
+                                    var maxRT = vehRT;
+
+                                    return (maxRT);
+                                }
+
+                            }
+
+
+                            if (((airRT < 1) && (vehRT < 1)) && (infRT > 0)) {
+                                var oneWithRT = infRT;
+                                return (oneWithRT);
+                            }
+
+                            if ((vehRT > 0) && ((airRT < 1) && (infRT < 1))) {
+                                var oneWithRT = vehRT;
+                                return (oneWithRT);
+                            }
+
+                            if ((airRT > 0) && ((vehRT < 1) && (infRT < 1))) {
+                                var oneWithRT = airRT;
+                                return (oneWithRT);
+                            } else {
+                                var totalNoRT = 0;
+                                return (totalNoRT);
+                            }
+
+                        },
 
                         autoUpgradeInfo: function() {
                             //console.log("Start of Main Function");
                             var _this = FlunikTools.Main.getInstance();
                             var num = -1;
                             var checkBoxes = null;
-							var offUnitArr = [];
-							var defUnitArr = [];
+                            var offUnitArr = [];
+                            var defUnitArr = [];
                             var buildArr = [];
-							var cityArr = [];
+                            var cityArr = [];
                             //_this.cityPageTab(_this.cityName(), _this.buildingName());
                             //page2.getChildren()[1].getChildren()[num] == 0;
                             for (var nCity in ClientLib.Data.MainData.GetInstance().get_Cities().get_AllCities().d) {
@@ -1969,39 +2146,39 @@
 
                                 var city = ClientLib.Data.MainData.GetInstance().get_Cities().get_AllCities().d[nCity];
                                 //console.log(city.m_SupportDedicatedBaseName);
-								var cityName = city.m_SupportDedicatedBaseName;
-								cityArr[cityName] = city;
-								var defLvl = city.get_LvlDefense();
-								var offLvl = city.get_LvlOffense();
+                                var cityName = city.m_SupportDedicatedBaseName;
+                                cityArr[cityName] = city;
+                                var defLvl = city.get_LvlDefense();
+                                var offLvl = city.get_LvlOffense();
 
                                 try {
                                     _this.cityPage(city, num);
                                 } catch (e) {
                                     console.log("error : ", e)
                                 }
-								
-								var offcryCost = 0; 
-								var offpowCostA = 0;
-								var defcryCost = 0; 
-								var defpowCostA = 0;
-								
-								var tiberiumCont = city.GetResourceGrowPerHour(ClientLib.Base.EResourceType.Tiberium, false, false);
-								var tiberiumBonus = city.GetResourceBonusGrowPerHour(ClientLib.Base.EResourceType.Tiberium);
-								var alliance = ClientLib.Data.MainData.GetInstance().get_Alliance();
-								var tiberiumAlly = alliance.GetPOIBonusFromResourceType(ClientLib.Base.EResourceType.Tiberium);
-								var powerCont = city.GetResourceGrowPerHour(ClientLib.Base.EResourceType.Power, false, false);
-								var powerBonus = city.GetResourceBonusGrowPerHour(ClientLib.Base.EResourceType.Power);
-								var powerAlly = alliance.GetPOIBonusFromResourceType(ClientLib.Base.EResourceType.Power);
-								var crystalCont = city.GetResourceGrowPerHour(ClientLib.Base.EResourceType.Crystal, false, false);
-								var crystalBonus = city.GetResourceBonusGrowPerHour(ClientLib.Base.EResourceType.Crystal);
-								var crystalAlly = alliance.GetPOIBonusFromResourceType(ClientLib.Base.EResourceType.Crystal);
-								
-								var airRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Aircraft, false);
-								var nextAirRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Aircraft, true);
-								var vehRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Vehicle, false);
-								var nextVehRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Vehicle, true);
-								var infRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Infantry, false);
-								var nextInfRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Infantry, true);
+
+                                var offcryCost = 0;
+                                var offpowCostA = 0;
+                                var defcryCost = 0;
+                                var defpowCostA = 0;
+
+                                var tiberiumCont = city.GetResourceGrowPerHour(ClientLib.Base.EResourceType.Tiberium, false, false);
+                                var tiberiumBonus = city.GetResourceBonusGrowPerHour(ClientLib.Base.EResourceType.Tiberium);
+                                var alliance = ClientLib.Data.MainData.GetInstance().get_Alliance();
+                                var tiberiumAlly = alliance.GetPOIBonusFromResourceType(ClientLib.Base.EResourceType.Tiberium);
+                                var powerCont = city.GetResourceGrowPerHour(ClientLib.Base.EResourceType.Power, false, false);
+                                var powerBonus = city.GetResourceBonusGrowPerHour(ClientLib.Base.EResourceType.Power);
+                                var powerAlly = alliance.GetPOIBonusFromResourceType(ClientLib.Base.EResourceType.Power);
+                                var crystalCont = city.GetResourceGrowPerHour(ClientLib.Base.EResourceType.Crystal, false, false);
+                                var crystalBonus = city.GetResourceBonusGrowPerHour(ClientLib.Base.EResourceType.Crystal);
+                                var crystalAlly = alliance.GetPOIBonusFromResourceType(ClientLib.Base.EResourceType.Crystal);
+
+                                var airRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Aircraft, false);
+                                var nextAirRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Aircraft, true);
+                                var vehRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Vehicle, false);
+                                var nextVehRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Vehicle, true);
+                                var infRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Infantry, false);
+                                var nextInfRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Infantry, true);
 
 
 
@@ -2011,37 +2188,37 @@
 
                                 var fNum = 0;
                                 var B_obj = 0;
-								var Acc_obj = 0;
-								var Sil_obj = 0;
-								var TibHar_obj = 0;
-								var CryHar_obj = 0; 
-								var Pow_obj = 0; 
-								var Ref_obj = 0;
-								var Cmd_obj = 0;
-								var Sup_obj = 0; 
-								var Rt_obj = 0;
+                                var Acc_obj = 0;
+                                var Sil_obj = 0;
+                                var TibHar_obj = 0;
+                                var CryHar_obj = 0;
+                                var Pow_obj = 0;
+                                var Ref_obj = 0;
+                                var Cmd_obj = 0;
+                                var Sup_obj = 0;
+                                var Rt_obj = 0;
                                 var D_obj = 0;
                                 var O_obj = 0;
                                 var x = -1;
                                 var y = -1;
                                 var nameArr = new Array();
                                 var gNum = -1;
-								var proNum = -1;
-								
-								
-								var allArr = [];
-								var refArr = [];
-								var powArr = [];
-								var harTibArr = [];
-								var harCryArr = [];
-								var silArr = [];
-								var accArr = [];
-								var refNum = -1;
-								var powNum = -1;
-								var harTibNum = -1;
-								var harCryNum = -1;
-								var silNum = -1;
-								var accNum = -1;
+                                var proNum = -1;
+
+
+                                var allArr = [];
+                                var refArr = [];
+                                var powArr = [];
+                                var harTibArr = [];
+                                var harCryArr = [];
+                                var silArr = [];
+                                var accArr = [];
+                                var refNum = -1;
+                                var powNum = -1;
+                                var harTibNum = -1;
+                                var harCryNum = -1;
+                                var silNum = -1;
+                                var accNum = -1;
 
 
                                 var typeArr5 = [];
@@ -2053,12 +2230,12 @@
                                     var cNum = -1;
                                     var dNum = -1;
                                     var eNum = -1;
-									var MaxLevel = 65;
+                                    var MaxLevel = 65;
 
                                     var type = "";
                                     var building = buildings.d[nBuildings];
-									//console.log(!_this.canUpgradeBuilding(building, city), _this.canUpgradeBuilding(building, city));
-									//if (!_this.canUpgradeBuilding(building, city)) continue;
+                                    //console.log(!_this.canUpgradeBuilding(building, city), _this.canUpgradeBuilding(building, city));
+                                    //if (!_this.canUpgradeBuilding(building, city)) continue;
 
                                     var tech = building.get_TechName();
                                     var buildingName = building.get_UnitGameData_Obj().dn;
@@ -2068,230 +2245,234 @@
                                     aNum = 0;
                                     //console.log(aNum, bNum, cNum, dNum, eNum);
                                     if (tech == ClientLib.Base.ETechName.Construction_Yard && building.get_CurrentLevel() < MaxLevel && city.get_CityBuildingsData().GetFullRepairTime(false) > 43200) {
-                                       
-									   _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										
-										var timeTibCost = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCost = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										
-										var baseRT = city.get_CityBuildingsData().GetFullRepairTime(false);
-										var baseRTDelta = city.get_CityBuildingsData().GetFullRepairTime(false) - city.get_CityBuildingsData().GetFullRepairTime(true);
-										//console.log(_this.FormatTimespan(baseRT),_this.FormatTimespan(baseRTDelta));
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
-											//arr, building, type, prodA, prodB, prodC, costA, costB, deltaA, deltaB, deltaC, cityName, waitTib, waitPow
-                                            _this.buildingRows(buildArr, building, "CY", baseRT, 0, 0, tibCost, powCost, baseRTDelta, 0, 0,cityName, tibCanbuy, powCanbuy);
-											if(upChBx.getValue()){
-												var Cmd_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
-											//_this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, tibCost, powCost, change, time);
+
+                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+
+                                        var timeTibCost = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCost = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+
+                                        var baseRT = city.get_CityBuildingsData().GetFullRepairTime(false);
+                                        var baseRTDelta = city.get_CityBuildingsData().GetFullRepairTime(false) - city.get_CityBuildingsData().GetFullRepairTime(true);
+                                        //console.log(_this.FormatTimespan(baseRT),_this.FormatTimespan(baseRTDelta));
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                            //arr, building, type, prodA, prodB, prodC, costA, costB, deltaA, deltaB, deltaC, cityName, waitTib, waitPow
+                                            _this.buildingRows(buildArr, building, "CY", baseRT, 0, 0, tibCost, powCost, baseRTDelta, 0, 0, cityName, tibCanbuy, powCanbuy);
+                                            if (upChBx.getValue()) {
+                                                var Cmd_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
+                                            //_this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, tibCost, powCost, change, time);
                                         }
                                     } //ClientLib.Base.ETechName.Construction_Yard
                                     if (tech == ClientLib.Base.ETechName.Refinery && building.get_CurrentLevel() < MaxLevel) {
-										_this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
                                         gNum++;
-										refNum++;
-										proNum = 0;
+                                        refNum++;
+                                        proNum = 0;
                                         type = "Credits";
-										var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].NewLvlDelta;
+                                        var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].NewLvlDelta;
                                         var refPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].TotalValue;
                                         var refPac = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsPackageSize].TotalValue;
                                         var refPacperH = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsBonusTimeToComplete].TotalValue;
                                         var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										
-										var timeTibCost = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCost = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										//console.log(buildingName, tibCanbuy, powCanbuy);
-                                        
-										var LinkTypes0 = 0;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+
+                                        var timeTibCost = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCost = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //console.log(buildingName, tibCanbuy, powCanbuy);
+
+                                        var LinkTypes0 = 0;
                                         var LinkTypes1 = 0;
-										var deltaA = 0;
-										var deltaB = 0;
-										var refTotalProOfLevel12 = 605 + (7260/6) + 484 + 605; 
+                                        var deltaA = 0;
+                                        var deltaB = 0;
+                                        var refTotalProOfLevel12 = 605 + (7260 / 6) + 484 + 605;
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[36] != undefined) {
                                             LinkTypes0 = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerplantCreditBonus].Value);
-											deltaA = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerplantCreditBonus].NewLvlDelta)
-                                            //var refTotalPro = refPro + (refPac/(refPacperH/3600)) +  LinkTypes0 ;
+                                            deltaA = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerplantCreditBonus].NewLvlDelta)
+                                                //var refTotalPro = refPro + (refPac/(refPacperH/3600)) +  LinkTypes0 ;
                                         } else {
                                             LinkTypes0 = 0;
-											deltaA = 0;
+                                            deltaA = 0;
                                         }
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[37] != undefined) {
                                             LinkTypes1 = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.TiberiumCreditProduction].Value);
                                             deltaB = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.TiberiumCreditProduction].NewLvlDelta)
-											//var refTotalPro = refPro + (refPac/(refPacperH/3600)) +  LinkTypes0 +  LinkTypes1  ;
+                                                //var refTotalPro = refPro + (refPac/(refPacperH/3600)) +  LinkTypes0 +  LinkTypes1  ;
                                         } else {
                                             LinkTypes1 = 0;
                                         }
-										
-										var refTotalPro = refPro + (refPac/(refPacperH/3600)) +  LinkTypes0 +  LinkTypes1  ;
-										var refProRatio = Math.pow( ((refTotalProOfLevel12/31608)*100)/((refTotalPro/tibCost)*100), -1);
-										refArr[refNum] = refProRatio;
-										if ((refProRatio > 0) ){
-													refArr.sort(function(a,b){return b-a});
-												}
-											
-										/*if((Math.max(refProRatio) == refArr[0])){
-												var Ref_obj = {
-													cityid: city.get_Id(),
-													basename: city.m_SupportDedicatedBaseName,
-													building: building.get_UnitGameData_Obj().dn,
-													buildinglevel: building.get_CurrentLevel(),
-													posX: building.get_CoordX(),
-													posY: building.get_CoordY(),
-													isPaid: true
-												}
-										}*/
-                                        if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(refProRatio) == refArr[0])) {
-                                            _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, "", tibCost, powCost, deltaA, deltaB, 0,cityName, tibCanbuy, powCanbuy);
-											if(upChBxRef.getValue()){
-												allArr[proNum] = refArr;
-												var Ref_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											Ratio: refProRatio,
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
-											//_this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, tibCost, powCost, change, time);
+
+                                        var refTotalPro = refPro + (refPac / (refPacperH / 3600)) + LinkTypes0 + LinkTypes1;
+                                        var refProRatio = Math.pow(((refTotalProOfLevel12 / 31608) * 100) / ((refTotalPro / tibCost) * 100), -1);
+                                        refArr[refNum] = refProRatio;
+                                        if ((refProRatio > 0)) {
+                                            refArr.sort(function(a, b) {
+                                                return b - a
+                                            });
                                         }
-                                        
+
+                                        /*if((Math.max(refProRatio) == refArr[0])){
+                                        		var Ref_obj = {
+                                        			cityid: city.get_Id(),
+                                        			basename: city.m_SupportDedicatedBaseName,
+                                        			building: building.get_UnitGameData_Obj().dn,
+                                        			buildinglevel: building.get_CurrentLevel(),
+                                        			posX: building.get_CoordX(),
+                                        			posY: building.get_CoordY(),
+                                        			isPaid: true
+                                        		}
+                                        }*/
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(refProRatio) == refArr[0])) {
+                                            _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, "", tibCost, powCost, deltaA, deltaB, 0, cityName, tibCanbuy, powCanbuy);
+                                            if (upChBxRef.getValue()) {
+                                                allArr[proNum] = refArr;
+                                                var Ref_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    Ratio: refProRatio,
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
+                                            //_this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, tibCost, powCost, change, time);
+                                        }
+
 
                                     }
                                     if (tech == ClientLib.Base.ETechName.PowerPlant && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										gNum++;
-										
-										powNum++;
-										proNum = 1;
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        gNum++;
+
+                                        powNum++;
+                                        proNum = 1;
                                         type = "Power";
-										var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].NewLvlDelta;
+                                        var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].NewLvlDelta;
                                         var powPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].TotalValue;
                                         var powPac = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerPackageSize].TotalValue;
                                         var powPacperH = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerBonusTimeToComplete].TotalValue;
                                         var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										//console.log(buildingName, tibCanbuy, powCanbuy);
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //console.log(buildingName, tibCanbuy, powCanbuy);
                                         var LinkTypes0 = 0;
                                         var LinkTypes1 = 0;
                                         var LinkTypes2 = 0;
                                         var powTotalProOfLevel12 = 605 + (7260 / 6) + 570 + 456 + 484;
-										var deltaA = 0;
-										var deltaB = 0;
-										var deltaC = 0;
-										
+                                        var deltaA = 0;
+                                        var deltaB = 0;
+                                        var deltaC = 0;
+
 
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.AccumulatorPowerBonus] != undefined) {
                                             LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.AccumulatorPowerBonus].Value;
                                             deltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.AccumulatorPowerBonus].NewLvlDelta;
-											//LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.CrystalCreditProduction].Value ;
+                                            //LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.CrystalCreditProduction].Value ;
                                         } else {
                                             LinkTypes0 = 0;
                                         }
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.CrystalCreditProduction] != undefined) {
                                             LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.CrystalCreditProduction].Value;
-											deltaB = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.CrystalCreditProduction].NewLvlDelta;
-										} else {
+                                            deltaB = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.CrystalCreditProduction].NewLvlDelta;
+                                        } else {
                                             LinkTypes1 = 0;
                                         }
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[42] != undefined) {
                                             LinkTypes2 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.RefineryPowerBonus].Value;
-											deltaC = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.RefineryPowerBonus].NewLvlDelta;
-										} else {
+                                            deltaC = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.RefineryPowerBonus].NewLvlDelta;
+                                        } else {
                                             LinkTypes2 = 0;
                                         }
-										var powTotalPro = powPro + (powPac/(powPacperH/3600)) + LinkTypes0 +  LinkTypes1 + LinkTypes2 ;
-										var powProRatio = Math.pow( ((powTotalProOfLevel12/164736)*100)/((powTotalPro/tibCost)*100), -1);
-										powArr[powNum] = powProRatio;
-                                            
-                                            if ((powProRatio > 0) ){/* Math.floor((Math.random()*10)+1)){*/
-                                           // console.log(((powTotalProOfLevel12/96000)*100)/((powTotalPro/refCost)*100) );
-                                            powArr.sort(function(a,b){return b-a});
-                                            }
-											
-											
-                                          /*  if((Math.max(powProRatio) == powArr[0])){
+                                        var powTotalPro = powPro + (powPac / (powPacperH / 3600)) + LinkTypes0 + LinkTypes1 + LinkTypes2;
+                                        var powProRatio = Math.pow(((powTotalProOfLevel12 / 164736) * 100) / ((powTotalPro / tibCost) * 100), -1);
+                                        powArr[powNum] = powProRatio;
+
+                                        if ((powProRatio > 0)) { /* Math.floor((Math.random()*10)+1)){*/
+                                            // console.log(((powTotalProOfLevel12/96000)*100)/((powTotalPro/refCost)*100) );
+                                            powArr.sort(function(a, b) {
+                                                return b - a
+                                            });
+                                        }
+
+
+                                        /*  if((Math.max(powProRatio) == powArr[0])){
 											var Pow_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
@@ -2306,363 +2487,365 @@
 										}*/
                                         if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(powProRatio) == powArr[0])) {
                                             _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, LinkTypes2, tibCost, powCost, deltaA, deltaB, deltaC, cityName, tibCanbuy, powCanbuy);
-											if(upChBxPow.getValue()){
-												allArr[proNum] = powArr;
-												var Pow_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											Ratio: powProRatio,
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxPow.getValue()) {
+                                                allArr[proNum] = powArr;
+                                                var Pow_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    Ratio: powProRatio,
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
-                                        
+
                                     }
                                     if (tech == ClientLib.Base.ETechName.Command_Center && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										if (ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel()) != null) {
-										offcryCost = ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[0].Count;
-										offpowCostA = ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[1].Count;
-										}
-										
-										var tibCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										
-										
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        if (ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel()) != null) {
+                                            offcryCost = ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[0].Count;
+                                            offpowCostA = ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[1].Count;
+                                        }
+
+                                        var tibCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+
+
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "CC", offcryCost, 0, 0, tibCost, powCost, offpowCostA, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxCmd.getValue()){
-												var Cmd_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxCmd.getValue()) {
+                                                var Cmd_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
                                     }
                                     if (tech == ClientLib.Base.ETechName.Defense_HQ && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										
-										if (ClientLib.API.Defense.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel()) != null ) {
-										defcryCost = ClientLib.API.Defense.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[0].Count;
-										defpowCostA = ClientLib.API.Defense.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[1].Count;
-										}
-										
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+
+                                        if (ClientLib.API.Defense.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel()) != null) {
+                                            defcryCost = ClientLib.API.Defense.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[0].Count;
+                                            defpowCostA = ClientLib.API.Defense.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel())[1].Count;
+                                        }
+
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "HQ", defcryCost, 0, 0, tibCost, powCost, defpowCostA, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxCmd.getValue()){
-												var Cmd_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxCmd.getValue()) {
+                                                var Cmd_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
                                     }
                                     if (tech == ClientLib.Base.ETechName.Barracks && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										
-										
-										var deltaInfRT = infRT - nextInfRT;
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+
+
+                                        var deltaInfRT = infRT - nextInfRT;
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "RT", infRT, 0, 0, tibCost, powCost, deltaInfRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxRt.getValue() && _this.totalRepairTime( airRT, vehRT, infRT) == infRT){
-												var Rt_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxRt.getValue() && _this.totalRepairTime(airRT, vehRT, infRT) == infRT) {
+                                                var Rt_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
                                     }
                                     if (tech == ClientLib.Base.ETechName.Factory && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										
-										var deltaVehRT = vehRT - nextVehRT;
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+
+                                        var deltaVehRT = vehRT - nextVehRT;
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "RT", vehRT, 0, 0, tibCost, powCost, deltaVehRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxRt.getValue() && _this.totalRepairTime( airRT, vehRT, infRT) == vehRT){
-												var Rt_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxRt.getValue() && _this.totalRepairTime(airRT, vehRT, infRT) == vehRT) {
+                                                var Rt_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
                                     }
                                     if (tech == ClientLib.Base.ETechName.Airport && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										
-										
-										var deltaAirRT = airRT - nextAirRT;
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+
+
+                                        var deltaAirRT = airRT - nextAirRT;
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "RT", airRT, 0, 0, tibCost, powCost, deltaAirRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxRt.getValue() && _this.totalRepairTime( airRT, vehRT, infRT) == airRT){
-												var RT_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxRt.getValue() && _this.totalRepairTime(airRT, vehRT, infRT) == airRT) {
+                                                var RT_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
                                     }
                                     if (tech == ClientLib.Base.ETechName.Defense_Facility && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										if(building.get_CurrentLevel() >= defLvl){
-											var okLvl = true;
-										} else {
-											var okLvl = false;
-										}
-										
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        if (building.get_CurrentLevel() >= defLvl) {
+                                            var okLvl = true;
+                                        } else {
+                                            var okLvl = false;
+                                        }
+
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "def", okLvl, 0, 0, tibCost, powCost, defLvl, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxCmd.getValue()){
-												var Cmd_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxCmd.getValue()) {
+                                                var Cmd_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
                                     }
 
                                     if (tech == ClientLib.Base.ETechName.Harvester && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										gNum++;
-										
-										
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        gNum++;
+
+
                                         var LinkTypes0 = 0;
                                         var LinkTypes1 = 0;
-										var deltaA = 0;
-										var deltaB = 0;
-										var harTotalProOfLevel12 = 570 + (7260/6) + 380;
+                                        var deltaA = 0;
+                                        var deltaB = 0;
+                                        var harTotalProOfLevel12 = 570 + (7260 / 6) + 380;
                                         //OwnProdModifiers.d[1].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].Value - 
 
                                         if ((city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[1, 25, 33])) {
                                             harTibNum++;
-											proNum = 2;
-											type = "Tiberium";
-											var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].NewLvlDelta;
+                                            proNum = 2;
+                                            type = "Tiberium";
+                                            var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].NewLvlDelta;
                                             var hartibPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].TotalValue;
                                             //var LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].Value;
                                             var hartibPac = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumPackageSize].TotalValue;
                                             var hartibPacperH = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumBonusTimeToComplete].TotalValue;
-											var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-											if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-											
-											
-											var timeTibCost = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-											var timePowCost = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-											if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										//console.log(buildingName, tibCanbuy, powCanbuy);
+                                            var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                            if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                                var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                            } else {
+                                                var powCost = 0;
+                                            }
+
+
+                                            var timeTibCost = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                            var timePowCost = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                            if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                                var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                            } else {
+                                                var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                            }
+                                            if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                                var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                            } else {
+                                                var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                            }
+                                            //console.log(buildingName, tibCanbuy, powCanbuy);
 
                                             if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction] != undefined) {
                                                 LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].Value;
-												deltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].NewLvlDelta
+                                                deltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].NewLvlDelta
                                             } else {
                                                 LinkTypes0 = 0;
                                             }
-											var harTibTotalPro = hartibPro + (hartibPac/(hartibPacperH/3600)) + LinkTypes0;
-											var harTibProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), -1);
-											harTibArr[harTibNum] = harTibProRatio;
-											 if ( harTibProRatio > 0 ){// Math.floor((Math.random()*10)+1)){
-                                            //console.log(((harCryTotalProOfLevel12/96000)*100)/((harCryTotalPro/harCryCost)*100) );
-                                          
-                                            harTibArr.sort(function(a,b){return b-a});
-                                                
-                                            
+                                            var harTibTotalPro = hartibPro + (hartibPac / (hartibPacperH / 3600)) + LinkTypes0;
+                                            var harTibProRatio = Math.pow(((harTotalProOfLevel12 / 95040) * 100) / ((harCryTotalPro / tibCost) * 100), -1);
+                                            harTibArr[harTibNum] = harTibProRatio;
+                                            if (harTibProRatio > 0) { // Math.floor((Math.random()*10)+1)){
+                                                //console.log(((harCryTotalProOfLevel12/96000)*100)/((harCryTotalPro/harCryCost)*100) );
+
+                                                harTibArr.sort(function(a, b) {
+                                                    return b - a
+                                                });
+
+
                                             }
-											
-											
-											/*if((Math.max(harTibProRatio) == harTibArr[0])){
+
+
+                                            /*if((Math.max(harTibProRatio) == harTibArr[0])){
 											var Har_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
@@ -2677,81 +2860,83 @@
                            
                              }*/
                                             if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(harTibProRatio) == harTibArr[0])) {
-                                                _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1,"" , tibCost, powCost, deltaA, deltaB, 0, cityName, tibCanbuy, powCanbuy);
-												if(upChBxHarTib.getValue()){
-													allArr[proNum] = harTibArr;
-												var TibHar_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											Ratio: harTibProRatio,
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                                _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, "", tibCost, powCost, deltaA, deltaB, 0, cityName, tibCanbuy, powCanbuy);
+                                                if (upChBxHarTib.getValue()) {
+                                                    allArr[proNum] = harTibArr;
+                                                    var TibHar_obj = {
+                                                        cityid: city.get_Id(),
+                                                        basename: city.m_SupportDedicatedBaseName,
+                                                        bName: building.get_UnitGameData_Obj().dn,
+                                                        buildinglevel: building.get_CurrentLevel(),
+                                                        Ratio: harTibProRatio,
+                                                        posX: building.get_CoordX(),
+                                                        posY: building.get_CoordY(),
+                                                        isPaid: true
+                                                    }
+                                                }
                                             }
                                         }
 
                                         if ((city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[4, 26, 34])) {
                                             type = "Crystal";
-											harCryNum++;
-											proNum = 3;
-											var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].NewLvlDelta;
+                                            harCryNum++;
+                                            proNum = 3;
+                                            var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].NewLvlDelta;
                                             var harcryPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].TotalValue;
                                             //var LinkTypes1 =  city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].Value;
                                             var harcryPac = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalPackageSize].TotalValue;
                                             var harcryPacperH = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalBonusTimeToComplete].TotalValue;
-											var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-											if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-											
-											
-											var timeTibCost = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-											var timePowCost = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-											if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										//console.log(buildingName, tibCanbuy, powCanbuy);
+                                            var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                            if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                                var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                            } else {
+                                                var powCost = 0;
+                                            }
+
+
+                                            var timeTibCost = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                            var timePowCost = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                            if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                                var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                            } else {
+                                                var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                            }
+                                            if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                                var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                            } else {
+                                                var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                            }
+                                            //console.log(buildingName, tibCanbuy, powCanbuy);
 
                                             //var harCryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0 || 1].Count;
 
                                             if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction] != undefined) {
                                                 LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].Value;
                                                 deltaB = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].NewLvlDelta;
-												//var harCryTotalPro = harcryPro + (harcryPac/(harcryPacperH/3600)) + LinkTypes1;
+                                                //var harCryTotalPro = harcryPro + (harcryPac/(harcryPacperH/3600)) + LinkTypes1;
                                             } else {
                                                 var LinkTypes1 = 0;
                                             }
-											
-											var harCryTotalPro = harcryPro + (harcryPac/(harcryPacperH/3600)) + LinkTypes1;
-											var harCryProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), -1);
-											harCryArr[harCryNum] = harCryProRatio;
-											if ( harCryProRatio > 0 ){// Math.floor((Math.random()*10)+1)){
-                                            //console.log(((harCryTotalProOfLevel12/96000)*100)/((harCryTotalPro/harCryCost)*100) );
-                                          
-                                            harCryArr.sort(function(a,b){return b-a});
-                                                
-                                            
+
+                                            var harCryTotalPro = harcryPro + (harcryPac / (harcryPacperH / 3600)) + LinkTypes1;
+                                            var harCryProRatio = Math.pow(((harTotalProOfLevel12 / 95040) * 100) / ((harCryTotalPro / tibCost) * 100), -1);
+                                            harCryArr[harCryNum] = harCryProRatio;
+                                            if (harCryProRatio > 0) { // Math.floor((Math.random()*10)+1)){
+                                                //console.log(((harCryTotalProOfLevel12/96000)*100)/((harCryTotalPro/harCryCost)*100) );
+
+                                                harCryArr.sort(function(a, b) {
+                                                    return b - a
+                                                });
+
+
                                             }
-											
-											
-											/*if((Math.max(harCryProRatio) == harCryArr[0])){
+
+
+                                            /*if((Math.max(harCryProRatio) == harCryArr[0])){
 											var Har_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
@@ -2766,180 +2951,180 @@
                            
                              }*/
                                             if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(harCryProRatio) == harCryArr[0])) {
-                                                _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1,"" ,tibCost, powCost, deltaA, deltaB, 0, cityName, tibCanbuy, powCanbuy);
-												if(upChBxHarCry.getValue()){
-													allArr[proNum] = harCryArr;
-												var CryHar_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											Ratio: harCryProRatio,
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                                _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, "", tibCost, powCost, deltaA, deltaB, 0, cityName, tibCanbuy, powCanbuy);
+                                                if (upChBxHarCry.getValue()) {
+                                                    allArr[proNum] = harCryArr;
+                                                    var CryHar_obj = {
+                                                        cityid: city.get_Id(),
+                                                        basename: city.m_SupportDedicatedBaseName,
+                                                        bName: building.get_UnitGameData_Obj().dn,
+                                                        buildinglevel: building.get_CurrentLevel(),
+                                                        Ratio: harCryProRatio,
+                                                        posX: building.get_CoordX(),
+                                                        posY: building.get_CoordY(),
+                                                        isPaid: true
+                                                    }
+                                                }
                                             }
                                         }
-                                       
+
                                     }
                                     if (tech == ClientLib.Base.ETechName.Support_Air && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										if(building.get_CurrentLevel() >= defLvl){
-											var okLvl = true;
-										} else {
-											var okLvl = false;
-										}
-										
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        if (building.get_CurrentLevel() >= defLvl) {
+                                            var okLvl = true;
+                                        } else {
+                                            var okLvl = false;
+                                        }
+
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "airSup", okLvl, 0, 0, tibCost, powCost, defLvl, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxSup.getValue()){
-												var Sup_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxSup.getValue()) {
+                                                var Sup_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
                                     }
                                     if (tech == ClientLib.Base.ETechName.Support_Ion && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										if(building.get_CurrentLevel() >= defLvl){
-											var okLvl = true;
-										} else {
-											var okLvl = false;
-										}
-										
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        if (building.get_CurrentLevel() >= defLvl) {
+                                            var okLvl = true;
+                                        } else {
+                                            var okLvl = false;
+                                        }
+
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "vehSup", okLvl, 0, 0, tibCost, powCost, defLvl, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxSup.getValue()){
-												var Sup_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxSup.getValue()) {
+                                                var Sup_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
                                     }
                                     if (tech == ClientLib.Base.ETechName.Support_Art && building.get_CurrentLevel() < MaxLevel) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
-										if(building.get_CurrentLevel() >= defLvl){
-											var okLvl = true;
-										} else {
-											var okLvl = false;
-										}
-										
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-                                        if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										var timeTibCostPerIncome = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCostPerIncome = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        if (building.get_CurrentLevel() >= defLvl) {
+                                            var okLvl = true;
+                                        } else {
+                                            var okLvl = false;
+                                        }
+
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+                                        var timeTibCostPerIncome = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCostPerIncome = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "infSup", okLvl, 0, 0, tibCost, powCost, defLvl, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxSup.getValue()){
-												var Sup_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            if (upChBxSup.getValue()) {
+                                                var Sup_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
                                     }
                                     if (tech == ClientLib.Base.ETechName.Silo && building.get_CurrentLevel() < MaxLevel) {
-										 _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
                                         gNum++;
-										silNum++;
-										proNum = 4;
+                                        silNum++;
+                                        proNum = 4;
                                         type = "Tib + Cry";
                                         var LinkTypes1 = 0;
                                         var LinkTypes0 = 0;
-										var deltaA = 0;
-										var deltaB = 0;
+                                        var deltaA = 0;
+                                        var deltaB = 0;
                                         var silTotalPro = 0;
-										var silTotalProOfLevel12 = 380 + 380 ;
-										var DeltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].NewLvlDelta;
-										var DeltaB = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].NewLvlDelta;
+                                        var silTotalProOfLevel12 = 380 + 380;
+                                        var DeltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].NewLvlDelta;
+                                        var DeltaB = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].NewLvlDelta;
                                         var silCryPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].TotalValue;
                                         //var LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterCrystalProduction].Value;
                                         var silTibPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].TotalValue;
@@ -2947,31 +3132,31 @@
                                         var silCrySto = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalStorage].TotalValue;
                                         var silTibSto = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumStorage].TotalValue;
                                         //var silCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0 || 1].Count;
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										
-										var timeTibCost = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCost = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										//console.log(buildingName, tibCanbuy, powCanbuy);
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+
+                                        var timeTibCost = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCost = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //console.log(buildingName, tibCanbuy, powCanbuy);
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterCrystalProduction] == undefined) {
 
@@ -2979,7 +3164,7 @@
                                         } else {
                                             LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterCrystalProduction].Value;
                                             deltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterCrystalProduction].NewLvlDelta;
-											//silTotalPro = LinkTypes1 + LinkTypes0;
+                                            //silTotalPro = LinkTypes1 + LinkTypes0;
                                         }
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterTiberiumProduction] == undefined) {
@@ -2988,21 +3173,23 @@
                                         } else {
                                             LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterTiberiumProduction].Value;
                                             deltaB = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.HarvesterTiberiumProduction].NewLvlDelta;
-											//silTotalPro = LinkTypes1 + LinkTypes0;
+                                            //silTotalPro = LinkTypes1 + LinkTypes0;
                                         }
                                         //console.log(building);
-										var silTotalPro = LinkTypes1 + LinkTypes0;
-										var silProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((silTotalPro/tibCost)*100), -1);
-                                         silArr[silNum] = silProRatio;
-                                            
-                                            if ((silProRatio >= 0) ){// Math.floor((Math.random()*10)+1)){
+                                        var silTotalPro = LinkTypes1 + LinkTypes0;
+                                        var silProRatio = Math.pow(((silTotalProOfLevel12 / 63360) * 100) / ((silTotalPro / tibCost) * 100), -1);
+                                        silArr[silNum] = silProRatio;
+
+                                        if ((silProRatio >= 0)) { // Math.floor((Math.random()*10)+1)){
                                             //console.log(((accTotalProOfLevel12/36360)*100)/((accTotalPro/accCost)*100) );
-                                            silArr.sort(function(a,b){return b-a});
-                                                
-                                            
-                                            }
-											
-                                           /* if((Math.max(silProRatio) == silArr[0])){
+                                            silArr.sort(function(a, b) {
+                                                return b - a
+                                            });
+
+
+                                        }
+
+                                        /* if((Math.max(silProRatio) == silArr[0])){
 											var Sil_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
@@ -3015,89 +3202,91 @@
                                  //ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Sil_obj, null, null, true);
                            
                              				}*/
-										
-										if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(silProRatio) == silArr[0])) {
-                                            _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, "",tibCost, powCost, deltaB, deltaA, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxSil.getValue()){
-												allArr[proNum] = silArr;
-												var Sil_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											Ratio: silProRatio,
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(silProRatio) == silArr[0])) {
+                                            _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, "", tibCost, powCost, deltaB, deltaA, 0, cityName, tibCanbuy, powCanbuy);
+                                            if (upChBxSil.getValue()) {
+                                                allArr[proNum] = silArr;
+                                                var Sil_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    Ratio: silProRatio,
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
-                                        
+
                                     }
                                     if (tech == ClientLib.Base.ETechName.Accumulator && building.get_CurrentLevel() < MaxLevel) {
-										 _this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if (!_this.canUpgradeBuilding(building, city)) continue;
+                                        _this.buildingBox(buildingName, num, tech, nameArr, aNum);
+                                        if (!_this.canUpgradeBuilding(building, city)) continue;
                                         var LinkTypes0 = 0;
-										accNum++;
-										proNum = 5;
+                                        accNum++;
+                                        proNum = 5;
                                         //OwnProdModifiers.d[6].ConnectedLinkTypes.d[41].Value
                                         gNum++;
                                         type = "Power";
-										var deltaA = 0;
-										var accTotalProOfLevel12 = 456 ;
-										var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].NewLvlDelta;
+                                        var deltaA = 0;
+                                        var accTotalProOfLevel12 = 456;
+                                        var Delta = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].NewLvlDelta;
                                         var accPro = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].TotalValue;
                                         //var LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerPlantAccumulatorBonus].Value;
                                         var accSto = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerStorage].TotalValue;
-										var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
-										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										
-										
-										var timeTibCost = tibCost / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600);
-										var timePowCost = powCost / ((powerCont+powerBonus+powerAlly)/3600);
-										//console.log((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-										if((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-										//console.log(buildingName, tibCanbuy, powCanbuy);
-										
+                                        var tibCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+
+
+                                        var timeTibCost = tibCost / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600);
+                                        var timePowCost = powCost / ((powerCont + powerBonus + powerAlly) / 3600);
+                                        //console.log((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
+                                        if ((tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(tibCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((tibCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //console.log(buildingName, tibCanbuy, powCanbuy);
+
                                         //var accCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0 || 1].Count;
                                         //var accTotalPro = accPro ;
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerPlantAccumulatorBonus] != undefined) {
                                             LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerPlantAccumulatorBonus].Value;
-											deltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerPlantAccumulatorBonus].NewLvlDelta;
+                                            deltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerPlantAccumulatorBonus].NewLvlDelta;
                                             var accTotalPro = LinkTypes0;
                                         } else {
                                             LinkTypes0 = 0;
-											var accTotalPro = LinkTypes0;
+                                            var accTotalPro = LinkTypes0;
                                         }
-										var accProRatio = Math.pow( ((accTotalProOfLevel12/63360)*100)/((accTotalPro/tibCost)*100), -1);
-										accArr[accNum] = accProRatio;
-                                          
-                                            if ((accProRatio > 0) ){/* Math.floor((Math.random()*10)+1)){*/
+                                        var accProRatio = Math.pow(((accTotalProOfLevel12 / 63360) * 100) / ((accTotalPro / tibCost) * 100), -1);
+                                        accArr[accNum] = accProRatio;
+
+                                        if ((accProRatio > 0)) { /* Math.floor((Math.random()*10)+1)){*/
                                             //console.log(((accTotalProOfLevel12/36360)*100)/((accTotalPro/accCost)*100) );
-                                            accArr.sort(function(a,b){return b-a});
-                                                
-                                            
-                                            }
-											
-                                            /*if((Math.max(accProRatio) == accArr[0])){
+                                            accArr.sort(function(a, b) {
+                                                return b - a
+                                            });
+
+
+                                        }
+
+                                        /*if((Math.max(accProRatio) == accArr[0])){
 											var Acc_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
@@ -3111,30 +3300,30 @@
                            
                              				}*/
                                         if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(accProRatio) == accArr[0])) {
-                                            _this.buildingRows(buildArr, building, type, LinkTypes0, "", "",tibCost, powCost, deltaA, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxAcc.getValue()){
-												allArr[proNum] = accArr;
-												var Acc_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											bName: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											Ratio: accProRatio,
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-											}
+                                            _this.buildingRows(buildArr, building, type, LinkTypes0, "", "", tibCost, powCost, deltaA, 0, 0, cityName, tibCanbuy, powCanbuy);
+                                            if (upChBxAcc.getValue()) {
+                                                allArr[proNum] = accArr;
+                                                var Acc_obj = {
+                                                    cityid: city.get_Id(),
+                                                    basename: city.m_SupportDedicatedBaseName,
+                                                    bName: building.get_UnitGameData_Obj().dn,
+                                                    buildinglevel: building.get_CurrentLevel(),
+                                                    Ratio: accProRatio,
+                                                    posX: building.get_CoordX(),
+                                                    posY: building.get_CoordY(),
+                                                    isPaid: true
+                                                }
+                                            }
                                         }
-                                       
+
                                     }
-									
-									
+
+
                                     //_this.buildingBox(building, num);
                                     //}
                                     //console.log(_this.isCheckBoxChecked(num, buildingName, aNum), buildingName, aNum, city.m_SupportDedicatedBaseName );
                                     //if(_this.canUpgradeBuilding(building, city))continue;
-									
+
                                     /*if (_this.isCheckBoxChecked(num, buildingName, aNum) && (building.get_CurrentLevel() < 65)) {
                                         console.log(_this.isCheckBoxChecked(num, buildingName, aNum), buildingName, aNum, city.m_SupportDedicatedBaseName);
                                         console.log(_this.canUpgradeBuilding(building, city));
@@ -3155,95 +3344,97 @@
                                     }*/
 
                                 } //building loop
-								if(allArr.toString() != '[]'){
-									
-									var proArr = [];
-									if(allArr[0] != undefined){
-										proArr[0]= allArr[0][0];
-									}
-									if(allArr[1] != undefined){
-										proArr[1] = allArr[1][0];
-									}
-									if(allArr[2] != undefined){
-										proArr[2] = allArr[2][0];
-									}
-									if(allArr[3] != undefined){
-										proArr[3] = allArr[3][0];
-									}
-									if(allArr[4] != undefined){
-										proArr[4] = allArr[4][0];
-									}
-									if(allArr[5] != undefined){
-										proArr[5] = allArr[5][0];
-									}
-									proArr.sort(function(a,b){return b-a});
-								//console.log(proArr);
-								
-								}
-								if(proArr != undefined){
-								if(Acc_obj != 0 && Acc_obj.Ratio == proArr[0]){
-								//console.log(Acc_obj);
-								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Acc_obj, null, null, true);
-								_this.buildingRows(buildArr, Acc_obj, "object", Acc_obj.basename, Acc_obj.bName, (Acc_obj.buildinglevel + 1), Acc_obj.posX, Acc_obj.posY, Acc_obj.Ratio);
-								}
-								if(Sil_obj != 0 && Sil_obj.Ratio == proArr[0]){
-								//console.log(Sil_obj);
-								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Sil_obj, null, null, true);
-								_this.buildingRows(buildArr, Sil_obj, "object", Sil_obj.basename, Sil_obj.bName, (Sil_obj.buildinglevel + 1), Sil_obj.posX, Sil_obj.posY, Sil_obj.Ratio);
-								}
-								if(TibHar_obj != 0 && TibHar_obj.Ratio == proArr[0]){
-								//console.log(TibHar_obj);
-								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", TibHar_obj, null, null, true);
-								_this.buildingRows(buildArr, TibHar_obj, "object", TibHar_obj.basename, TibHar_obj.bName, (TibHar_obj.buildinglevel + 1), TibHar_obj.posX, TibHar_obj.posY, TibHar_obj.Ratio);
-								}
-								if(CryHar_obj != 0 && CryHar_obj.Ratio == proArr[0]){
-								//console.log(CryHar_obj);
-								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", CryHar_obj, null, null, true);
-								_this.buildingRows(buildArr, CryHar_obj, "object", CryHar_obj.basename, CryHar_obj.bName, (CryHar_obj.buildinglevel + 1), CryHar_obj.posX, CryHar_obj.posY, CryHar_obj.Ratio);
-								}
-								if(Pow_obj != 0 && Pow_obj.Ratio == proArr[0]){
-								//console.log(Pow_obj);
-								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Pow_obj, null, null, true);
-								_this.buildingRows(buildArr, Pow_obj, "object", Pow_obj.basename, Pow_obj.bName, (Pow_obj.buildinglevel + 1), Pow_obj.posX, Pow_obj.posY, Pow_obj.Ratio);
-								}
-								if(Ref_obj != 0 && Ref_obj.Ratio == proArr[0]){
-								//console.log(Ref_obj);
-								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Ref_obj, null, null, true);
-								_this.buildingRows(buildArr, Ref_obj, "object", Ref_obj.basename, Ref_obj.bName, (Ref_obj.buildinglevel + 1), Ref_obj.posX, Ref_obj.posY, Ref_obj.Ratio);
-								}
-								}
-								if(Cmd_obj != 0){
-								//console.log(Cmd_obj);
-								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Cmd_obj, null, null, true);
-								_this.buildingRows(buildArr, Cmd_obj, "object", Cmd_obj.basename, Cmd_obj.bName, (Cmd_obj.buildinglevel + 1), Cmd_obj.posX, Cmd_obj.posY, "");
-								}
-								if(Sup_obj != 0){
-								//console.log(Sup_obj);
-								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Sup_obj, null, null, true);
-								_this.buildingRows(buildArr, Sup_obj, "object", Sup_obj.basename, Sup_obj.bName, (Sup_obj.buildinglevel + 1), Sup_obj.posX, Sup_obj.posY, "");
-								}
-								if(Rt_obj != 0){
-								//console.log(Rt_obj);
-								ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Rt_obj, null, null, true);
-								_this.buildingRows(buildArr, Rt_obj, "object", Rt_obj.basename, Rt_obj.bName, (Rt_obj.buildinglevel + 1), Rt_obj.posX, Rt_obj.posY, "");
-								}
-								
-										
+                                if (allArr.toString() != '[]') {
+
+                                    var proArr = [];
+                                    if (allArr[0] != undefined) {
+                                        proArr[0] = allArr[0][0];
+                                    }
+                                    if (allArr[1] != undefined) {
+                                        proArr[1] = allArr[1][0];
+                                    }
+                                    if (allArr[2] != undefined) {
+                                        proArr[2] = allArr[2][0];
+                                    }
+                                    if (allArr[3] != undefined) {
+                                        proArr[3] = allArr[3][0];
+                                    }
+                                    if (allArr[4] != undefined) {
+                                        proArr[4] = allArr[4][0];
+                                    }
+                                    if (allArr[5] != undefined) {
+                                        proArr[5] = allArr[5][0];
+                                    }
+                                    proArr.sort(function(a, b) {
+                                        return b - a
+                                    });
+                                    //console.log(proArr);
+
+                                }
+                                if (proArr != undefined) {
+                                    if (Acc_obj != 0 && Acc_obj.Ratio == proArr[0]) {
+                                        //console.log(Acc_obj);
+                                        ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Acc_obj, null, null, true);
+                                        _this.buildingRows(buildArr, Acc_obj, "object", Acc_obj.basename, Acc_obj.bName, (Acc_obj.buildinglevel + 1), Acc_obj.posX, Acc_obj.posY, Acc_obj.Ratio);
+                                    }
+                                    if (Sil_obj != 0 && Sil_obj.Ratio == proArr[0]) {
+                                        //console.log(Sil_obj);
+                                        ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Sil_obj, null, null, true);
+                                        _this.buildingRows(buildArr, Sil_obj, "object", Sil_obj.basename, Sil_obj.bName, (Sil_obj.buildinglevel + 1), Sil_obj.posX, Sil_obj.posY, Sil_obj.Ratio);
+                                    }
+                                    if (TibHar_obj != 0 && TibHar_obj.Ratio == proArr[0]) {
+                                        //console.log(TibHar_obj);
+                                        ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", TibHar_obj, null, null, true);
+                                        _this.buildingRows(buildArr, TibHar_obj, "object", TibHar_obj.basename, TibHar_obj.bName, (TibHar_obj.buildinglevel + 1), TibHar_obj.posX, TibHar_obj.posY, TibHar_obj.Ratio);
+                                    }
+                                    if (CryHar_obj != 0 && CryHar_obj.Ratio == proArr[0]) {
+                                        //console.log(CryHar_obj);
+                                        ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", CryHar_obj, null, null, true);
+                                        _this.buildingRows(buildArr, CryHar_obj, "object", CryHar_obj.basename, CryHar_obj.bName, (CryHar_obj.buildinglevel + 1), CryHar_obj.posX, CryHar_obj.posY, CryHar_obj.Ratio);
+                                    }
+                                    if (Pow_obj != 0 && Pow_obj.Ratio == proArr[0]) {
+                                        //console.log(Pow_obj);
+                                        ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Pow_obj, null, null, true);
+                                        _this.buildingRows(buildArr, Pow_obj, "object", Pow_obj.basename, Pow_obj.bName, (Pow_obj.buildinglevel + 1), Pow_obj.posX, Pow_obj.posY, Pow_obj.Ratio);
+                                    }
+                                    if (Ref_obj != 0 && Ref_obj.Ratio == proArr[0]) {
+                                        //console.log(Ref_obj);
+                                        ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Ref_obj, null, null, true);
+                                        _this.buildingRows(buildArr, Ref_obj, "object", Ref_obj.basename, Ref_obj.bName, (Ref_obj.buildinglevel + 1), Ref_obj.posX, Ref_obj.posY, Ref_obj.Ratio);
+                                    }
+                                }
+                                if (Cmd_obj != 0) {
+                                    //console.log(Cmd_obj);
+                                    ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Cmd_obj, null, null, true);
+                                    _this.buildingRows(buildArr, Cmd_obj, "object", Cmd_obj.basename, Cmd_obj.bName, (Cmd_obj.buildinglevel + 1), Cmd_obj.posX, Cmd_obj.posY, "");
+                                }
+                                if (Sup_obj != 0) {
+                                    //console.log(Sup_obj);
+                                    ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Sup_obj, null, null, true);
+                                    _this.buildingRows(buildArr, Sup_obj, "object", Sup_obj.basename, Sup_obj.bName, (Sup_obj.buildinglevel + 1), Sup_obj.posX, Sup_obj.posY, "");
+                                }
+                                if (Rt_obj != 0) {
+                                    //console.log(Rt_obj);
+                                    ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Rt_obj, null, null, true);
+                                    _this.buildingRows(buildArr, Rt_obj, "object", Rt_obj.basename, Rt_obj.bName, (Rt_obj.buildinglevel + 1), Rt_obj.posX, Rt_obj.posY, "");
+                                }
 
 
-								var units = city.get_CityUnitsData();
-								var offarr = [];
-								var defarr = [];
+
+
+                                var units = city.get_CityUnitsData();
+                                var offarr = [];
+                                var defarr = [];
                                 var offenceUnits = units.get_OffenseUnits();
                                 var gNum = 0;
                                 var hNum = 0;
-								var offnumA = -1;
-								var defnumA = -1;
+                                var offnumA = -1;
+                                var defnumA = -1;
                                 for (var nUnit in offenceUnits.d) {
-									offnumA++;
+                                    offnumA++;
                                     var unit = offenceUnits.d[nUnit];
                                     //console.log(_this.canUpgradeUnit(unit, city));
-									//if (!_this.canUpgradeUnit(unit, city)) continue;
+                                    //if (!_this.canUpgradeUnit(unit, city)) continue;
 
                                     var unitTech = unit.get_UnitGameData_Obj().at;
                                     var unitName = unit.get_UnitGameData_Obj().dn;
@@ -3254,119 +3445,121 @@
                                     //console.log(ClientLib.Base.EUnitType.Air);
                                     if (unitTech == ClientLib.Base.EUnitType.Infantry) {
                                         //fNum = 0;
-										//offarr[offnumA] = unit.get_CurrentLevel();
+                                        //offarr[offnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, offNum, 0, fNum++);
-										if (!_this.canUpgradeUnit(unit, city)) continue;
+                                        if (!_this.canUpgradeUnit(unit, city)) continue;
                                         //_this.unitRows(offUnitArr, unit, "off", costA, costB, cityName, offLvl,waitTib, waitPow);
-										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
-										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
-										//offarr[offnumA] = tibCost/powCost;
-										}else{
-											var powCost = 1;
-											//offarr[offnumA] = tibCost/(powCost);
-										}
-										offarr[offnumA] = cryCost/(powCost);
-										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
-											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
-											
-										} else {
-											var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont+crystalBonus+crystalAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-													  //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
-										if (_this.isCheckBoxChecked(num, unitName, offNum) && (_this.isCheckBoxChecked(num, unitName, offNum) != undefined)) {
-										_this.unitRows(buildArr, unit, "off", cryCost, powCost, cityName, offLvl, cryCanbuy, powCanbuy);
-										}
+                                        var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
+                                            //offarr[offnumA] = tibCost/powCost;
+                                        } else {
+                                            var powCost = 1;
+                                            //offarr[offnumA] = tibCost/(powCost);
+                                        }
+                                        offarr[offnumA] = cryCost / (powCost);
+                                        if ((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1) {
+                                            var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
+
+                                        } else {
+                                            var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont + crystalBonus + crystalAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
+                                        if (_this.isCheckBoxChecked(num, unitName, offNum) && (_this.isCheckBoxChecked(num, unitName, offNum) != undefined)) {
+                                            _this.unitRows(buildArr, unit, "off", cryCost, powCost, cityName, offLvl, cryCanbuy, powCanbuy);
+                                        }
                                     }
                                     if (unitTech == ClientLib.Base.EUnitType.Tank) {
                                         //gNum = 0;
-										//offarr[offnumA] = unit.get_CurrentLevel();
+                                        //offarr[offnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, offNum, 1, gNum++);
-										if (!_this.canUpgradeUnit(unit, city)) continue;
-										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
-										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
-									
-										}else{
-											var powCost = 1;
-											
-										}
-										offarr[offnumA] = cryCost/(powCost);
-										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
-											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
-											
-										} else {
-											var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont+crystalBonus+crystalAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-													  //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
-										if (_this.isCheckBoxChecked(num, unitName, offNum) && (_this.isCheckBoxChecked(num, unitName, offNum) != undefined)) {
-										_this.unitRows(buildArr, unit, "off", cryCost, powCost, cityName, offLvl, cryCanbuy, powCanbuy);
-										}
+                                        if (!_this.canUpgradeUnit(unit, city)) continue;
+                                        var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
+
+                                        } else {
+                                            var powCost = 1;
+
+                                        }
+                                        offarr[offnumA] = cryCost / (powCost);
+                                        if ((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1) {
+                                            var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
+
+                                        } else {
+                                            var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont + crystalBonus + crystalAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
+                                        if (_this.isCheckBoxChecked(num, unitName, offNum) && (_this.isCheckBoxChecked(num, unitName, offNum) != undefined)) {
+                                            _this.unitRows(buildArr, unit, "off", cryCost, powCost, cityName, offLvl, cryCanbuy, powCanbuy);
+                                        }
 
                                     }
                                     if (unitTech == ClientLib.Base.EUnitType.Air) {
                                         //hNum = 0;
-										//offarr[offnumA] = unit.get_CurrentLevel();
+                                        //offarr[offnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, offNum, 2, hNum++);
-										if (!_this.canUpgradeUnit(unit, city)) continue;
-										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
-										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
-										//offarr[offnumA] = tibCost/powCost;
-										}else{
-											var powCost = 1;
-											//offarr[offnumA] = tibCost/(powCost);
-										}
-										offarr[offnumA] = cryCost/(powCost);
-										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
-											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
-											
-										} else {
-											var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont+crystalBonus+crystalAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-													  //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
-										if (_this.isCheckBoxChecked(num, unitName, offNum) && (_this.isCheckBoxChecked(num, unitName, offNum) != undefined)) {
-										_this.unitRows(buildArr, unit, "off", cryCost, powCost, cityName, offLvl, cryCanbuy, powCanbuy);
-										}
+                                        if (!_this.canUpgradeUnit(unit, city)) continue;
+                                        var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
+                                            //offarr[offnumA] = tibCost/powCost;
+                                        } else {
+                                            var powCost = 1;
+                                            //offarr[offnumA] = tibCost/(powCost);
+                                        }
+                                        offarr[offnumA] = cryCost / (powCost);
+                                        if ((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1) {
+                                            var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
+
+                                        } else {
+                                            var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont + crystalBonus + crystalAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
+                                        if (_this.isCheckBoxChecked(num, unitName, offNum) && (_this.isCheckBoxChecked(num, unitName, offNum) != undefined)) {
+                                            _this.unitRows(buildArr, unit, "off", cryCost, powCost, cityName, offLvl, cryCanbuy, powCanbuy);
+                                        }
 
                                     }
-									offarr.sort(function(a,b){return b-a});
-                                    
+                                    offarr.sort(function(a, b) {
+                                        return b - a
+                                    });
+
                                     if (_this.isCheckBoxChecked(num, unitName, offNum)) {
                                         //console.log(_this.isCheckBoxChecked(num, unitName, offNum), unitName, offNum, city.m_SupportDedicatedBaseName);
-										if(upChBxOff.getValue()){
+                                        if (upChBxOff.getValue()) {
 
 
-                                        //console.log(ClientLib.Base.EUnitType.Structure);
+                                            //console.log(ClientLib.Base.EUnitType.Structure);
 
-                                        O_obj = {
+                                            O_obj = {
                                                 cityid: city.get_Id(),
                                                 basename: city.m_SupportDedicatedBaseName,
-                                                Ratio: cryCost/(powCost),
+                                                Ratio: cryCost / (powCost),
                                                 uName: unitName,
                                                 level: unit.get_CurrentLevel(),
                                                 type: "Offence",
@@ -3375,18 +3568,18 @@
                                                 //upgradepossiblity: canUpgrade,
                                                 unitId: unit.get_Id()
                                             }
-										}
-                                            //textfield.setValue(_this.isCheckBoxChecked(num, unitName, offNum), unitName, offNum, O_obj );
+                                        }
+                                        //textfield.setValue(_this.isCheckBoxChecked(num, unitName, offNum), unitName, offNum, O_obj );
                                     }
-									
+
 
                                 } //off loop
-								if(O_obj != 0){
-									//console.log(O_obj, offarr);
-									ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UnitUpgrade", O_obj, null, null, true);
-									_this.unitRows(buildArr, O_obj, "object", O_obj.basename, O_obj.uName, (O_obj.level + 1), O_obj.posX, O_obj.posY, O_obj.Ratio);
-									}
-								
+                                if (O_obj != 0) {
+                                    //console.log(O_obj, offarr);
+                                    ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UnitUpgrade", O_obj, null, null, true);
+                                    _this.unitRows(buildArr, O_obj, "object", O_obj.basename, O_obj.uName, (O_obj.level + 1), O_obj.posX, O_obj.posY, O_obj.Ratio);
+                                }
+
                                 var xNum = 0;
                                 var yNum = 0;
                                 var zNum = 0;
@@ -3394,114 +3587,116 @@
                                 var defenceUnits = units.get_DefenseUnits();
                                 for (var nUnit in defenceUnits.d) {
                                     var unit = defenceUnits.d[nUnit];
-									//console.log(!_this.canUpgradeUnit(unit, city), _this.canUpgradeUnit(unit, city));
+                                    //console.log(!_this.canUpgradeUnit(unit, city), _this.canUpgradeUnit(unit, city));
                                     //if (!_this.canUpgradeUnit(unit, city)) continue;
                                     var unitTech = unit.get_UnitGameData_Obj().at;
                                     var unitName = unit.get_UnitGameData_Obj().dn;
                                     var defNum = 1;
-									defnumA++;
+                                    defnumA++;
                                     if (unitTech == ClientLib.Base.EUnitType.Infantry) {
-										//defarr[defnumA] = unit.get_CurrentLevel();
+                                        //defarr[defnumA] = unit.get_CurrentLevel();
 
                                         _this.unitBox(unitName, num, defNum, 0, xNum++);
-										if (!_this.canUpgradeUnit(unit, city)) continue;
-										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
-										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 1;
-										}
-										defarr[defnumA] = cryCost / powCost;
-										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
-											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
-											
-										} else {
-											var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont+crystalBonus+crystalAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-													  //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
-										if (_this.isCheckBoxChecked(num, unitName, defNum) && (_this.isCheckBoxChecked(num, unitName, defNum) != undefined)) {
-										_this.unitRows(buildArr, unit, "def", cryCost, powCost, cityName, defLvl, cryCanbuy, powCanbuy);
-										}
+                                        if (!_this.canUpgradeUnit(unit, city)) continue;
+                                        var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 1;
+                                        }
+                                        defarr[defnumA] = cryCost / powCost;
+                                        if ((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1) {
+                                            var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
+
+                                        } else {
+                                            var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont + crystalBonus + crystalAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
+                                        if (_this.isCheckBoxChecked(num, unitName, defNum) && (_this.isCheckBoxChecked(num, unitName, defNum) != undefined)) {
+                                            _this.unitRows(buildArr, unit, "def", cryCost, powCost, cityName, defLvl, cryCanbuy, powCanbuy);
+                                        }
                                         //console.log(typeArr5);
                                     }
                                     if (unitTech == ClientLib.Base.EUnitType.Tank) {
                                         //defarr[defnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, defNum, 1, yNum++);
-										if (!_this.canUpgradeUnit(unit, city)) continue;
-										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
-										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 0;
-										}
-										defarr[defnumA] = cryCost / powCost;
-										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
-											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
-											
-										} else {
-											var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont+crystalBonus+crystalAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-													  //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
-										if (_this.isCheckBoxChecked(num, unitName, defNum) && (_this.isCheckBoxChecked(num, unitName, defNum) != undefined)) {
-										_this.unitRows(buildArr, unit, "def", cryCost, powCost, cityName, defLvl, cryCanbuy, powCanbuy);
-										}
+                                        if (!_this.canUpgradeUnit(unit, city)) continue;
+                                        var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 0;
+                                        }
+                                        defarr[defnumA] = cryCost / powCost;
+                                        if ((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1) {
+                                            var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
+
+                                        } else {
+                                            var cryCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) / ((crystalCont + crystalBonus + crystalAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
+                                        if (_this.isCheckBoxChecked(num, unitName, defNum) && (_this.isCheckBoxChecked(num, unitName, defNum) != undefined)) {
+                                            _this.unitRows(buildArr, unit, "def", cryCost, powCost, cityName, defLvl, cryCanbuy, powCanbuy);
+                                        }
 
                                     }
                                     if (unitTech == ClientLib.Base.EUnitType.Structure) {
-                                       // defarr[defnumA] = unit.get_CurrentLevel();
+                                        // defarr[defnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, defNum, 2, zNum++);
-										if (!_this.canUpgradeUnit(unit, city)) continue;
-										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
-										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
-                                        var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
-										}else{
-											var powCost = 1;
-										}
-										defarr[defnumA] = cryCost / powCost;
-										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
-											var tibCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
-											
-										} else {
-											var tibCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont+tiberiumBonus+tiberiumAlly)/3600));
-											
-										}
-										if((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1){
-											var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
-											
-										} else {
-											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
-											
-										}
-													  //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
-										if (_this.isCheckBoxChecked(num, unitName, defNum) && (_this.isCheckBoxChecked(num, unitName, defNum) != undefined)) {
-										_this.unitRows(buildArr, unit, "def", cryCost, powCost, cityName, defLvl, tibCanbuy, powCanbuy);
-										}
+                                        if (!_this.canUpgradeUnit(unit, city)) continue;
+                                        var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
+                                        if (ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined) {
+                                            var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
+                                        } else {
+                                            var powCost = 1;
+                                        }
+                                        defarr[defnumA] = cryCost / powCost;
+                                        if ((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1) {
+                                            var tibCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
+
+                                        } else {
+                                            var tibCanbuy = _this.FormatTimespan((cryCost - city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) / ((tiberiumCont + tiberiumBonus + tiberiumAlly) / 3600));
+
+                                        }
+                                        if ((powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power)) < 1) {
+                                            var powCanbuy = _this.FormatTimespan(powCost / city.GetResourceCount(ClientLib.Base.EResourceType.Power));
+
+                                        } else {
+                                            var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont + powerBonus + powerAlly) / 3600));
+
+                                        }
+                                        //(arr, unit, type, costA, costB, cityName, typeLvl, waitTib, waitPow)
+                                        if (_this.isCheckBoxChecked(num, unitName, defNum) && (_this.isCheckBoxChecked(num, unitName, defNum) != undefined)) {
+                                            _this.unitRows(buildArr, unit, "def", cryCost, powCost, cityName, defLvl, tibCanbuy, powCanbuy);
+                                        }
 
                                     }
-                                    defarr.sort(function(a,b){return b-a});
+                                    defarr.sort(function(a, b) {
+                                        return b - a
+                                    });
                                     if (_this.isCheckBoxChecked(num, unitName, defNum) != undefined && _this.isCheckBoxChecked(num, unitName, defNum)) {
 
                                         //console.log(_this.isCheckBoxChecked(num, unitName, defNum), unitName, aNum, city.m_SupportDedicatedBaseName, num);
                                         //if(!_this.canUpgradeUnit(unit, city))continue;
-										if(upChBxDef.getValue()){
+                                        if (upChBxDef.getValue()) {
 
-                                        D_obj = {
+                                            D_obj = {
                                                 cityid: city.get_Id(),
                                                 basename: city.m_SupportDedicatedBaseName,
                                                 Ratio: cryCost / powCost,
@@ -3513,17 +3708,17 @@
                                                 //upgradepossiblity: canUpgrade,
                                                 unitId: unit.get_Id()
                                             }
-										}
-                                            //textfield.add(_this.isCheckBoxChecked(num, unitName, defNum), unitName, defNum, D_obj);
+                                        }
+                                        //textfield.add(_this.isCheckBoxChecked(num, unitName, defNum), unitName, defNum, D_obj);
                                     }
-									if(D_obj != 0){
-									//console.log(D_obj, defarr);
-									ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UnitUpgrade", D_obj, null, null, true);
-									_this.unitRows(buildArr, D_obj, "object", D_obj.basename, D_obj.uName, (D_obj.level + 1), D_obj.posX, D_obj.posY, D_obj.Ratio);
-									}
+                                    if (D_obj != 0) {
+                                        //console.log(D_obj, defarr);
+                                        ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UnitUpgrade", D_obj, null, null, true);
+                                        _this.unitRows(buildArr, D_obj, "object", D_obj.basename, D_obj.uName, (D_obj.level + 1), D_obj.posX, D_obj.posY, D_obj.Ratio);
+                                    }
                                 } //def loop
-								
-								
+
+
 
                                 /*
 								if(B_obj != 0){
@@ -3556,7 +3751,7 @@
                                 //continue;	
                             } //city loop
                             //console.log("End of Main Function");
-							buildArr = [];
+                            buildArr = [];
 
 
 
@@ -3572,21 +3767,19 @@
             try {
                 if (typeof qx != 'undefined' && qx.core.Init.getApplication() && qx.core.Init.getApplication().getUIItem(ClientLib.Data.Missions.PATH.BAR_NAVIGATION) && qx.core.Init.getApplication().getUIItem(ClientLib.Data.Missions.PATH.BAR_NAVIGATION).isVisible()) {
                     createFlunikTools();
-                    if (typeof ClientLib.API.Util.GetUnitMaxHealth == 'undefined'){
-							for (var key in ClientLib.Base.Util)
-							{
-								var strFunction = ClientLib.Base.Util[key].toString();
-								if ((strFunction.indexOf("function (a,b,c)") == 0 || strFunction.indexOf("function (a,b)") == 0) &&
-									 strFunction.indexOf("*=1.1") > -1)
-								{
-										FlunikTools.Main.getInstance().GetUnitMaxHealth = ClientLib.Base.Util[key];
-										console.log("FlunikTools.Main.getInstance().GetUnitMaxHealth = ClientLib.Base.Util["+key+"]");
-										break;
-								}
-							}
-						}else{
-							FlunikTools.Main.getInstance().GetUnitMaxHealth = ClientLib.API.Util.GetUnitMaxHealth;	
-					}
+                    if (typeof ClientLib.API.Util.GetUnitMaxHealth == 'undefined') {
+                        for (var key in ClientLib.Base.Util) {
+                            var strFunction = ClientLib.Base.Util[key].toString();
+                            if ((strFunction.indexOf("function (a,b,c)") == 0 || strFunction.indexOf("function (a,b)") == 0) &&
+                                strFunction.indexOf("*=1.1") > -1) {
+                                FlunikTools.Main.getInstance().GetUnitMaxHealth = ClientLib.Base.Util[key];
+                                console.log("FlunikTools.Main.getInstance().GetUnitMaxHealth = ClientLib.Base.Util[" + key + "]");
+                                break;
+                            }
+                        }
+                    } else {
+                        FlunikTools.Main.getInstance().GetUnitMaxHealth = ClientLib.API.Util.GetUnitMaxHealth;
+                    }
                     FlunikTools.Main.getInstance().initialize();
                     if (FlunikTools.Main.getInstance().cmdButton.getLabel != null) {
                         console.log(FlunikTools.Main.getInstance().cmdButton.getLabel);
