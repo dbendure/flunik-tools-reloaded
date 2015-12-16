@@ -2122,7 +2122,7 @@
                                     } //ClientLib.Base.ETechName.Construction_Yard
                                     if (tech == ClientLib.Base.ETechName.Refinery && building.get_CurrentLevel() < MaxLevel) {
 										_this.buildingBox(buildingName, num, tech, nameArr, aNum);
-										if(!upChBxFullBasePro.getValue() == false){
+										if(upChBxFullBasePro.getValue() == false){
 										if (!_this.canUpgradeBuilding(building, city)) continue;
 										}
                                         gNum++;
