@@ -2070,7 +2070,7 @@
                                     //if(num == 0){
                                     aNum = 0;
                                     //console.log(aNum, bNum, cNum, dNum, eNum);
-                                    if (tech == ClientLib.Base.ETechName.Construction_Yard && building.get_CurrentLevel() < MaxLevel && city.get_CityBuildingsData().GetFullRepairTime(false) > 43200) {
+                                    if (tech == ClientLib.Base.ETechName.Construction_Yard && building.get_CurrentLevel() < MaxLevel){// && city.get_CityBuildingsData().GetFullRepairTime(false) > 43200) {
                                        
 									   _this.buildingBox(buildingName, num, tech, nameArr, aNum);
 										if (!_this.canUpgradeBuilding(building, city)) continue;
