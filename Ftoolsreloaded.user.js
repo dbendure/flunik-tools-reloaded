@@ -2448,7 +2448,7 @@
 										}
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "RT", infRT, 0, 0, tibCost, powCost, deltaInfRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxRt.getValue()){
+											if(upChBxRt.getValue() && _this.totalRepairTime( airRT, vehRT, infRT) == infRT){
 												var Rt_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
@@ -2491,7 +2491,7 @@
 										}
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "RT", vehRT, 0, 0, tibCost, powCost, deltaVehRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxRt.getValue()){
+											if(upChBxRt.getValue() && _this.totalRepairTime( airRT, vehRT, infRT) == vehRT){
 												var Rt_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
@@ -2535,7 +2535,7 @@
 										}
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, "RT", airRT, 0, 0, tibCost, powCost, deltaAirRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxRt.getValue()){
+											if(upChBxRt.getValue() && _this.totalRepairTime( airRT, vehRT, infRT) == airRT){
 												var RT_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
@@ -3356,7 +3356,7 @@
                                     }
 									offarr.sort(function(a,b){return b-a});
                                     
-                                    if (_this.isCheckBoxChecked(num, unitName, offNum) != undefined && _this.isCheckBoxChecked(num, unitName, offNum)) {
+                                    if (_this.isCheckBoxChecked(num, unitName, offNum)) {
                                         //console.log(_this.isCheckBoxChecked(num, unitName, offNum), unitName, offNum, city.m_SupportDedicatedBaseName);
 										if(upChBxOff.getValue()){
 
@@ -3378,9 +3378,10 @@
 										}
                                             //textfield.setValue(_this.isCheckBoxChecked(num, unitName, offNum), unitName, offNum, O_obj );
                                     }
+									
 
                                 } //off loop
-								if(O_obj != 0 && O_obj.Ratio == offarr[0]){
+								if(O_obj != 0){
 									//console.log(O_obj, offarr);
 									ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UnitUpgrade", O_obj, null, null, true);
 									_this.unitRows(buildArr, O_obj, "object", O_obj.basename, O_obj.uName, (O_obj.level + 1), O_obj.posX, O_obj.posY, O_obj.Ratio);
@@ -3515,13 +3516,14 @@
 										}
                                             //textfield.add(_this.isCheckBoxChecked(num, unitName, defNum), unitName, defNum, D_obj);
                                     }
-                                } //def loop
-								
-								if(D_obj != 0){
+									if(D_obj != 0){
 									//console.log(D_obj, defarr);
 									ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UnitUpgrade", D_obj, null, null, true);
 									_this.unitRows(buildArr, D_obj, "object", D_obj.basename, D_obj.uName, (D_obj.level + 1), D_obj.posX, D_obj.posY, D_obj.Ratio);
 									}
+                                } //def loop
+								
+								
 
                                 /*
 								if(B_obj != 0){
@@ -3554,6 +3556,7 @@
                                 //continue;	
                             } //city loop
                             //console.log("End of Main Function");
+							buildArr = [];
 
 
 
