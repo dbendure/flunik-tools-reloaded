@@ -2,10 +2,9 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.3.6
+// @version     4.3.7
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
-//@grant none
 // ==/UserScript==
 
 //change meaning the increase, the difference between pre and post upgarde
@@ -1869,93 +1868,7 @@
                             _this.cmdB = null;
                         },
 						
-						totalRepairTime: function ( airRT, vehRT, infRT) {
 						
-						
-							if ((airRT > 0) && (vehRT > 0) && (infRT > 0)){
-								if((airRT > vehRT) && (airRT > infRT) ){
-									var maxRT = airRT;
-									
-									return (maxRT);
-									}
-								if((vehRT > airRT) && (vehRT > infRT) ){
-									var maxRT = vehRT;
-									
-									return (maxRT);
-									}
-								if((infRT > vehRT) && (infRT > airRT) ){
-									var maxRT = infRT;
-									
-									return (maxRT);
-									}
-							
-							
-							}
-							
-							if ((airRT < 1 )&& (vehRT > 0) && (infRT > 0)){
-							
-								if((vehRT > infRT) ){
-									var maxRT = vehRT;
-									
-									return (maxRT);
-									}
-								if((infRT > vehRT)){
-									var maxRT = infRT;
-									
-									return (maxRT);
-									}
-							}
-							
-							if ((airRT > 0) && (vehRT < 1 )&& (infRT > 0)){
-								if((airRT > infRT) ){
-									var maxRT = airRT;
-									
-									return (maxRT);
-									}
-								
-								if((infRT > airRT) ){
-									var maxRT = infRT;
-									
-									return (maxRT);
-									}
-							}
-							
-							if ((airRT > 0) && (vehRT > 0 )&& (infRT < 1)){
-								if((airRT > vehRT)){
-										var maxRT = airRT;
-										
-										return (maxRT);
-										}
-									if((vehRT > airRT)){
-										var maxRT = vehRT;
-										
-										return (maxRT);
-										}
-								
-							}
-							
-						
-							if (((airRT < 1) && (vehRT < 1 ))&& (infRT > 0)){
-								var oneWithRT = infRT;
-								return (oneWithRT);
-							}
-							
-							if ((vehRT > 0 )&& ((airRT < 1) && (infRT < 1))){
-								var oneWithRT = vehRT;
-								return (oneWithRT);
-							}
-							
-							if ((airRT >0) && ((vehRT < 1 )&& (infRT < 1))){
-								var oneWithRT = airRT;
-								return (oneWithRT);
-							}
-							
-							else{
-								var totalNoRT = 0;
-								return (totalNoRT);
-							}
-						
-						},
 
                         autoUpgradeInfo: function() {
                             //console.log("Start of Main Function");
@@ -2006,6 +1919,13 @@
 								var nextVehRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Vehicle, true);
 								var infRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Infantry, false);
 								var nextInfRT = city.get_CityUnitsData().GetRepairTimeFromEUnitGroup(ClientLib.Data.EUnitGroup.Infantry, true);
+								
+								var rtArr = [];
+								rtArr[0] = airRT;
+								rtArr[1] = vehRT;
+								rtArr[2] = infRT;
+								rtArr.sort(function(a,b){return b-a});
+								//console.log("air: ", airRT, "veh: ", vehRT, "inf: ", infRT, "rtArr: ", rtArr);
 
 
 
@@ -2183,7 +2103,11 @@
                                         }
 										
 										var refTotalPro = refPro + (refPac/(refPacperH/3600)) +  LinkTypes0 +  LinkTypes1  ;
+										if(building.get_CurrentLevel() < 15){
 										var refProRatio = Math.pow( ((refTotalProOfLevel12/31608)*100)/((refTotalPro/tibCost)*100), -1);
+										} else {
+											var refProRatio = Math.pow( ((refTotalProOfLevel12/31608)*100)/((refTotalPro/tibCost)*100), 1);
+										}
 										refArr[refNum] = refProRatio;
 										if ((refProRatio > 0) ){
 													refArr.sort(function(a,b){return b-a});
@@ -2294,7 +2218,12 @@
                                             LinkTypes2 = 0;
                                         }
 										var powTotalPro = powPro + (powPac/(powPacperH/3600)) + LinkTypes0 +  LinkTypes1 + LinkTypes2 ;
+										//var powProRatio = Math.pow( ((powTotalProOfLevel12/164736)*100)/((powTotalPro/tibCost)*100), -1);
+										if(building.get_CurrentLevel() < 15){
 										var powProRatio = Math.pow( ((powTotalProOfLevel12/164736)*100)/((powTotalPro/tibCost)*100), -1);
+										} else {
+											var powProRatio = Math.pow( ((powTotalProOfLevel12/164736)*100)/((powTotalPro/tibCost)*100), 1);
+										}
 										powArr[powNum] = powProRatio;
                                             
                                             if ((powProRatio > 0) ){/* Math.floor((Math.random()*10)+1)){*/
@@ -2462,10 +2391,11 @@
 											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
 											
 										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+										if (_this.isCheckBoxChecked(num, buildingName, aNum) && (rtArr[0] == infRT)) {
                                             _this.buildingRows(buildArr, building, "RT", infRT, 0, 0, tibCost, powCost, deltaInfRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxRt.getValue() && _this.totalRepairTime( airRT, vehRT, infRT) == infRT){
-												var Rt_obj = {
+											console.log(upChBxRt.getValue());
+											if((upChBxRt.getValue())){
+												Rt_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2505,10 +2435,10 @@
 											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
 											
 										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+										if (_this.isCheckBoxChecked(num, buildingName, aNum) && (rtArr[0] == vehRT)) {
                                             _this.buildingRows(buildArr, building, "RT", vehRT, 0, 0, tibCost, powCost, deltaVehRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxRt.getValue() && _this.totalRepairTime( airRT, vehRT, infRT) == vehRT){
-												var Rt_obj = {
+											if((upChBxRt.getValue())){
+												Rt_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2549,10 +2479,11 @@
 											var powCanbuy = _this.FormatTimespan((powCost - city.GetResourceCount(ClientLib.Base.EResourceType.Power)) / ((powerCont+powerBonus+powerAlly)/3600));
 											
 										}
-										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
+										//console.log(_this.totalRepairTime( airRT, vehRT, infRT));
+										if (_this.isCheckBoxChecked(num, buildingName, aNum) && (rtArr[0] == airRT)) {
                                             _this.buildingRows(buildArr, building, "RT", airRT, 0, 0, tibCost, powCost, deltaAirRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											if(upChBxRt.getValue() && _this.totalRepairTime( airRT, vehRT, infRT) == airRT){
-												var RT_obj = {
+											if((upChBxRt.getValue())){
+												Rt_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2669,7 +2600,12 @@
                                                 LinkTypes0 = 0;
                                             }
 											var harTibTotalPro = hartibPro + (hartibPac/(hartibPacperH/3600)) + LinkTypes0;
-											var harTibProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), -1);
+											//var harTibProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), -1);
+											if(building.get_CurrentLevel() < 15){
+											var harTibProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harTibTotalPro/tibCost)*100), -1);
+											} else {
+												var harTibProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harTibTotalPro/tibCost)*100), 1);
+											}
 											harTibArr[harTibNum] = harTibProRatio;
 											 if ( harTibProRatio > 0 ){// Math.floor((Math.random()*10)+1)){
                                             //console.log(((harCryTotalProOfLevel12/96000)*100)/((harCryTotalPro/harCryCost)*100) );
@@ -2762,7 +2698,12 @@
                                             }
 											
 											var harCryTotalPro = harcryPro + (harcryPac/(harcryPacperH/3600)) + LinkTypes1;
+											//var harCryProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), -1);
+											if(building.get_CurrentLevel() < 15){
 											var harCryProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), -1);
+											} else {
+												var harCryProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), 1);
+											}
 											harCryArr[harCryNum] = harCryProRatio;
 											if ( harCryProRatio > 0 ){// Math.floor((Math.random()*10)+1)){
                                             //console.log(((harCryTotalProOfLevel12/96000)*100)/((harCryTotalPro/harCryCost)*100) );
@@ -3020,7 +2961,12 @@
                                         }
                                         //console.log(building);
 										var silTotalPro = LinkTypes1 + LinkTypes0;
-										var silProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((silTotalPro/tibCost)*100), -1);
+										//var silProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((silTotalPro/tibCost)*100), -1);
+										if(building.get_CurrentLevel() < 15){
+											var silProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((silTotalPro/tibCost)*100), -1);
+											} else {
+												var silProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((silTotalPro/tibCost)*100), 1);
+											}
                                          silArr[silNum] = silProRatio;
                                             
                                             if ((silProRatio >= 0) ){// Math.floor((Math.random()*10)+1)){
@@ -3121,7 +3067,12 @@
                                             LinkTypes0 = 0;
 											var accTotalPro = LinkTypes0;
                                         }
-										var accProRatio = Math.pow( ((accTotalProOfLevel12/63360)*100)/((accTotalPro/tibCost)*100), -1);
+										//var accProRatio = Math.pow( ((accTotalProOfLevel12/63360)*100)/((accTotalPro/tibCost)*100), -1);
+										if(building.get_CurrentLevel() < 15){
+											var accProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((accTotalPro/tibCost)*100), -1);
+											} else {
+												var accProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((accTotalPro/tibCost)*100), 1);
+											}
 										accArr[accNum] = accProRatio;
                                           
                                             if ((accProRatio > 0) ){/* Math.floor((Math.random()*10)+1)){*/
@@ -3290,7 +3241,15 @@
                                     //console.log(ClientLib.Base.EUnitType.Infantry);
                                     //console.log(ClientLib.Base.EUnitType.Tank);
                                     //console.log(ClientLib.Base.EUnitType.Air);
+									var repairCostA = unit.get_UnitLevelRepairRequirements()[0].Count;
+									if(unit.get_UnitLevelRepairRequirements()[1].Count != undefined){
+									var repairCostB = unit.get_UnitLevelRepairRequirements()[1].Count;
+									} else {
+									var repairCostB = 1;
+									}
+									var repairRatio = repairCostA/repairCostB;
                                     if (unitTech == ClientLib.Base.EUnitType.Infantry) {
+										//console.log(unit.get_UnitLevelRepairRequirements());
                                         //fNum = 0;
 										//offarr[offnumA] = unit.get_CurrentLevel();
                                         _this.unitBox(unitName, num, offNum, 0, fNum++);
@@ -3304,7 +3263,7 @@
 											var powCost = 1;
 											//offarr[offnumA] = tibCost/(powCost);
 										}
-										offarr[offnumA] = cryCost/(powCost);
+										offarr[offnumA] = (repairCostA + cryCost + powCost) / repairCostB;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3337,7 +3296,7 @@
 											var powCost = 1;
 											
 										}
-										offarr[offnumA] = cryCost/(powCost);
+										offarr[offnumA] = (repairCostA + cryCost + powCost) / repairCostB;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3371,7 +3330,7 @@
 											var powCost = 1;
 											//offarr[offnumA] = tibCost/(powCost);
 										}
-										offarr[offnumA] = cryCost/(powCost);
+										offarr[offnumA] = (repairCostA + cryCost + powCost) / repairCostB;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3392,6 +3351,7 @@
 										}
 
                                     }
+									//console.log("cCost: ", cryCost, "pCost: ", powCost, "RTCost: ", repairCostA, "RTTime: ", repairCostB, "Ratio: ", offarr[offnumA]);
 									offarr.sort(function(a,b){return b-a});
                                     
                                     if (_this.isCheckBoxChecked(num, unitName, offNum)) {
@@ -3404,7 +3364,7 @@
                                         O_obj = {
                                                 cityid: city.get_Id(),
                                                 basename: city.m_SupportDedicatedBaseName,
-                                                Ratio: cryCost/(powCost),
+                                                Ratio: offarr[offnumA],
                                                 uName: unitName,
                                                 level: unit.get_CurrentLevel(),
                                                 type: "Offence",
@@ -3436,10 +3396,18 @@
                                     //if (!_this.canUpgradeUnit(unit, city)) continue;
                                     var unitTech = unit.get_UnitGameData_Obj().at;
                                     var unitName = unit.get_UnitGameData_Obj().dn;
+									var repairCostA = unit.get_UnitLevelRepairRequirements()[0].Count;
+									if(unit.get_UnitLevelRepairRequirements()[1].Count != undefined){
+									var repairCostB = unit.get_UnitLevelRepairRequirements()[1].Count;
+									} else {
+									var repairCostB = 1;
+									}
+									var repairRatio = repairCostA/repairCostB;
                                     var defNum = 1;
 									defnumA++;
                                     if (unitTech == ClientLib.Base.EUnitType.Infantry) {
 										//defarr[defnumA] = unit.get_CurrentLevel();
+										//console.log(unit.get_UnitLevelRepairRequirements());
 
                                         _this.unitBox(unitName, num, defNum, 0, xNum++);
 										if (!_this.canUpgradeUnit(unit, city)) continue;
@@ -3449,7 +3417,7 @@
 										}else{
 											var powCost = 1;
 										}
-										defarr[defnumA] = cryCost / powCost;
+										defarr[defnumA] = (repairCostA + cryCost + powCost) / repairCostB;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3480,7 +3448,7 @@
 										}else{
 											var powCost = 0;
 										}
-										defarr[defnumA] = cryCost / powCost;
+										defarr[defnumA] = (repairCostA + cryCost + powCost) / repairCostB;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3511,7 +3479,7 @@
 										}else{
 											var powCost = 1;
 										}
-										defarr[defnumA] = cryCost / powCost;
+										defarr[defnumA] = (repairCostA + cryCost + powCost) / repairCostB;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
 											var tibCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
 											
@@ -3532,6 +3500,7 @@
 										}
 
                                     }
+									//console.log("cCost: ", cryCost, "pCost: ", powCost, "RTCost: ", repairCostA, "RTTime: ", repairCostB);
                                     defarr.sort(function(a,b){return b-a});
                                     if (_this.isCheckBoxChecked(num, unitName, defNum) != undefined && _this.isCheckBoxChecked(num, unitName, defNum)) {
 
@@ -3542,7 +3511,7 @@
                                         D_obj = {
                                                 cityid: city.get_Id(),
                                                 basename: city.m_SupportDedicatedBaseName,
-                                                Ratio: cryCost / powCost,
+                                                Ratio: defarr[defnumA],
                                                 uName: unitName.toString(),
                                                 level: unit.get_CurrentLevel(),
                                                 type: "Defense",
