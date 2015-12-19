@@ -2,7 +2,7 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.3.7
+// @version     4.3.8
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
@@ -3396,7 +3396,11 @@
                                     //if (!_this.canUpgradeUnit(unit, city)) continue;
                                     var unitTech = unit.get_UnitGameData_Obj().at;
                                     var unitName = unit.get_UnitGameData_Obj().dn;
+									if(unit.get_UnitLevelRepairRequirements()[1].Count != undefined){
 									var repairCostA = unit.get_UnitLevelRepairRequirements()[0].Count;
+									}else{
+										var repairCostA = 1;
+									}
 									if(unit.get_UnitLevelRepairRequirements()[1].Count != undefined){
 									var repairCostB = unit.get_UnitLevelRepairRequirements()[1].Count;
 									} else {
@@ -3417,7 +3421,8 @@
 										}else{
 											var powCost = 1;
 										}
-										defarr[defnumA] = (repairCostA + cryCost + powCost) / repairCostB;
+										var defRatio = (repairCostA + cryCost + powCost) / repairCostB;
+										defarr[defnumA] = defRatio;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3448,7 +3453,8 @@
 										}else{
 											var powCost = 0;
 										}
-										defarr[defnumA] = (repairCostA + cryCost + powCost) / repairCostB;
+										var defRatio = (repairCostA + cryCost + powCost) / repairCostB;
+										defarr[defnumA] = defRatio;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3479,7 +3485,8 @@
 										}else{
 											var powCost = 1;
 										}
-										defarr[defnumA] = (repairCostA + cryCost + powCost) / repairCostB;
+										var defRatio = (repairCostA + cryCost + powCost) / repairCostB;
+										defarr[defnumA] = defRatio;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium)) < 1){
 											var tibCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Tiberium));
 											
@@ -3511,7 +3518,7 @@
                                         D_obj = {
                                                 cityid: city.get_Id(),
                                                 basename: city.m_SupportDedicatedBaseName,
-                                                Ratio: defarr[defnumA],
+                                                Ratio: defRatio,
                                                 uName: unitName.toString(),
                                                 level: unit.get_CurrentLevel(),
                                                 type: "Defense",
@@ -3523,14 +3530,14 @@
 										}
                                             //textfield.add(_this.isCheckBoxChecked(num, unitName, defNum), unitName, defNum, D_obj);
                                     }
-									if(D_obj != 0){
+									
+                                } //def loop
+								
+								if(D_obj != 0){
 									//console.log(D_obj, defarr);
 									ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UnitUpgrade", D_obj, null, null, true);
 									_this.unitRows(buildArr, D_obj, "object", D_obj.basename, D_obj.uName, (D_obj.level + 1), D_obj.posX, D_obj.posY, D_obj.Ratio);
 									}
-                                } //def loop
-								
-								
 
                                 /*
 								if(B_obj != 0){
