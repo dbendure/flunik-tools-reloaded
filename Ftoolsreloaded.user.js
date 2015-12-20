@@ -2,7 +2,7 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.3.8
+// @version     4.3.9
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
@@ -776,7 +776,7 @@
 								if(obj.Type == ClientLib.Data.WorldSector.ObjectType.PointOfInterest){
 									for(var key in obj){
 									arr[num] = obj[key];
-									if(num == 2){
+									if(num == 3){
 									Level = arr[num];	
 									}
 									num++;
@@ -788,7 +788,7 @@
 									var nxSc = poiRank_Score[numA].s + ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(Level);
 									var nxTi = nextscore(nxSc);
 									if(Arr0[0] != undefined){
-										nxSc +=  Arr0[0][2];
+										nxSc +=  Arr0[0][3];
 										nxTi = nextscore(nxSc);
 									Arr0.push([nxTi, nxSc, poSc, Level, poX, poY]);
 									} else { Arr0.push([nxTi, nxSc, poSc, Level, poX, poY]);}
@@ -2109,9 +2109,8 @@
 											var refProRatio = Math.pow( ((refTotalProOfLevel12/31608)*100)/((refTotalPro/tibCost)*100), 1);
 										}
 										refArr[refNum] = refProRatio;
-										if ((refProRatio > 0) ){
-													refArr.sort(function(a,b){return b-a});
-												}
+										refArr.sort(function(a,b){return b-a});
+										
 											
 										/*if((Math.max(refProRatio) == refArr[0])){
 												var Ref_obj = {
@@ -2124,10 +2123,10 @@
 													isPaid: true
 												}
 										}*/
-                                        if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(refProRatio) == refArr[0])) {
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, "", tibCost, powCost, deltaA, deltaB, 0,cityName, tibCanbuy, powCanbuy);
 											
-											if(upChBxRef.getValue()){
+											if(upChBxRef.getValue() && (Math.max(refProRatio) == refArr[0])){
 												allArr[proNum] = refArr;
 												if(upChBxFullBasePro.getValue()){
 										if (!_this.canUpgradeBuilding(building, city)) continue;
@@ -2225,30 +2224,12 @@
 											var powProRatio = Math.pow( ((powTotalProOfLevel12/164736)*100)/((powTotalPro/tibCost)*100), 1);
 										}
 										powArr[powNum] = powProRatio;
-                                            
-                                            if ((powProRatio > 0) ){/* Math.floor((Math.random()*10)+1)){*/
-                                           // console.log(((powTotalProOfLevel12/96000)*100)/((powTotalPro/refCost)*100) );
-                                            powArr.sort(function(a,b){return b-a});
-                                            }
-											
-											
-                                          /*  if((Math.max(powProRatio) == powArr[0])){
-											var Pow_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											building: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-                                 //ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Pow_obj, null, null, true);
-                           
-										}*/
-                                        if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(powProRatio) == powArr[0])) {
+                                        powArr.sort(function(a,b){return b-a});
+                                        
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, LinkTypes2, tibCost, powCost, deltaA, deltaB, deltaC, cityName, tibCanbuy, powCanbuy);
 											
-											if(upChBxPow.getValue()){
+											if(upChBxPow.getValue() && (Math.max(powProRatio) == powArr[0])){
 												allArr[proNum] = powArr;
 												if(upChBxFullBasePro.getValue()){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
@@ -2393,7 +2374,7 @@
 										}
 										if (_this.isCheckBoxChecked(num, buildingName, aNum) && (rtArr[0] == infRT)) {
                                             _this.buildingRows(buildArr, building, "RT", infRT, 0, 0, tibCost, powCost, deltaInfRT, 0, 0, cityName, tibCanbuy, powCanbuy);
-											console.log(upChBxRt.getValue());
+											//console.log(upChBxRt.getValue());
 											if((upChBxRt.getValue())){
 												Rt_obj = {
 											cityid: city.get_Id(),
@@ -2607,33 +2588,12 @@
 												var harTibProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harTibTotalPro/tibCost)*100), 1);
 											}
 											harTibArr[harTibNum] = harTibProRatio;
-											 if ( harTibProRatio > 0 ){// Math.floor((Math.random()*10)+1)){
-                                            //console.log(((harCryTotalProOfLevel12/96000)*100)/((harCryTotalPro/harCryCost)*100) );
-                                          
-                                            harTibArr.sort(function(a,b){return b-a});
-                                                
-                                            
-                                            }
-											
-											
-											/*if((Math.max(harTibProRatio) == harTibArr[0])){
-											var Har_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											building: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											type: "Tiberium",
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-                                 //ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Har_obj, null, null, true);
-                           
-                             }*/
-                                            if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(harTibProRatio) == harTibArr[0])) {
+											harTibArr.sort(function(a,b){return b-a});
+                                           
+											if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                                 _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1,"" , tibCost, powCost, deltaA, deltaB, 0, cityName, tibCanbuy, powCanbuy);
 												
-												if(upChBxHarTib.getValue()){
+												if(upChBxHarTib.getValue() && (Math.max(harTibProRatio) == harTibArr[0])){
 													allArr[proNum] = harTibArr;
 													if(upChBxFullBasePro.getValue()){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
@@ -2705,33 +2665,12 @@
 												var harCryProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), 1);
 											}
 											harCryArr[harCryNum] = harCryProRatio;
-											if ( harCryProRatio > 0 ){// Math.floor((Math.random()*10)+1)){
-                                            //console.log(((harCryTotalProOfLevel12/96000)*100)/((harCryTotalPro/harCryCost)*100) );
-                                          
-                                            harCryArr.sort(function(a,b){return b-a});
+											harCryArr.sort(function(a,b){return b-a});
                                                 
-                                            
-                                            }
-											
-											
-											/*if((Math.max(harCryProRatio) == harCryArr[0])){
-											var Har_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											building: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											type: "Crystal",
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-                                 //ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Har_obj, null, null, true);
-                           
-                             }*/
-                                            if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(harCryProRatio) == harCryArr[0])) {
+                                            if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                                 _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1,"" ,tibCost, powCost, deltaA, deltaB, 0, cityName, tibCanbuy, powCanbuy);
 												
-												if(upChBxHarCry.getValue()){
+												if(upChBxHarCry.getValue() && (Math.max(harCryProRatio) == harCryArr[0])){
 													allArr[proNum] = harCryArr;
 													if(upChBxFullBasePro.getValue() == false){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
@@ -2968,32 +2907,13 @@
 												var silProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((silTotalPro/tibCost)*100), 1);
 											}
                                          silArr[silNum] = silProRatio;
-                                            
-                                            if ((silProRatio >= 0) ){// Math.floor((Math.random()*10)+1)){
-                                            //console.log(((accTotalProOfLevel12/36360)*100)/((accTotalPro/accCost)*100) );
-                                            silArr.sort(function(a,b){return b-a});
+                                         silArr.sort(function(a,b){return b-a});
                                                 
-                                            
-                                            }
-											
-                                           /* if((Math.max(silProRatio) == silArr[0])){
-											var Sil_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											building: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-                                 //ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Sil_obj, null, null, true);
-                           
-                             				}*/
-										
-										if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(silProRatio) == silArr[0])) {
+                                        
+										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, type, LinkTypes0, LinkTypes1, "",tibCost, powCost, deltaB, deltaA, 0, cityName, tibCanbuy, powCanbuy);
 											
-											if(upChBxSil.getValue()){
+											if(upChBxSil.getValue() && (Math.max(silProRatio) == silArr[0])){
 												allArr[proNum] = silArr;
 												if(upChBxFullBasePro.getValue()){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
@@ -3074,31 +2994,12 @@
 												var accProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((accTotalPro/tibCost)*100), 1);
 											}
 										accArr[accNum] = accProRatio;
-                                          
-                                            if ((accProRatio > 0) ){/* Math.floor((Math.random()*10)+1)){*/
-                                            //console.log(((accTotalProOfLevel12/36360)*100)/((accTotalPro/accCost)*100) );
-                                            accArr.sort(function(a,b){return b-a});
+                                        accArr.sort(function(a,b){return b-a});
                                                 
-                                            
-                                            }
-											
-                                            /*if((Math.max(accProRatio) == accArr[0])){
-											var Acc_obj = {
-											cityid: city.get_Id(),
-                                     		basename: city.m_SupportDedicatedBaseName,
-											building: building.get_UnitGameData_Obj().dn,
-											buildinglevel: building.get_CurrentLevel(),
-											posX: building.get_CoordX(),
-											posY: building.get_CoordY(),
-											isPaid: true
-										}
-                                 //ClientLib.Net.CommunicationManager.GetInstance().SendCommand("UpgradeBuilding", Acc_obj, null, null, true);
-                           
-                             				}*/
-                                        if (_this.isCheckBoxChecked(num, buildingName, aNum) && (Math.max(accProRatio) == accArr[0])) {
+                                        if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             _this.buildingRows(buildArr, building, type, LinkTypes0, "", "",tibCost, powCost, deltaA, 0, 0, cityName, tibCanbuy, powCanbuy);
 											
-											if(upChBxAcc.getValue()){
+											if(upChBxAcc.getValue() && (Math.max(accProRatio) == accArr[0])){
 												allArr[proNum] = accArr;
 												if(upChBxFullBasePro.getValue()){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
