@@ -2,7 +2,7 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.3.9
+// @version     4.4.0
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
@@ -204,6 +204,8 @@
                             ////////////////////////////////////////////////////////////////
                             tabView = new qx.ui.tabview.TabView();
                             tabView.setBarPosition('left');
+							//tabView.setWidth(400);
+                            tabView.setHeight(400);
                             //page2.add(tabView);
                             //////////////////////////////////////////////////////////////////
                             tabViewB = new qx.ui.tabview.TabView();
@@ -1170,6 +1172,7 @@
                             var groupBoxArrC = new Array();
                             var groupBoxArr = new Array();
                             //var checkBoxArr = new Array();
+							
                             if (num == 0 && num >= tabView.getChildren().length) {
                                 //page1.resetLabel();
                                 //page1.setLabel(city.m_SupportDedicatedBaseName);
@@ -1178,17 +1181,25 @@
                                 page = new qx.ui.tabview.Page(city.m_SupportDedicatedBaseName);
                                 pageArr[num] = page;
                                 pageArr[num].setLayout(new qx.ui.layout.VBox());
+								pageArr[num].setWidth(100);
 
                                 groupBoxArrA[num] = new qx.ui.groupbox.GroupBox("Buildings");
+								//groupBoxArrA[num].changeWidth(300);
                                 groupBoxArrA[num].setLayout(new qx.ui.layout.Grid());
+								
 
                                 groupBoxArrB[num] = new qx.ui.groupbox.GroupBox("Defense");
+								//groupBoxArrB[num].changeWidth(300);
                                 groupBoxArrB[num].setLayout(new qx.ui.layout.Grid());
+								
 
                                 groupBoxArrC[num] = new qx.ui.groupbox.GroupBox("Offense");
+								//groupBoxArrC[num].changeWidth(300);
                                 groupBoxArrC[num].setLayout(new qx.ui.layout.Grid());
+								
 
                                 groupBoxArr[num] = new qx.ui.groupbox.GroupBox("Upgrade on this base: " + city.m_SupportDedicatedBaseName);
+								//groupBoxArr[num].changeWidth(400);
                                 groupBoxArr[num].setLayout(new qx.ui.layout.VBox());
 
 
@@ -2086,7 +2097,8 @@
 										var refTotalProOfLevel12 = 605 + (7260/6) + 484 + 605; 
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[36] != undefined) {
-                                            LinkTypes0 = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerplantCreditBonus].Value);
+											var add = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerplantCreditBonus].ProvidingToValue;
+                                            LinkTypes0 = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerplantCreditBonus].Value) + add;
 											deltaA = (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CreditsProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.PowerplantCreditBonus].NewLvlDelta)
                                             //var refTotalPro = refPro + (refPac/(refPacperH/3600)) +  LinkTypes0 ;
                                         } else {
@@ -2106,7 +2118,7 @@
 										if(building.get_CurrentLevel() < 15){
 										var refProRatio = Math.pow( ((refTotalProOfLevel12/31608)*100)/((refTotalPro/tibCost)*100), -1);
 										} else {
-											var refProRatio = Math.pow( ((refTotalProOfLevel12/31608)*100)/((refTotalPro/tibCost)*100), 1);
+											var refProRatio = Math.pow( ((refTotalProOfLevel12/31608)*100)/((refTotalPro/tibCost)*100), -1);
 										}
 										refArr[refNum] = refProRatio;
 										refArr.sort(function(a,b){return b-a});
@@ -2196,7 +2208,8 @@
 
 
                                         if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.AccumulatorPowerBonus] != undefined) {
-                                            LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.AccumulatorPowerBonus].Value;
+											var add = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.AccumulatorPowerBonus].ProvidingToValue;
+                                            LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.AccumulatorPowerBonus].Value + add;
                                             deltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.AccumulatorPowerBonus].NewLvlDelta;
 											//LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.PowerProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.CrystalCreditProduction].Value ;
                                         } else {
@@ -2221,7 +2234,7 @@
 										if(building.get_CurrentLevel() < 15){
 										var powProRatio = Math.pow( ((powTotalProOfLevel12/164736)*100)/((powTotalPro/tibCost)*100), -1);
 										} else {
-											var powProRatio = Math.pow( ((powTotalProOfLevel12/164736)*100)/((powTotalPro/tibCost)*100), 1);
+											var powProRatio = Math.pow( ((powTotalProOfLevel12/164736)*100)/((powTotalPro/tibCost)*100), -1);
 										}
 										powArr[powNum] = powProRatio;
                                         powArr.sort(function(a,b){return b-a});
@@ -2575,7 +2588,8 @@
 										//console.log(buildingName, tibCanbuy, powCanbuy);
 
                                             if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction] != undefined) {
-                                                LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].Value;
+												var add = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].ProvidingToValue;
+                                                LinkTypes0 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].Value + add;
 												deltaA = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.TiberiumProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloTiberiumProduction].NewLvlDelta
                                             } else {
                                                 LinkTypes0 = 0;
@@ -2585,7 +2599,7 @@
 											if(building.get_CurrentLevel() < 15){
 											var harTibProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harTibTotalPro/tibCost)*100), -1);
 											} else {
-												var harTibProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harTibTotalPro/tibCost)*100), 1);
+												var harTibProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harTibTotalPro/tibCost)*100), -1);
 											}
 											harTibArr[harTibNum] = harTibProRatio;
 											harTibArr.sort(function(a,b){return b-a});
@@ -2650,7 +2664,8 @@
                                             //var harCryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((building.get_CurrentLevel() + 1), building.get_UnitGameData_Obj())[0 || 1].Count;
 
                                             if (city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction] != undefined) {
-                                                LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].Value;
+												var add = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].ProvidingToValue;
+                                                LinkTypes1 = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].Value + add;
                                                 deltaB = city.GetBuildingCache(building.get_Id()).DetailViewInfo.OwnProdModifiers.d[ClientLib.Base.EModifierType.CrystalProduction].ConnectedLinkTypes.d[ClientLib.Base.ELinkType.SiloCrystalProduction].NewLvlDelta;
 												//var harCryTotalPro = harcryPro + (harcryPac/(harcryPacperH/3600)) + LinkTypes1;
                                             } else {
@@ -2662,7 +2677,7 @@
 											if(building.get_CurrentLevel() < 15){
 											var harCryProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), -1);
 											} else {
-												var harCryProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), 1);
+												var harCryProRatio = Math.pow( ((harTotalProOfLevel12/95040)*100)/((harCryTotalPro/tibCost)*100), -1);
 											}
 											harCryArr[harCryNum] = harCryProRatio;
 											harCryArr.sort(function(a,b){return b-a});
@@ -2904,7 +2919,7 @@
 										if(building.get_CurrentLevel() < 15){
 											var silProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((silTotalPro/tibCost)*100), -1);
 											} else {
-												var silProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((silTotalPro/tibCost)*100), 1);
+												var silProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((silTotalPro/tibCost)*100), -1);
 											}
                                          silArr[silNum] = silProRatio;
                                          silArr.sort(function(a,b){return b-a});
@@ -2991,7 +3006,7 @@
 										if(building.get_CurrentLevel() < 15){
 											var accProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((accTotalPro/tibCost)*100), -1);
 											} else {
-												var accProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((accTotalPro/tibCost)*100), 1);
+												var accProRatio = Math.pow( ((silTotalProOfLevel12/63360)*100)/((accTotalPro/tibCost)*100), -1);
 											}
 										accArr[accNum] = accProRatio;
                                         accArr.sort(function(a,b){return b-a});
