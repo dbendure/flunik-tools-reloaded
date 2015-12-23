@@ -2,7 +2,7 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.4.2
+// @version     4.4.3
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
@@ -104,6 +104,7 @@
                             }
                             tableModelA = new qx.ui.table.model.Simple();
                             tableModelA.setColumns(["baseName", "Name", "toLevel", "x", "y", "Ratio", "Time", "Date"]);
+							
                             // make second column editable
                             //tableModel.setColumnEditable(1, true);
 							tableModelB = new qx.ui.table.model.Simple();
@@ -140,7 +141,10 @@
                                 width: 600
 
                             });
-							
+							tableA.setColumnWidth(3, 12);
+							tableA.setColumnWidth(4, 12);
+							tableA.setColumnWidth(6, 75);
+							//tableA.setColumnWidth(7, 50);
 							var tableB = new qx.ui.table.Table(tableModelB).set({
                                 decorator: null,
                                 Padding: 1,
