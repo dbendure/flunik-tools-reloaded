@@ -2,7 +2,7 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.4.3
+// @version     4.4.4
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
@@ -84,9 +84,10 @@
 
 
                             win = new qx.ui.window.Window("First Window");
-							win.setResizable(false, false, false, false);
+							
                             win.setWidth(400);
                             win.setHeight(300);
+							win.setResizable(true, true, true, true);
                             win.setShowMinimize(false);
                             win.setLayout(new qx.ui.layout.VBox());
                             //////////////////////////////////////////////////////////
@@ -267,7 +268,7 @@
                                 width: 600
                             });
                             groupBoxF.setLayout(new qx.ui.layout.VBox());
-							groupBoxG = new qx.ui.groupbox.GroupBox();
+							groupBoxG = new qx.ui.groupbox.GroupBox("allowUpgrade filter Options");
                             groupBoxG.setLayout(new qx.ui.layout.Grid());
                             //////////////////////////////////////////////////////////////////
                             
@@ -386,7 +387,7 @@
                             //groupBoxA.add(checkBoxAc, {row : 2, column : 3});
                             //groupBoxB.add(checkBoxB, {row : 3, column : 3});
                             //groupBoxC.add(checkBoxC, {row : 4, column : 0});
-                            groupBoxF.add(tableA);
+                            //groupBoxF.add(tableA);
 
                             groupBoxD.add(groupBoxA);
                             groupBoxD.add(groupBoxB);
@@ -400,7 +401,7 @@
 
                             page2.add(groupBoxE);
                             page2.add(tabView);
-                            page2.add(groupBoxF);
+                            page2.add(tableA);
                             //page2.add(label);
 
 
@@ -718,7 +719,10 @@
                                 }
                                 //page.add(new qx.ui.form.CheckBox("Reading"));
                             }, this);
-                            groupBoxE.add(new qx.ui.basic.Label("Options"));
+                            groupBoxE.add(new qx.ui.basic.Label("To upgrade, turn this button on after you have set you priorites."));
+							groupBoxE.add(new qx.ui.basic.Label("To clear table, turn this button off."));
+							groupBoxE.add(new qx.ui.basic.Label("*Note* If the cmd button is on and you close the window the script is still running."));
+							groupBoxE.add(new qx.ui.basic.Label("*Note* To reopen the window turn the toggle button off then on."))
 							upChBx = new qx.ui.form.CheckBox("Upgrade");
 							upChBxRef = new qx.ui.form.CheckBox("allowUpgrade Refineries");
 							upChBxPow = new qx.ui.form.CheckBox("allowUpgrade Power Plants");
@@ -1211,7 +1215,7 @@
                                 groupBoxArrC[num].setLayout(new qx.ui.layout.Grid());
 								
 
-                                groupBoxArr[num] = new qx.ui.groupbox.GroupBox("Upgrade on this base: " + city.m_SupportDedicatedBaseName);
+                                groupBoxArr[num] = new qx.ui.groupbox.GroupBox("Click Upgrades: " + city.m_SupportDedicatedBaseName);
 								//groupBoxArr[num].changeWidth(400);
                                 groupBoxArr[num].setLayout(new qx.ui.layout.VBox());
 
@@ -1239,7 +1243,7 @@
                                 groupBoxArrC[num] = new qx.ui.groupbox.GroupBox("Offense");
                                 groupBoxArrC[num].setLayout(new qx.ui.layout.Grid());
 
-                                groupBoxArr[num] = new qx.ui.groupbox.GroupBox("Upgrade on this base: " + city.m_SupportDedicatedBaseName);
+                                groupBoxArr[num] = new qx.ui.groupbox.GroupBox("Click Upgrades: " + city.m_SupportDedicatedBaseName);
                                 groupBoxArr[num].setLayout(new qx.ui.layout.VBox());
 
 
@@ -1875,7 +1879,7 @@
                             var _this = FlunikTools.Main.getInstance();
                             //_this.win.open();
                             //_this.autoUpgrade();
-                            _this.autoUpdateHandleAll = setInterval(function () {_this.autoUpgradeInfo();}, 20000);
+                            _this.autoUpdateHandleAll = setInterval(function () {_this.autoUpgradeInfo();}, 10000);
 
 
                             //return setInterval(upgrade, _this.autoUpdateHandleAll);
@@ -2055,8 +2059,8 @@
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
 											//arr, building, type, prodA, prodB, prodC, costA, costB, deltaA, deltaB, deltaC, cityName, waitTib, waitPow
                                             //_this.buildingRows(buildArr, building, "CY", baseRT, 0, 0, tibCost, powCost, baseRTDelta, 0, 0,cityName, tibCanbuy, powCanbuy);
-											if(upChBx.getValue()){
-												var Cmd_obj = {
+											if(upChBxCmd.getValue()){
+											Cmd_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2162,7 +2166,7 @@
 												if(upChBxFullBasePro.getValue()){
 										if (!_this.canUpgradeBuilding(building, city)) continue;
 										}
-												var Ref_obj = {
+											Ref_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2266,7 +2270,7 @@
 												if(upChBxFullBasePro.getValue()){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
 											}
-												var Pow_obj = {
+											Pow_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2316,7 +2320,7 @@
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             //_this.buildingRows(buildArr, building, "CC", offcryCost, 0, 0, tibCost, powCost, offpowCostA, 0, 0, cityName, tibCanbuy, powCanbuy);
 											if(upChBxCmd.getValue()){
-												var Cmd_obj = {
+											Cmd_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2363,7 +2367,7 @@
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                             //_this.buildingRows(buildArr, building, "HQ", defcryCost, 0, 0, tibCost, powCost, defpowCostA, 0, 0, cityName, tibCanbuy, powCanbuy);
 											if(upChBxCmd.getValue()){
-												var Cmd_obj = {
+											Cmd_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2543,7 +2547,7 @@
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                            // _this.buildingRows(buildArr, building, "def", okLvl, 0, 0, tibCost, powCost, defLvl, 0, 0, cityName, tibCanbuy, powCanbuy);
 											if(upChBxCmd.getValue()){
-												var Cmd_obj = {
+											Cmd_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2631,7 +2635,7 @@
 													if(upChBxFullBasePro.getValue()){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
 											}
-												var TibHar_obj = {
+											TibHar_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: "Tib-"+building.get_UnitGameData_Obj().dn,
@@ -2709,7 +2713,7 @@
 													if(upChBxFullBasePro.getValue() == false){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
 											}
-												var CryHar_obj = {
+											CryHar_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: "Cry-"+building.get_UnitGameData_Obj().dn,
@@ -2759,7 +2763,7 @@
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                           //  _this.buildingRows(buildArr, building, "airSup", okLvl, 0, 0, tibCost, powCost, defLvl, 0, 0, cityName, tibCanbuy, powCanbuy);
 											if(upChBxSup.getValue()){
-												var Sup_obj = {
+											Sup_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2806,7 +2810,7 @@
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                           //  _this.buildingRows(buildArr, building, "vehSup", okLvl, 0, 0, tibCost, powCost, defLvl, 0, 0, cityName, tibCanbuy, powCanbuy);
 											if(upChBxSup.getValue()){
-												var Sup_obj = {
+											Sup_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2853,7 +2857,7 @@
 										if (_this.isCheckBoxChecked(num, buildingName, aNum)) {
                                           //  _this.buildingRows(buildArr, building, "infSup", okLvl, 0, 0, tibCost, powCost, defLvl, 0, 0, cityName, tibCanbuy, powCanbuy);
 											if(upChBxSup.getValue()){
-												var Sup_obj = {
+											Sup_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -2952,7 +2956,7 @@
 												if(upChBxFullBasePro.getValue()){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
 											}
-												var Sil_obj = {
+											Sil_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -3038,7 +3042,7 @@
 												if(upChBxFullBasePro.getValue()){
 												if (!_this.canUpgradeBuilding(building, city)) continue;
 											}
-												var Acc_obj = {
+											Acc_obj = {
 											cityid: city.get_Id(),
                                      		basename: city.m_SupportDedicatedBaseName,
 											bName: building.get_UnitGameData_Obj().dn,
@@ -3189,6 +3193,7 @@
 										
                                         //fNum = 0;
 										//offarr[offnumA] = unit.get_CurrentLevel();
+										if (!_this.canUpgradeUnit(unit, city)) continue;
 										if(unitTechName == ClientLib.Base.EUnit.NOD_Militant || unitTechName == ClientLib.Base.EUnit.GDI_Riflemen){
                                         _this.unitBox(unitName, num, offNum, 0, 0);
 										}
@@ -3204,7 +3209,7 @@
 										if(unitTechName == 137 || unitTechName == ClientLib.Base.EUnit.GDI_Commando){
                                         _this.unitBox(unitName, num, offNum, 1, 0);
 										}
-										if (!_this.canUpgradeUnit(unit, city)) continue;
+										
                                         //_this.unitRows(offUnitArr, unit, "off", costA, costB, cityName, offLvl,waitTib, waitPow);
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
@@ -3238,6 +3243,7 @@
 										//console.log(unit.get_UnitGameData_Obj());
                                         //gNum = 0;
 										//offarr[offnumA] = unit.get_CurrentLevel();
+										if (!_this.canUpgradeUnit(unit, city)) continue;
 										if(unitTechName == ClientLib.Base.EUnit.NOD_Scorpion || unitTechName == ClientLib.Base.EUnit.GDI_Predator){
                                         _this.unitBox(unitName, num, offNum, 1, 1);
 										}
@@ -3253,7 +3259,7 @@
 										if(unitTechName == 142 || unitTechName == 90){
                                         _this.unitBox(unitName, num, offNum, 2, 1);
 										}
-										if (!_this.canUpgradeUnit(unit, city)) continue;
+										//if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3286,8 +3292,10 @@
                                     if (unitTech == ClientLib.Base.EUnitType.Air) {
                                         //hNum = 0;
 										//offarr[offnumA] = unit.get_CurrentLevel();
-                                        if(unitTechName == ClientLib.Base.EUnit.NOD_Vertigo || unitTechName == ClientLib.Base.EUnit.GDI_Firehawk){
-                                        _this.unitBox(unitName, num, offNum, 2, 2);
+                                        if (!_this.canUpgradeUnit(unit, city)) continue;
+										if(unitTechName == ClientLib.Base.EUnit.NOD_Vertigo || unitTechName == ClientLib.Base.EUnit.GDI_Firehawk){
+                                        
+										_this.unitBox(unitName, num, offNum, 2, 2);
 										}
 										if(unitTechName == 144 || unitTechName == 92){ // cobra or palatain
                                         _this.unitBox(unitName, num, offNum, 2, 3);
@@ -3298,7 +3306,7 @@
 										if(unitTechName == 145 || unitTechName == 93){ // Sal or Kod
                                         _this.unitBox(unitName, num, offNum, 3, 1);
 										}
-										if (!_this.canUpgradeUnit(unit, city)) continue;
+										//if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3390,6 +3398,7 @@
 									//console.log(GAMEDATA.Tech[unit.get_UnitGameData_Obj().tl].dn, unit.get_UnitGameData_Obj().tl, unit.get_UnitGameData_Obj());
 									//console.log(unit.get_UnitGameData_Obj());
                                     if (unitTech == ClientLib.Base.EUnitType.Infantry) {
+										if (!_this.canUpgradeUnit(unit, city)) continue;
 										//defarr[defnumA] = unit.get_CurrentLevel();
 										//console.log(unit.get_UnitLevelRepairRequirements());
 										if(unitTechName == 167 || unitTechName == 102){//MG nest
@@ -3406,7 +3415,7 @@
 										}
 
                                         
-										if (!_this.canUpgradeUnit(unit, city)) continue;
+										//if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3437,7 +3446,8 @@
                                     }
                                     if (unitTech == ClientLib.Base.EUnitType.Tank) {
                                         //defarr[defnumA] = unit.get_CurrentLevel();
-                                        if(unitTechName == 163 || unitTechName == 98){//scro || pred
+                                        if (!_this.canUpgradeUnit(unit, city)) continue;
+										if(unitTechName == 163 || unitTechName == 98){//scro || pred
                                         _this.unitBox(unitName, num, defNum, 1, 0);
 										}
 										if(unitTechName == 164 || unitTechName == 99){//rec || gar
@@ -3455,7 +3465,7 @@
 										if(unitTechName == 172 || unitTechName == 129){//anitAir
                                         _this.unitBox(unitName, num, defNum, 2, 1);
 										}
-										if (!_this.canUpgradeUnit(unit, city)) continue;
+										//if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3486,7 +3496,8 @@
                                     }
                                     if (unitTech == ClientLib.Base.EUnitType.Structure) {
                                        // defarr[defnumA] = unit.get_CurrentLevel();
-                                        if(unitTechName == 174 || unitTechName == 106){//wall
+                                        if (!_this.canUpgradeUnit(unit, city)) continue;
+										if(unitTechName == 174 || unitTechName == 106){//wall
                                         _this.unitBox(unitName, num, defNum, 2, 2);
 										}
 										if(unitTechName == 173 || unitTechName == 105){//anti-tank
@@ -3501,7 +3512,7 @@
 										if(unitTechName == 168 || unitTechName == 103){//Flak
                                         _this.unitBox(unitName, num, defNum, 3, 2);
 										}
-										if (!_this.canUpgradeUnit(unit, city)) continue;
+										//if (!_this.canUpgradeUnit(unit, city)) continue;
 										var cryCost = ClientLib.Base.Util.GetUnitLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[0].Count;
 										if(ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1] != undefined){
                                         var powCost = ClientLib.Base.Util.GetTechLevelResourceRequirements_Obj((unit.get_CurrentLevel() + 1), unit.get_UnitGameData_Obj())[1].Count;
@@ -3531,7 +3542,7 @@
 
                                     }
 									//console.log("cCost: ", cryCost, "pCost: ", powCost, "RTCost: ", repairCostA, "RTTime: ", repairCostB);
-                                    defarr.sort(function(a,b){return b-a});
+                                    defarr.sort(function(a,b){return a-b});
                                     if (_this.isCheckBoxChecked(num, unitName, defNum) != undefined && _this.isCheckBoxChecked(num, unitName, defNum)) {
 
                                         //console.log(_this.isCheckBoxChecked(num, unitName, defNum), unitName, aNum, city.m_SupportDedicatedBaseName, num);
