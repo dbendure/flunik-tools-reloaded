@@ -71,7 +71,7 @@
 						startAutoUpdate : function() {
 							//var _this = window.FlunikTools.Main.getInstance();
 							this.autoUpgrade();
-							this.autoUpdateHandle = window.setInterval(this.autoUpgrade(), 60000);
+							this.autoUpdateHandle = window.setInterval(function () {this.autoUpgrade()}, 60000);
 						},
 						stopAutoUpdate : function() {
 							window.clearInterval(this.autoUpdateHandle);
