@@ -2,7 +2,7 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.4.4
+// @version     4.4.5
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
@@ -1904,7 +1904,7 @@
 						
 
                         autoUpgradeInfo: function() {
-                            //console.log("Start of Main Function");
+                            
                             var _this = FlunikTools.Main.getInstance();
                             var num = -1;
                             var checkBoxes = null;
@@ -3219,7 +3219,8 @@
 											var powCost = 1;
 											//offarr[offnumA] = tibCost/(powCost);
 										}
-										offarr[offnumA] = (repairCostA + cryCost + powCost) / repairCostB;
+										var offRatio = (repairCostA + cryCost + powCost) / repairCostB;
+										offarr[offnumA] = offRatio;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3268,7 +3269,8 @@
 											var powCost = 1;
 											
 										}
-										offarr[offnumA] = (repairCostA + cryCost + powCost) / repairCostB;
+										var offRatio = (repairCostA + cryCost + powCost) / repairCostB;
+										offarr[offnumA] = offRatio;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3315,7 +3317,9 @@
 											var powCost = 1;
 											//offarr[offnumA] = tibCost/(powCost);
 										}
-										offarr[offnumA] = (repairCostA + cryCost + powCost) / repairCostB;
+										
+										var offRatio = (repairCostA + cryCost + powCost) / repairCostB;
+										offarr[offnumA] = offRatio;
 										if((cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal)) < 1){
 											var cryCanbuy = _this.FormatTimespan(cryCost / city.GetResourceCount(ClientLib.Base.EResourceType.Crystal));
 											
@@ -3349,7 +3353,7 @@
                                         O_obj = {
                                                 cityid: city.get_Id(),
                                                 basename: city.m_SupportDedicatedBaseName,
-                                                Ratio: offarr[offnumA],
+                                                Ratio: offRatio,
                                                 uName: unitName,
                                                 level: unit.get_CurrentLevel(),
                                                 type: "Offence",
@@ -3605,6 +3609,10 @@
                             } //city loop
                             //console.log("End of Main Function");
 							buildArr = [];
+							if (tableModelA.getRowCount() > 100) {
+                                    tableModelA.removeRows(0, tableModelA.getRowCount(), true);
+									this.UpgradeArr = [];
+                                }
 
 
 
