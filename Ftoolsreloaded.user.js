@@ -2,7 +2,7 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.4.5
+// @version     4.4.6
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
@@ -85,8 +85,8 @@
 
                             win = new qx.ui.window.Window("First Window");
 							
-                            win.setWidth(400);
-                            win.setHeight(300);
+                            win.setWidth(100);
+                            win.setHeight(100);
 							win.setResizable(true, true, true, true);
                             win.setShowMinimize(false);
                             win.setLayout(new qx.ui.layout.VBox());
@@ -133,13 +133,15 @@
                             var table = new qx.ui.table.Table(tableModel).set({
                                 decorator: null,
                                 Padding: 1,
+								height: 300,
+                                //width: 300
 
                             });
                             var tableA = new qx.ui.table.Table(tableModelA).set({
                                 decorator: null,
                                 Padding: 1,
                                 height: 200,
-                                width: 600
+                                width: 300
 
                             });
 							tableA.setColumnWidth(3, 12);
@@ -211,7 +213,7 @@
                             tabView = new qx.ui.tabview.TabView();
                             tabView.setBarPosition('left');
 							//tabView.setWidth(400);
-                            tabView.setHeight(420);
+                            //tabView.setHeight(420);
                             //page2.add(tabView);
                             //////////////////////////////////////////////////////////////////
                             tabViewB = new qx.ui.tabview.TabView();
@@ -2284,7 +2286,7 @@
                                         }
                                         
                                     }
-                                    if (tech == ClientLib.Base.ETechName.Command_Center && building.get_CurrentLevel() < MaxLevel) {
+                                    if (tech == ClientLib.Base.ETechName.Command_Center && building.get_CurrentLevel() < MaxLevel && city.get_LvlOffense() >= building.get_CurrentLevel()) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
 										if (!_this.canUpgradeBuilding(building, city)) continue;
 										if (ClientLib.API.Army.GetInstance().GetUpgradeCostsForAllUnitsToLevel(building.get_CurrentLevel()) != null) {
@@ -2332,7 +2334,7 @@
 											}
                                         }
                                     }
-                                    if (tech == ClientLib.Base.ETechName.Defense_HQ && building.get_CurrentLevel() < MaxLevel) {
+                                    if (tech == ClientLib.Base.ETechName.Defense_HQ && building.get_CurrentLevel() < MaxLevel && city.get_LvlDefense() >= building.get_CurrentLevel()) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
 										if (!_this.canUpgradeBuilding(building, city)) continue;
 										
@@ -2512,7 +2514,7 @@
 											}
                                         }
                                     }
-                                    if (tech == ClientLib.Base.ETechName.Defense_Facility && building.get_CurrentLevel() < MaxLevel) {
+                                    if (tech == ClientLib.Base.ETechName.Defense_Facility && building.get_CurrentLevel() < MaxLevel && city.get_LvlDefense() >= building.get_CurrentLevel()) {
                                         _this.buildingBox(buildingName, num, tech, nameArr, aNum);
 										if (!_this.canUpgradeBuilding(building, city)) continue;
 										if(building.get_CurrentLevel() >= defLvl){
