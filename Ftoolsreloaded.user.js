@@ -2,7 +2,7 @@
 // @name        Flunik Tools reloaded
 // @namespace   FlunikTools reloaded
 // @description Windowed variant, Base Upgrade info and POI info
-// @version     4.4.6
+// @version     4.4.7
 // @author      dbendure, KRS_L, Flunik, Towser
 // @include     http*://prodgame*.alliances.commandandconquer.com/*/index.aspx*
 // ==/UserScript==
@@ -549,6 +549,116 @@
 								
 
                             }, this);
+							tabViewB.addListener("click", function(e) {
+                                if (tabViewB.getSelection()[0].getLabel() == "Tib") {
+									if(checkBoxA.getValue()){
+										FlunikTools.Main.getInstance().arrA = [];
+										tableModelB.removeRows(0, tableModelB.getRowCount(), true);
+									} else {
+                                    FlunikTools.Main.getInstance().poiRows();
+									//if(textfieldTibx.getValue() != "Change me..." && textfieldTiby.getValue() != "Change me..."){
+									FlunikTools.Main.getInstance().addNewTableOnCoords(0, FlunikTools.Main.getInstance().arrA, tableModelB, textfieldTibx, textfieldTiby);
+									//console.log(tableModelB);
+									}
+									
+									
+									//tableModelB.setData(FlunikTools.Main.getInstance().arrA);
+									//}
+									//console.log(checkBoxA.getValue());
+									
+                                }
+								if (tabViewB.getSelection()[0].getLabel() == "Cry") {
+                                    if(checkBoxB.getValue()){
+										FlunikTools.Main.getInstance().arrB = [];
+										tableModelC.removeRows(0, tableModelC.getRowCount(), true);
+									} else {
+                                    FlunikTools.Main.getInstance().poiRows();
+									//if(textfieldCryx.getValue() != "Change me..." && textfieldCryy.getValue() != "Change me..."){
+									FlunikTools.Main.getInstance().addNewTableOnCoords(1, FlunikTools.Main.getInstance().arrB, tableModelC, textfieldCryx, textfieldCryy);
+									}
+									//tableModelC.setData(FlunikTools.Main.getInstance().arrB);
+									//}
+									//console.log(checkBoxA.getValue());
+									
+                                }
+								
+								if (tabViewB.getSelection()[0].getLabel() == "Pow") {
+                                    if(checkBoxC.getValue()){
+										FlunikTools.Main.getInstance().arrC = [];
+										tableModelD.removeRows(0, tableModelD.getRowCount(), true);
+									} else {
+                                    FlunikTools.Main.getInstance().poiRows();
+									//if(textfieldPowx.getValue() != "Change me..." && textfieldPowy.getValue() != "Change me..."){
+									FlunikTools.Main.getInstance().addNewTableOnCoords(2, FlunikTools.Main.getInstance().arrC, tableModelD, textfieldPowx, textfieldPowy);
+									}
+									//tableModelD.setData(FlunikTools.Main.getInstance().arrC);
+									//}
+									//console.log(checkBoxA.getValue());
+									
+                                }
+								
+								if (tabViewB.getSelection()[0].getLabel() == "Def") {
+                                    if(checkBoxD.getValue()){
+										FlunikTools.Main.getInstance().arrD = [];
+										tableModelE.removeRows(0, tableModelE.getRowCount(), true);
+									} else {
+                                    FlunikTools.Main.getInstance().poiRows();
+									//if(textfieldDefx.getValue() != "Change me..." && textfieldDefy.getValue() != "Change me..."){
+									FlunikTools.Main.getInstance().addNewTableOnCoords(6, FlunikTools.Main.getInstance().arrD, tableModelE, textfieldDefx, textfieldDefy);
+									}
+									//tableModelE.setData(FlunikTools.Main.getInstance().arrD);
+									//}
+									//console.log(checkBoxA.getValue());
+									
+                                }
+								
+								if (tabViewB.getSelection()[0].getLabel() == "Inf") {
+                                    if(checkBoxE.getValue()){
+										FlunikTools.Main.getInstance().arrE = [];
+										tableModelF.removeRows(0, tableModelF.getRowCount(), true);
+									} else {
+                                    FlunikTools.Main.getInstance().poiRows();
+									//if(textfieldInfx.getValue() != "Change me..." && textfieldInfy.getValue() != "Change me..."){
+									FlunikTools.Main.getInstance().addNewTableOnCoords(3, FlunikTools.Main.getInstance().arrE, tableModelF, textfieldInfx, textfieldInfy);
+									}
+									//tableModelF.setData(FlunikTools.Main.getInstance().arrE);
+									//}
+									//console.log(checkBoxA.getValue());
+									
+                                }
+								
+								if (tabViewB.getSelection()[0].getLabel() == "Veh") {
+                                     if(checkBoxF.getValue()){
+										FlunikTools.Main.getInstance().arrF = [];
+										tableModelG.removeRows(0, tableModelG.getRowCount(), true);
+									} else {
+                                    FlunikTools.Main.getInstance().poiRows();
+									//if(textfieldVehx.getValue() != "Change me..." && textfieldVehy.getValue() != "Change me..."){
+									FlunikTools.Main.getInstance().addNewTableOnCoords(4, FlunikTools.Main.getInstance().arrF, tableModelG, textfieldVehx, textfieldVehy);
+									}
+									//tableModelG.setData(FlunikTools.Main.getInstance().arrF);
+									//}
+									//console.log(checkBoxA.getValue());
+									
+                                }
+								
+								if (tabViewB.getSelection()[0].getLabel() == "Air") {
+                                    if(checkBoxG.getValue()){
+										FlunikTools.Main.getInstance().arrG = [];
+										tableModelH.removeRows(0, tableModelH.getRowCount(), true);
+									} else {
+                                    FlunikTools.Main.getInstance().poiRows();
+									//if(textfieldAirx.getValue() != "Change me..." && textfieldAiry.getValue() != "Change me..."){
+									FlunikTools.Main.getInstance().addNewTableOnCoords(5, FlunikTools.Main.getInstance().arrG, tableModelH, textfieldAirx, textfieldAiry);
+									}
+									//tableModelH.setData(FlunikTools.Main.getInstance().arrG);
+									//}
+									//console.log(checkBoxA.getValue());
+									
+                                }
+								
+
+                            }, this);
                             tibPage.add(tibButton, {bottom:0 ,left: "41.67%"});
 
                             cryButton.addListener("click", function(e) {
@@ -1076,7 +1186,7 @@
 											rowData.push(["Past Score", _this.formatNumbersCompact(poiRank_Score[3].ps), "", "", "", "", ""]);
 											rowData.push(["POIlvl for NxtScr", nextGetLvl, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvl)), "", "", "", ""]);
 											rowData.push(["POIlvl for NxtTier", nextGetLvlA, _this.formatNumbersCompact(ClientLib.Base.PointOfInterestTypes.GetScoreByLevel(nextGetLvlA)), "", "", "", ""]);
-											rowData.push(["Our Rank", _this.formatNumbersCompact(poiRank_Score[3].r), "", "", "", "", ""]);
+											rowData.push(["Our Rank", poiRank_Score[3].r, "", "", "", "", ""]);
 											rowData.push(["Score Boost", _this.formatNumbersCompact(boostByScore(poiRank_Score[3].s,ClientLib.Data.Ranking.ERankingType.BonusInfantry)), "", "", "", "", ""]);
 											rowData.push(["Boost Modifier", ClientLib.Base.PointOfInterestTypes.GetBoostModifierByRank(poiRank_Score[3].r)+"%", "", "", "", "", ""]);
 											rowData.push(["nextTier(ifLost)","ifLost", "getBonus(ifLost)", "Level", "Score", "XCoord", "YCoord"]);
